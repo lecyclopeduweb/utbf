@@ -1,0 +1,32 @@
+{
+  "name": "oav",
+  "version": "1.0.0",
+  "dependencies": {
+    "gulp-inject-string": "^1.1.2",
+    "sass": "^1.43.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "autoprefixer": "^9.8.0",
+    "bootstrap": "^4.5.0",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "font-awesome": "^4.7.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-inject-string": "^1.1.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-touch-fd": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "undescores-for-npm": "^1.0.0"
+  }
+}

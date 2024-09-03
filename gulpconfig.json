@@ -1,0 +1,21 @@
+{
+	"browserSyncOptions": {
+		"proxy": "localhost:8080/",
+		"notify": false,
+		"files": ["./css/*.min.css", "./js/*.min.js", "./**/*.php"]
+	},
+	"paths": {
+		"assets": "./assets",
+		"js": "./js",
+		"css": "./css",
+		"fonts": "./assets/fonts",
+		"img": "./img",
+		"imgsrc": "./assets/img",
+		"sass": "./assets/sass",
+		"node": "./node_modules",
+		"dev": "./assets/libs",
+		"dist": "./dist",
+		"distprod": "./dist-product",
+		"vendor": ""
+	}
+}
