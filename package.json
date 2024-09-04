@@ -21,6 +21,7 @@
     "gulp-inject-string": "^1.1.2",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^8.0.0",
+    "gulp-potomo-js": "^1.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-sass": "^5.0.0",

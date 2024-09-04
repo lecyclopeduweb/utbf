@@ -1,0 +1,10 @@
+.et_fb_custom_register_form{
+    &::before{
+        content:'' !important;
+        background-image: url('../img/register.svg')  !important;
+        height: 16px;
+        background-position: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}

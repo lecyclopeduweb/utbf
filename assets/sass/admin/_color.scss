@@ -1,0 +1,13 @@
+body{
+    .error{
+        color:red;
+    }
+    .success{
+        color:green;
+    }
+    @include generate-color('transparent','transparent');
+    @include generate-color('white',$white);
+    @include generate-color('black',$black);
+    @include generate-color('blue',$blue);
+    @include generate-color('blue2',$blue2);
+}

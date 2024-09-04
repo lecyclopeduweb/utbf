@@ -3,6 +3,7 @@ const gulp = require( 'gulp' );
 const plumber = require( 'gulp-plumber' );
 const sass = require('gulp-sass')(require('sass'));
 const babel = require( 'gulp-babel' );
+const poToMo = require('gulp-potomo-js');
 const postcss = require( 'gulp-postcss' );
 const touch = require( 'gulp-touch-fd' );
 const rename = require( 'gulp-rename' );
@@ -29,6 +30,31 @@ const paths = cfg.paths;
 gulp.task( 'sass', function() {
 	var stream = gulp
 		.src( paths.sass + '/*.scss' )
+		.pipe(
+			plumber( {
+				errorHandler( err ) {
+					console.log( err );
+					this.emit( 'end' );
+				},
+			} )
+		)
+		.pipe( sourcemaps.init( { loadMaps: true } ) )
+		.pipe( sass( { errLogToConsole: true } ) )
+		.pipe( postcss( [ autoprefixer() ] ) )
+		.pipe( sourcemaps.write( undefined, { sourceRoot: null } ) )
+		.pipe( gulp.dest( paths.css ) )
+		.pipe( touch() );
+	return stream;
+} );
+
+/**
+ * Compiles .scss to .css files.
+ *
+ * Run: gulp sass
+ */
+gulp.task( 'adminsass', function() {
+	var stream = gulp
+		.src( paths.sass_admin + '/*.scss' )
 		.pipe(
 			plumber( {
 				errorHandler( err ) {
@@ -111,6 +137,41 @@ gulp.task( 'minifycss', function() {
 		.pipe( touch() );
 } );
 
+
+/**
+ * Minifies css files.
+ *
+ * Run: gulp minifycss
+ */
+gulp.task( 'adminminifycss', function() {
+	return gulp
+		.src( [
+			paths.css + '/admin.css',
+		] )
+		.pipe(
+			sourcemaps.init( {
+				loadMaps: true,
+			} )
+		)
+		.pipe(
+			cleanCSS( {
+				compatibility: '*',
+			} )
+		)
+		.pipe(
+			plumber( {
+				errorHandler( err ) {
+					console.log( err );
+					this.emit( 'end' );
+				},
+			} )
+		)
+		.pipe( rename( { suffix: '.min' } ) )
+		.pipe( sourcemaps.write( './' ) )
+		.pipe( gulp.dest( paths.css ) )
+		.pipe( touch() );
+} );
+
 /**
  * Delete minified CSS files and their maps
  *
@@ -130,6 +191,27 @@ gulp.task( 'styles', function( callback ) {
 } );
 
 /**
+ * Compiles .scss to .css minifies css files.
+ *
+ * Run: gulp styles
+ */
+gulp.task( 'styles-admin', function( callback ) {
+	gulp.series( 'adminsass', 'adminminifycss' )( callback );
+} );
+
+
+/*
+*A Gulp plugin to compile .po files
+*into binary .mo files written in JavaScript only.
+* npm install --save-dev gulp-potomo-js
+*/
+gulp.task('languages', () =>
+	gulp.src('languages/*.po')
+		.pipe(poToMo())
+		.pipe(gulp.dest('languages'))
+);
+
+/**
  * Watches .scss, .js and image files for changes.
  * On change re-runs corresponding build task.
  *
@@ -141,16 +223,36 @@ gulp.task( 'watch', function() {
 		gulp.series( 'styles' )
 	);
 	gulp.watch(
+		[ paths.sass_admin + '/**/*.scss', paths.sass_admin + '/*.scss' ],
+		gulp.series( 'styles-admin' )
+	);
+	gulp.watch(
 		[
-			paths.dev + '/js/**/*.js',
-			'./assets/js/*.js',
-			'./assets/js/**/*.js',
+			paths.dev + '/js/theme/**/*.js',
+			'./assets/js/theme/*.js',
+			'./assets/js/theme/**/*.js',
 		],
 		gulp.series( 'scripts' )
+	);
+	gulp.watch(
+		[
+			paths.dev + '/js/admin/**/*.js',
+			'./assets/js-load-first/admin/*.js',
+			'./assets/js/admin/*.js',
+			'./assets/js/admin/**/*.js',
+		],
+		gulp.series( 'admin' )
 	);
 
 	// Inside the watch task.
 	gulp.watch( paths.imgsrc + '/**', gulp.series( 'imagemin-watch' ) );
+
+	// Inside the watch task.
+	gulp.watch( paths.imgsrc + '/**', gulp.series( 'imagemin-watch' ) );
+	gulp.watch(
+		[  'languages/*.po' ],
+		gulp.series( 'languages' )
+	);
 } );
 
 /**
@@ -186,8 +288,8 @@ gulp.task( 'watch-bs', gulp.parallel( 'browser-sync', 'watch' ) );
 gulp.task( 'scripts', function() {
 	var scripts = [
 		// Start - All BS4 stuff
-		paths.assets + '/js/*.js',
-		paths.assets + '/js/**/*.js',
+		paths.assets + '/js/theme/*.js',
+		paths.assets + '/js/theme/**/*.js',
 	];
 	gulp
 		.src( scripts, { allowEmpty: true } )
@@ -200,6 +302,36 @@ gulp.task( 'scripts', function() {
 		.src( scripts, { allowEmpty: true } )
 		.pipe( babel() )
 		.pipe( concat( 'theme.js' ) )
+		.pipe( gulp.dest( paths.js ) );
+} );
+
+
+// Run:
+// gulp scripts.
+// Uglifies and concat all JS files into one
+gulp.task( 'admin', function() {
+	var scripts = [
+		// Start - All BS4 stuff
+		paths.assets + '/js/admin/*.js',
+		paths.assets + '/js/admin/**/*.js',
+
+		// End - All BS4 stuff
+
+		// Adding currently empty javascript file to add on for your own themes´ customizations
+		// Please add any customizations to this .js file only!
+		paths.dev + '/js/custom-javascript.js',
+	];
+	gulp
+		.src( scripts, { allowEmpty: true } )
+		.pipe( babel( { presets: ['@babel/preset-env'] } ) )
+		.pipe( concat( 'admin.min.js' ) )
+		.pipe( uglify() )
+		.pipe( gulp.dest( paths.js ) );
+
+	return gulp
+		.src( scripts, { allowEmpty: true } )
+		.pipe( babel() )
+		.pipe( concat( 'admin.js' ) )
 		.pipe( gulp.dest( paths.js ) );
 } );
 
