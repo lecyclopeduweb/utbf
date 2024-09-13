@@ -20,6 +20,7 @@ define('UTBF_ASSETS_URI', UTBF_THEME_URI . '/assets');
 define('UTBF_IMG_URI', UTBF_ASSETS_URI . '/img');
 define('UTBF_TEMPLATES_URI', UTBF_THEME_URI . '/template-parts');
 define('UTBF_UPLOAD_URI', wp_upload_dir()['baseurl']);
+define('UTBF_DIVI_URI', UTBF_THEME_URI.'/divi');
 //PATH
 define('UTBF_THEME_PATH', dirname(__FILE__));
 define('UTBF_APP_PATH', UTBF_THEME_PATH . '/app');
@@ -28,5 +29,6 @@ define('UTBF_IMG_PATH', UTBF_ASSETS_PATH. '/img');
 define('UTBF_THEME_PARENT_PATH', get_template_directory());
 define('UTBF_PATH_ACF_JSON', UTBF_THEME_PATH . '/app/ACF/Fields-json');
 define('UTBF_UPLOAD_PATH', wp_upload_dir()['basedir']);
+define('UTBF_DIVI_PATH', UTBF_THEME_PATH . '/divi');
 //TRAD
 define('UTBF_TEXT_DOMAIN', 'divi-child');

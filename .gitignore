@@ -1,6 +1,7 @@
 .sass-cache
 bower_components
 node_modules
+divi/node_modules
 dist
 dist-product
 npm-debug.log

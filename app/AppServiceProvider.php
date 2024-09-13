@@ -6,7 +6,7 @@ namespace AppUtbf;
 
 use AppUtbf\Assets\Assets;
 use AppUtbf\Theme\ThemeServiceProvider;
-use AppUtbf\Divi\DiviServiceProvider;
+use AppUtbf\Divi\Divi;
 
 /**
  * App Services Providers
@@ -23,9 +23,7 @@ class AppServiceProvider
     {
 
         new Assets;
-
-        $divi_service_provider = new DiviServiceProvider;
-        $divi_service_provider->boot();
+        new Divi;
 
         $theme_service_provider = new ThemeServiceProvider;
         $theme_service_provider->boot();

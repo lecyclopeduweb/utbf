@@ -47,6 +47,15 @@ class Assets
         wp_enqueue_style('theme', UTBF_THEME_URI . '/css/theme.min.css', false, UTBF_SCRIPTS_VERSION, 'all');
         wp_enqueue_script('theme', UTBF_THEME_URI . '/js/theme.min.js', array('jquery'), UTBF_SCRIPTS_VERSION, true);
 
+       // Enqueue React and ReactDOM first
+        wp_enqueue_script('react', UTBF_DIVI_URI . '/scripts/react.development.js', [], null, true);
+        wp_enqueue_script('react-dom', UTBF_DIVI_URI . '/scripts/react-dom.development.js', ['react'], null, true);
+
+        // Divi
+        wp_enqueue_script('builder-bundle.min', UTBF_DIVI_URI . '/scripts/builder-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
+        wp_enqueue_script('frontend-bundle.min', UTBF_DIVI_URI . '/scripts/frontend-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
+        wp_enqueue_script('frontend', UTBF_DIVI_URI . '/scripts/frontend.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
+
 	    wp_localize_script('theme', 'AJAX_URL', [
 		    'url'   => admin_url('admin-ajax.php'),
 		    'nonce' => wp_create_nonce('ajax_url_nonce')
