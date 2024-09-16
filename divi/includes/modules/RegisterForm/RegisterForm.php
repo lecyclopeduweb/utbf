@@ -6,15 +6,13 @@
  *
  * @since 1.0.0
  */
-class DICM_CTA_Parent extends ET_Builder_Module {
+class UTBF_Register_Form extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug       = 'dicm_cta_parent';
+	public $slug       = 'UTBF_register_form';
 
 	// Full Visual Builder support
 	public $vb_support = 'on';
 
-	// Module item's slug
-	public $child_slug = 'dicm_cta_child';
 
 	/**
 	 * Module properties initialization
@@ -23,18 +21,18 @@ class DICM_CTA_Parent extends ET_Builder_Module {
 	 */
 	function init() {
 		// Module name
-		$this->name                    = esc_html__( 'Custom CTA Parent', 'dicm-divi-custom-modules' );
+		$this->name                    = __( 'UTBF Register form', UTBF_TEXT_DOMAIN );
 
 		// Module Icon
 		// Load customized svg icon and use it on builder as module icon. If you don't have svg icon, you can use
-		// $this->icon for using etbuilder font-icon. (See CustomCta / DICM_CTA class)
+		// $this->icon for using etbuilder font-icon. (See CustomCta / UTBF_CTA class)
 		$this->icon_path               =  plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
 		$this->settings_modal_toggles  = array(
 			'general'  => array(
 				'toggles' => array(
-					'main_content' => esc_html__( 'Text', 'dicm-divi-custom-modules' ),
+					'main_content' => __( 'Text', UTBF_TEXT_DOMAIN ),
 				),
 			),
 		);
@@ -50,10 +48,10 @@ class DICM_CTA_Parent extends ET_Builder_Module {
 	function get_fields() {
 		return array(
 			'title' => array(
-				'label'           => esc_html__( 'Title', 'dicm-divi-custom-modules' ),
+				'label'           => __( 'Title', UTBF_TEXT_DOMAIN ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
-				'description'     => esc_html__( 'Text entered here will appear as title.', 'dicm-divi-custom-modules' ),
+				'description'     => __( 'Text entered here will appear as title.', UTBF_TEXT_DOMAIN ),
 				'toggle_slug'     => 'main_content',
 			),
 		);
@@ -89,4 +87,4 @@ class DICM_CTA_Parent extends ET_Builder_Module {
 	}
 }
 
-new DICM_CTA_Parent;
+new UTBF_Register_Form;

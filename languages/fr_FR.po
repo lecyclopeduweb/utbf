@@ -73,5 +73,5 @@ msgid "All"
 msgstr "Tout"
 
 #
-msgid "Register form"
-msgstr "Formulaire d’inscription"
+msgid "UTBF Register form"
+msgstr "UTBF Formulaire d’inscription"

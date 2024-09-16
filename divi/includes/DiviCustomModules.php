@@ -1,5 +1,5 @@
 <?php
-class DICM_DiviCustomModules extends DiviExtension {
+class UTBF_DiviCustomModules extends DiviExtension {
 
 	/**
 	 * The gettext domain for the extension's translations.
@@ -29,7 +29,7 @@ class DICM_DiviCustomModules extends DiviExtension {
 	public $version = '1.0.0';
 
 	/**
-	 * DICM_DiviCustomModules constructor.
+	 * UTBF_DiviCustomModules constructor.
 	 *
 	 * @param string $name
 	 * @param array  $args
@@ -39,7 +39,7 @@ class DICM_DiviCustomModules extends DiviExtension {
 		$this->plugin_dir_url          = plugin_dir_url( $this->plugin_dir );
 		$this->_builder_js_data        = array(
 			'i10n' => array(
-				'dicm_cta_all_options' => array(
+				'UTBF_cta_all_options' => array(
 					'basic_fields'         => esc_html__( 'Basic Fields', 'dicm-divi-custom-modules' ),
 					'text'                 => esc_html__( 'Text', 'dicm-divi-custom-modules' ),
 					'textarea'             => esc_html__( 'Textarea', 'dicm-divi-custom-modules' ),
@@ -83,4 +83,4 @@ class DICM_DiviCustomModules extends DiviExtension {
 	}
 }
 
-new DICM_DiviCustomModules;
+new UTBF_DiviCustomModules;
