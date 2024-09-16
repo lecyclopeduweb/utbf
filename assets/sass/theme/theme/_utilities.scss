@@ -1,3 +1,24 @@
+.justify-content-center{
+    justify-content: center;
+}
+.align-items-center{
+    align-items: center;
+}
+
+@for $i from 0 through 15 {
+    .space-mt-#{$i*10}{
+        margin-top: #{$i*10}px !important;
+    }
+    .space-pt-#{$i*10}{
+        padding-top: #{$i*10}px !important;;
+    }
+    .space-mb-#{$i*10}{
+        margin-bottom: #{$i*10}px !important;
+    }
+    .space-pb-#{$i*10}{
+        padding-bottom: #{$i*10}px !important;
+    }
+}
 // @include transition(.3s);
 @mixin transition($custom-speed){
     -webkit-transition: all $custom-speed !important;

@@ -50,8 +50,20 @@ class UtbfRegisterForm extends ET_Builder_Module {
 	 */
 	function render( $attrs, $content = null, $render_slug ) {
 
-		require_once UTBF_DIVI_PATH . '/includes/modules/RegisterForm/RegisterFormRender.php';
-		return $this->_render_module_wrapper( render_utbf_register_form( $this->props, $this->content, $render_slug ), $render_slug );
+
+		ob_start();
+
+			$args = [
+				'props'   => $this->props,
+				'content' => $this->content,
+				'slug'    => $render_slug
+			];
+			include UTBF_DIVI_PATH . '/includes/modules/RegisterForm/RegisterFormRender.php';
+
+			$template = ob_get_contents();
+		ob_end_clean();
+
+		return $this->_render_module_wrapper($template, $render_slug);
 
 	}
 

@@ -75,3 +75,67 @@ msgstr "Tout"
 #
 msgid "UTBF Register form"
 msgstr "UTBF Formulaire d’inscription"
+
+#
+msgid "First name"
+msgstr "Prénom"
+
+#
+msgid "Label first name"
+msgstr "Label prénom"
+
+#
+msgid "Last name"
+msgstr "Nom"
+
+#
+msgid "Label last name"
+msgstr "Label nom"
+
+#
+msgid "Address"
+msgstr "Adresse"
+
+#
+msgid "Label address"
+msgstr "Label adresse"
+
+#
+msgid "Zip code"
+msgstr "Code postal"
+
+#
+msgid "Label zip code"
+msgstr "Label code postal"
+
+#
+msgid "City"
+msgstr "Ville"
+
+#
+msgid "Label city"
+msgstr "Label ville"
+
+#
+msgid "Phone"
+msgstr "Téléphone"
+
+#
+msgid "Label phone"
+msgstr "Label téléphone"
+
+#
+msgid "Mail"
+msgstr "E-mail"
+
+#
+msgid "Label mail"
+msgstr "Label e-mail"
+
+#
+msgid "Text Button"
+msgstr "Texte du bouton"
+
+#
+msgid "Register"
+msgstr "S'inscrire"
