@@ -1,4 +1,11 @@
 <?php
+/**
+ * Initialize Extension
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ *
+ * @since 1.0.0
+ */
 if ( ! function_exists( 'UTBF_initialize_extension' ) ):
 
 	/**

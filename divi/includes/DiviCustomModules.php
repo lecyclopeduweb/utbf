@@ -1,5 +1,12 @@
 <?php
-class UTBF_DiviCustomModules extends DiviExtension {
+/**
+ * Divi Custom Modules
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ *
+ * @since 1.0.0
+ */
+class UtbfDiviCustomModules extends DiviExtension {
 
 	/**
 	 * The gettext domain for the extension's translations.
@@ -8,7 +15,7 @@ class UTBF_DiviCustomModules extends DiviExtension {
 	 *
 	 * @var string
 	 */
-	public $gettext_domain = 'dicm-divi-custom-modules';
+	public $gettext_domain = UTBF_TEXT_DOMAIN;
 
 	/**
 	 * The extension's WP Plugin name.
@@ -40,41 +47,41 @@ class UTBF_DiviCustomModules extends DiviExtension {
 		$this->_builder_js_data        = array(
 			'i10n' => array(
 				'UTBF_cta_all_options' => array(
-					'basic_fields'         => esc_html__( 'Basic Fields', 'dicm-divi-custom-modules' ),
-					'text'                 => esc_html__( 'Text', 'dicm-divi-custom-modules' ),
-					'textarea'             => esc_html__( 'Textarea', 'dicm-divi-custom-modules' ),
-					'select'               => esc_html__( 'Select', 'dicm-divi-custom-modules' ),
-					'toggle'               => esc_html__( 'Toggle', 'dicm-divi-custom-modules' ),
-					'multiple_buttons'     => esc_html__( 'Multiple Buttons', 'dicm-divi-custom-modules' ),
-					'multiple_checkboxes'  => esc_html__( 'Multiple Checkboxes', 'dicm-divi-custom-modules' ),
-					'input_range'          => esc_html__( 'Input Range', 'dicm-divi-custom-modules' ),
-					'input_datetime'       => esc_html__( 'Input Date Time', 'dicm-divi-custom-modules' ),
-					'input_margin'         => esc_html__( 'Input Margin', 'dicm-divi-custom-modules' ),
-					'checkboxes_category'  => esc_html__( 'Checkboxes Category', 'dicm-divi-custom-modules' ),
-					'select_sidebar'       => esc_html__( 'Select Sidebar', 'dicm-divi-custom-modules' ),
-					'code_fields'          => esc_html__( 'Code Fields', 'dicm-divi-custom-modules' ),
-					'codemirror'           => esc_html__( 'Codemirror', 'dicm-divi-custom-modules' ),
-					'prop_value'           => esc_html__( 'Prop value: ', 'dicm-divi-custom-modules' ),
-					'rendered_prop_value'  => esc_html__( 'Rendered prop value: ', 'dicm-divi-custom-modules' ),
-					'form_fields'          => esc_html__( 'Form Fields', 'dicm-divi-custom-modules' ),
-					'option_list'          => esc_html__( 'Option List', 'dicm-divi-custom-modules' ),
-					'option_list_checkbox' => esc_html__( 'Option List Checkbox', 'dicm-divi-custom-modules' ),
-					'option_list_radio'    => esc_html__( 'Option List Radio', 'dicm-divi-custom-modules' ),
-					'typography_fields'    => esc_html__( 'Typography Fields', 'dicm-divi-custom-modules' ),
-					'select_font_icon'     => esc_html__( 'Select Font Icon', 'dicm-divi-custom-modules' ),
-					'select_text_align'    => esc_html__( 'Select Text Align', 'dicm-divi-custom-modules' ),
-					'select_font'          => esc_html__( 'Select Font', 'dicm-divi-custom-modules' ),
-					'color_fields'         => esc_html__( 'Color Fields', 'dicm-divi-custom-modules' ),
-					'color'                => esc_html__( 'Color', 'dicm-divi-custom-modules' ),
-					'color_alpha'          => esc_html__( 'Color Alpha', 'dicm-divi-custom-modules' ),
-					'upload_fields'        => esc_html__( 'Upload Fields', 'dicm-divi-custom-modules' ),
-					'upload'               => esc_html__( 'Upload', 'dicm-divi-custom-modules' ),
-					'advanced_fields'      => esc_html__( 'Advanced Fields', 'dicm-divi-custom-modules' ),
-					'tab_1_text'           => esc_html__( 'Tab 1 Text', 'dicm-divi-custom-modules' ),
-					'tab_2_text'           => esc_html__( 'Tab 2 Text', 'dicm-divi-custom-modules' ),
-					'presets_shadow'       => esc_html__( 'Presets Shadow', 'dicm-divi-custom-modules' ),
-					'preset_affected_1'    => esc_html__( 'Preset Affected 1', 'dicm-divi-custom-modules' ),
-					'preset_affected_2'    => esc_html__( 'Preset Affected 2', 'dicm-divi-custom-modules' ),
+					'basic_fields'         => esc_html__( 'Basic Fields', UTBF_TEXT_DOMAIN ),
+					'text'                 => esc_html__( 'Text', UTBF_TEXT_DOMAIN ),
+					'textarea'             => esc_html__( 'Textarea', UTBF_TEXT_DOMAIN ),
+					'select'               => esc_html__( 'Select', UTBF_TEXT_DOMAIN ),
+					'toggle'               => esc_html__( 'Toggle', UTBF_TEXT_DOMAIN ),
+					'multiple_buttons'     => esc_html__( 'Multiple Buttons', UTBF_TEXT_DOMAIN ),
+					'multiple_checkboxes'  => esc_html__( 'Multiple Checkboxes', UTBF_TEXT_DOMAIN ),
+					'input_range'          => esc_html__( 'Input Range', UTBF_TEXT_DOMAIN ),
+					'input_datetime'       => esc_html__( 'Input Date Time', UTBF_TEXT_DOMAIN ),
+					'input_margin'         => esc_html__( 'Input Margin', UTBF_TEXT_DOMAIN ),
+					'checkboxes_category'  => esc_html__( 'Checkboxes Category', UTBF_TEXT_DOMAIN ),
+					'select_sidebar'       => esc_html__( 'Select Sidebar', UTBF_TEXT_DOMAIN ),
+					'code_fields'          => esc_html__( 'Code Fields', UTBF_TEXT_DOMAIN ),
+					'codemirror'           => esc_html__( 'Codemirror', UTBF_TEXT_DOMAIN ),
+					'prop_value'           => esc_html__( 'Prop value: ', UTBF_TEXT_DOMAIN ),
+					'rendered_prop_value'  => esc_html__( 'Rendered prop value: ', UTBF_TEXT_DOMAIN ),
+					'form_fields'          => esc_html__( 'Form Fields', UTBF_TEXT_DOMAIN ),
+					'option_list'          => esc_html__( 'Option List', UTBF_TEXT_DOMAIN ),
+					'option_list_checkbox' => esc_html__( 'Option List Checkbox', UTBF_TEXT_DOMAIN ),
+					'option_list_radio'    => esc_html__( 'Option List Radio', UTBF_TEXT_DOMAIN ),
+					'typography_fields'    => esc_html__( 'Typography Fields', UTBF_TEXT_DOMAIN ),
+					'select_font_icon'     => esc_html__( 'Select Font Icon', UTBF_TEXT_DOMAIN ),
+					'select_text_align'    => esc_html__( 'Select Text Align', UTBF_TEXT_DOMAIN ),
+					'select_font'          => esc_html__( 'Select Font', UTBF_TEXT_DOMAIN ),
+					'color_fields'         => esc_html__( 'Color Fields', UTBF_TEXT_DOMAIN ),
+					'color'                => esc_html__( 'Color', UTBF_TEXT_DOMAIN ),
+					'color_alpha'          => esc_html__( 'Color Alpha', UTBF_TEXT_DOMAIN ),
+					'upload_fields'        => esc_html__( 'Upload Fields', UTBF_TEXT_DOMAIN ),
+					'upload'               => esc_html__( 'Upload', UTBF_TEXT_DOMAIN ),
+					'advanced_fields'      => esc_html__( 'Advanced Fields', UTBF_TEXT_DOMAIN ),
+					'tab_1_text'           => esc_html__( 'Tab 1 Text', UTBF_TEXT_DOMAIN ),
+					'tab_2_text'           => esc_html__( 'Tab 2 Text', UTBF_TEXT_DOMAIN ),
+					'presets_shadow'       => esc_html__( 'Presets Shadow', UTBF_TEXT_DOMAIN ),
+					'preset_affected_1'    => esc_html__( 'Preset Affected 1', UTBF_TEXT_DOMAIN ),
+					'preset_affected_2'    => esc_html__( 'Preset Affected 2', UTBF_TEXT_DOMAIN ),
 				),
 			),
 		);
@@ -83,4 +90,4 @@ class UTBF_DiviCustomModules extends DiviExtension {
 	}
 }
 
-new UTBF_DiviCustomModules;
+new UtbfDiviCustomModules;

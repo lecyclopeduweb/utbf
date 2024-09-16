@@ -1,18 +1,15 @@
 <?php
 /**
- * Parent module (module which has module item / child module) with FULL builder support
- * This module appears on Visual Builder and requires react component to be provided
- * Due to full builder support, all advanced options (except button options) are added by default
+ * UTBF Register Form
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  *
  * @since 1.0.0
  */
-class UTBF_Register_Form extends ET_Builder_Module {
-	// Module slug (also used as shortcode tag)
+class UtbfRegisterForm extends ET_Builder_Module {
+
 	public $slug       = 'UTBF_register_form';
-
-	// Full Visual Builder support
 	public $vb_support = 'on';
-
 
 	/**
 	 * Module properties initialization
@@ -20,22 +17,10 @@ class UTBF_Register_Form extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	function init() {
-		// Module name
-		$this->name                    = __( 'UTBF Register form', UTBF_TEXT_DOMAIN );
 
-		// Module Icon
-		// Load customized svg icon and use it on builder as module icon. If you don't have svg icon, you can use
-		// $this->icon for using etbuilder font-icon. (See CustomCta / UTBF_CTA class)
-		$this->icon_path               =  plugin_dir_path( __FILE__ ) . 'icon.svg';
+		require_once UTBF_DIVI_PATH . '/includes/modules/RegisterForm/RegisterFormInit.php';
+		init_utbf_register_form( $this );
 
-		// Toggle settings
-		$this->settings_modal_toggles  = array(
-			'general'  => array(
-				'toggles' => array(
-					'main_content' => __( 'Text', UTBF_TEXT_DOMAIN ),
-				),
-			),
-		);
 	}
 
 	/**
@@ -46,15 +31,10 @@ class UTBF_Register_Form extends ET_Builder_Module {
 	 * @return array
 	 */
 	function get_fields() {
-		return array(
-			'title' => array(
-				'label'           => __( 'Title', UTBF_TEXT_DOMAIN ),
-				'type'            => 'text',
-				'option_category' => 'basic_option',
-				'description'     => __( 'Text entered here will appear as title.', UTBF_TEXT_DOMAIN ),
-				'toggle_slug'     => 'main_content',
-			),
-		);
+
+		require_once UTBF_DIVI_PATH . '/includes/modules/RegisterForm/RegisterFormFields.php';
+		return get_fields_utbf_register_form();
+
 	}
 
 	/**
@@ -69,22 +49,12 @@ class UTBF_Register_Form extends ET_Builder_Module {
 	 * @return string module's rendered output
 	 */
 	function render( $attrs, $content = null, $render_slug ) {
-		// Module specific props added on $this->get_fields()
-		$title = $this->props['title'];
 
-		// Render module content
-		$output = sprintf(
-			'<h2 class="dicm-title">%1$s</h2>
-			<div class="dicm-content">%2$s</div>',
-			esc_html( $title ),
-			et_sanitized_previously( $this->content )
-		);
+		require_once UTBF_DIVI_PATH . '/includes/modules/RegisterForm/RegisterFormRender.php';
+		return $this->_render_module_wrapper( render_utbf_register_form( $this->props, $this->content, $render_slug ), $render_slug );
 
-		// Render wrapper
-		// 3rd party module with no full VB support has to wrap its render output with $this->_render_module_wrapper().
-		// This method will automatically add module attributes and proper structure for parallax image/video background
-		return $this->_render_module_wrapper( $output, $render_slug );
 	}
+
 }
 
-new UTBF_Register_Form;
+new UtbfRegisterForm;
