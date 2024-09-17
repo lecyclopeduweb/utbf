@@ -43,7 +43,8 @@ class UtbfDiviCustomModules extends DiviExtension {
 	 */
 	public function __construct( $name = 'divi-custom-modules', $args = array() ) {
 		$this->plugin_dir              = plugin_dir_path( __FILE__ );
-		$this->plugin_dir_url          = plugin_dir_url( $this->plugin_dir );
+		//$this->plugin_dir_url          = plugin_dir_url( $this->plugin_dir );
+		$this->plugin_dir_url          = UTBF_DIVI_URI.'/';
 		$this->_builder_js_data        = array(
 			'i10n' => array(
 				'UTBF_cta_all_options' => array(

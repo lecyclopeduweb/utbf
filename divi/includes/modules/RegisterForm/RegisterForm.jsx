@@ -11,8 +11,10 @@ class UtbfRegisterForm extends Component {
    * Basically UTBF_CTA_Parent->render() equivalent in JSX
    */
   render() {
-    const firstNameLabel = this.props.label_first_name || 'Prénom';
-    const lastNameLabel = this.props.label_last_name || 'Nom';
+    const user_login = this.props.label_user_login || 'Identifiant';
+    const password = this.props.label_password || 'Mot de passe';
+    const firstName = this.props.label_first_name || 'Prénom';
+    const lastName = this.props.label_last_name || 'Nom';
     const address = this.props.label_address || 'Adresse';
     const zipCode = this.props.label_zip_code || 'Code postal';
     const city = this.props.label_city || 'Ville';
@@ -25,15 +27,29 @@ class UtbfRegisterForm extends Component {
           <div  className="utbf-form__row">
               <div  className="utbf-form__half-col">
                   <label>
-                      {firstNameLabel}*
+                      {user_login}*
                   </label>
-                  <input type="text" name="first-name" value="" />
+                  <input type="text" name="user_login" value="" />
               </div>
               <div  className="utbf-form__half-col">
                   <label>
-                      {lastNameLabel}*
+                      {password}*
                   </label>
-                  <input type="text" name="last-name" value="" />
+                  <input type="password" name="password" value="" />
+              </div>
+          </div>
+          <div  className="utbf-form__row">
+              <div  className="utbf-form__half-col">
+                  <label>
+                      {firstName}*
+                  </label>
+                  <input type="text" name="first_name" value="" />
+              </div>
+              <div  className="utbf-form__half-col">
+                  <label>
+                      {lastName}*
+                  </label>
+                  <input type="text" name="last_name" value="" />
               </div>
           </div>
             <div className="utbf-form__row">
@@ -49,7 +65,7 @@ class UtbfRegisterForm extends Component {
                   <label>
                       {zipCode}*
                   </label>
-                  <input type="text" name="zip-code" value="" />
+                  <input type="number" name="zip-code" value="" />
               </div>
               <div className="utbf-form__half-col">
                   <label>
@@ -63,13 +79,13 @@ class UtbfRegisterForm extends Component {
                   <label>
                       {phone}*
                   </label>
-                  <input type="text" name="phone" value="" />
+                  <input type="number" name="phone" value="" />
               </div>
               <div className="utbf-form__half-col">
                   <label>
                       {mail}*
                   </label>
-                  <input type="text" name="mail" value="" />
+                  <input type="email" name="user_email" value="" />
               </div>
           </div>
           <div className="utbf-form__row justify-content-center align-items-center space-mt-30">

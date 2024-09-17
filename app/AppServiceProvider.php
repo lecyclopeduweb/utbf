@@ -4,9 +4,10 @@ declare (strict_types = 1);
 
 namespace AppUtbf;
 
-use AppUtbf\Assets\Assets;
-use AppUtbf\Theme\ThemeServiceProvider;
 use AppUtbf\Divi\Divi;
+use AppUtbf\Assets\Assets;
+use AppUtbf\Forms\FormsServiceProvider;
+use AppUtbf\Theme\ThemeServiceProvider;
 
 /**
  * App Services Providers
@@ -24,6 +25,9 @@ class AppServiceProvider
 
         new Assets;
         new Divi;
+
+        $forms_service_provider = new FormsServiceProvider;
+        $forms_service_provider->boot();
 
         $theme_service_provider = new ThemeServiceProvider;
         $theme_service_provider->boot();

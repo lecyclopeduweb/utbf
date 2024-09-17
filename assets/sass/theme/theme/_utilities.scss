@@ -4,6 +4,9 @@
 .align-items-center{
     align-items: center;
 }
+.d-flex{
+    display: flex;
+}
 
 @for $i from 0 through 15 {
     .space-mt-#{$i*10}{

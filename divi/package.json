@@ -13,7 +13,9 @@
 		"start": "divi-scripts start",
 		"build": "divi-scripts build",
 		"zip": "divi-scripts build && divi-scripts zip",
-		"eject": "divi-scripts eject"
+		"eject": "divi-scripts eject",
+		"clear-frontend-bundle": "node -e \"require('fs').writeFileSync('scripts/frontend-bundle.min.js', '')\"",
+		"build-and-clear": "yarn build && yarn clear-frontend-bundle"
 	},
 	"browserslist": {
 		"development": [

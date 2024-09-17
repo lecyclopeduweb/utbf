@@ -125,12 +125,28 @@ msgid "Label phone"
 msgstr "Label téléphone"
 
 #
-msgid "Mail"
+msgid "Email"
 msgstr "E-mail"
 
 #
-msgid "Label mail"
+msgid "Label email"
 msgstr "Label e-mail"
+
+#
+msgid "Login"
+msgstr "Identifiant"
+
+#
+msgid "Label login"
+msgstr "Label identifiant"
+
+#
+msgid "Password"
+msgstr "Mot de passe"
+
+#
+msgid "Label password"
+msgstr "Label password"
 
 #
 msgid "Text Button"
@@ -139,3 +155,87 @@ msgstr "Texte du bouton"
 #
 msgid "Register"
 msgstr "S'inscrire"
+
+#
+msgid "The field is empty"
+msgstr "Le champ est vide"
+
+#
+msgid "Email is not valid"
+msgstr "L'email n'est pas valide"
+
+#
+msgid "The email is already registered"
+msgstr "L'email est déjà enregistré"
+
+#
+msgid "The fields are different"
+msgstr "Les champs sont différents"
+
+#
+msgid "have at least 8 characters"
+msgstr "avoir au moins 8 caractères"
+
+#
+msgid "a number"
+msgstr "un nombre"
+
+#
+msgid "a letter"
+msgstr "une lettre"
+
+#
+msgid "a capital letter"
+msgstr "une majuscule"
+
+#
+msgid "a lowercase letter"
+msgstr "une minuscule"
+
+#
+msgid "a special character"
+msgstr "un caractère spécial"
+
+#
+msgid "Password must include"
+msgstr "Le mot de passe doit inclure"
+
+#
+msgid "The phone must be composed of numbers only"
+msgstr "Le téléphone doit être composé uniquement de chiffres"
+
+#
+msgid "The phone number must be 10 digits long"
+msgstr "Le numéro de téléphone doit comporter 10 chiffres"
+
+#
+msgid "The Siret number must consist only of numbers"
+msgstr "Le numéro Siret doit être composé uniquement de chiffres"
+
+#
+msgid "The Siret number must contain 14 digits"
+msgstr "Le numéro Siret doit contenir 14 chiffres"
+
+#
+msgid "The VAT number must consist of numbers only"
+msgstr "Le numéro de TVA doit être composé uniquement de chiffres"
+
+#
+msgid "The VAT number must contain 11 digits"
+msgstr "Le numéro de TVA doit contenir 11 chiffres"
+
+#
+msgid "The postal code must consist of numbers only"
+msgstr "Le code postal doit être composé uniquement de chiffres"
+
+#
+msgid "The postal code must contain 5 digits"
+msgstr "Le code postal doit contenir 5 chiffres"
+
+#
+msgid "The login is already registered"
+msgstr "L'identifiant est déjà enregistré"
+
+#
+msgid "Account created successfully"
+msgstr "Compte créé avec succés"

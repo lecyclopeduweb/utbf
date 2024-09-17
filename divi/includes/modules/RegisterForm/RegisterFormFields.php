@@ -8,6 +8,20 @@
  */
 function get_fields_utbf_register_form() {
     return array(
+        'label_user_login' => array(
+            'label'           => __( 'Label login', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_password' => array(
+            'label'           => __( 'Label password', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
         'label_first_name' => array(
             'label'           => __( 'Label first name', UTBF_TEXT_DOMAIN ),
             'type'            => 'text',
@@ -50,15 +64,15 @@ function get_fields_utbf_register_form() {
             'description'     => '',
             'toggle_slug'     => 'main_content',
         ),
-        'label_mail' => array(
-            'label'           => __( 'Label mail', UTBF_TEXT_DOMAIN ),
+        'label_user_email' => array(
+            'label'           => __( 'Label email', UTBF_TEXT_DOMAIN ),
             'type'            => 'text',
             'option_category' => 'basic_option',
             'description'     => '',
             'toggle_slug'     => 'main_content',
         ),
         'text_button' => array(
-            'label'           => __( 'Text Button', UTBF_TEXT_DOMAIN ),
+            'label'           => __( 'Text button', UTBF_TEXT_DOMAIN ),
             'type'            => 'text',
             'option_category' => 'basic_option',
             'description'     => '',

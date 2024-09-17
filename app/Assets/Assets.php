@@ -21,6 +21,7 @@ class Assets
     {
 
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
+        add_action('wp_enqueue_scripts', [$this, 'dequeue_script']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_scripts']);
 
     }
@@ -53,13 +54,27 @@ class Assets
 
         // Divi
         wp_enqueue_script('builder-bundle.min', UTBF_DIVI_URI . '/scripts/builder-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
-        wp_enqueue_script('frontend-bundle.min', UTBF_DIVI_URI . '/scripts/frontend-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
-        wp_enqueue_script('frontend', UTBF_DIVI_URI . '/scripts/frontend.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
+        //wp_enqueue_script('frontend-bundle.min', UTBF_DIVI_URI . '/scripts/frontend-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
+        //wp_enqueue_script('frontend', UTBF_DIVI_URI . '/scripts/frontend.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
+
 
 	    wp_localize_script('theme', 'AJAX_URL', [
 		    'url'   => admin_url('admin-ajax.php'),
 		    'nonce' => wp_create_nonce('ajax_url_nonce')
 	    ]);
+
+    }
+
+    /**
+     * dequeue styles/scripts.
+     *
+     * @return void
+     */
+    public function dequeue_script():void
+    {
+
+        wp_dequeue_script( 'divi-custom-modules-frontend-bundle-js' );
+        wp_deregister_script( 'divi-custom-modules-frontend-bundle-js' );
 
     }
 
@@ -74,8 +89,6 @@ class Assets
         wp_enqueue_style('admin', UTBF_THEME_URI . '/css/admin.min.css', false, UTBF_SCRIPTS_VERSION, 'all');
         wp_enqueue_script('flatpickr', UTBF_THEME_URI . '/js/admin.min.js', array('jquery'), UTBF_SCRIPTS_VERSION, true);
 
-
     }
-
 
 }
