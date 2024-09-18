@@ -239,3 +239,7 @@ msgstr "L'identifiant est déjà enregistré"
 #
 msgid "Account created successfully"
 msgstr "Compte créé avec succés"
+
+#
+msgid "Phone 2"
+msgstr "Téléphone 2"

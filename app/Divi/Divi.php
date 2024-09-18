@@ -32,7 +32,7 @@ class Divi
     public function init():void
     {
 
-		require_once UTBF_DIVI_PATH . '/divi-custom-modules.php';
+		  require_once UTBF_DIVI_PATH . '/divi-custom-modules.php';
 
     }
 

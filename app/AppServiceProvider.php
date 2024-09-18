@@ -8,6 +8,7 @@ use AppUtbf\Divi\Divi;
 use AppUtbf\Assets\Assets;
 use AppUtbf\Forms\FormsServiceProvider;
 use AppUtbf\Theme\ThemeServiceProvider;
+use AppUtbf\Admin\AdminServiceProvider;
 
 /**
  * App Services Providers
@@ -31,6 +32,9 @@ class AppServiceProvider
 
         $theme_service_provider = new ThemeServiceProvider;
         $theme_service_provider->boot();
+
+        $admin_service_provider = new AdminServiceProvider;
+        $admin_service_provider->boot();
 
     }
 

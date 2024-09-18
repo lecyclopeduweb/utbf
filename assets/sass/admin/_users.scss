@@ -1,0 +1,43 @@
+.user-edit-php{
+    #your-profile > h2:nth-of-type(2),
+    #your-profile > h2:nth-of-type(3),
+    #your-profile > h2:nth-of-type(4),
+    .user-language-wrap,
+    .application-passwords,
+    .user-description-wrap,
+    .user-url-wrap,
+    .show-admin-bar,
+    .user-comment-shortcuts-wrap,
+    .user-admin-color-wrap,
+    .user-rich-editing-wrap{
+        display:none !important;
+    }
+}
+.profile-php,
+.user-edit-php{
+    #your-profile{
+        display: flex;
+        flex-direction: column;
+        &> h2:nth-of-type(6){
+            order:1;
+        }
+        #fieldset-billing{
+            order:2;
+        }
+        #fieldset-billing-phone-2{
+            order:3;
+        }
+        &> h2:nth-of-type(7){
+            order:4;
+        }
+        #fieldset-shipping{
+            order:5;
+        }
+        #fieldset-shipping-phone-2{
+            order:6;
+        }
+        .submit{
+            order:7;
+        }
+    }
+}
