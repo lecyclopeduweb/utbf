@@ -6,6 +6,7 @@ namespace AppUtbf;
 
 use AppUtbf\Divi\Divi;
 use AppUtbf\Assets\Assets;
+use AppUtbf\ACF\ACFServiceProvider;
 use AppUtbf\Forms\FormsServiceProvider;
 use AppUtbf\Theme\ThemeServiceProvider;
 use AppUtbf\Admin\AdminServiceProvider;
@@ -26,6 +27,9 @@ class AppServiceProvider
 
         new Assets;
         new Divi;
+
+        $acf_service_provider = new ACFServiceProvider;
+        $acf_service_provider->boot();
 
         $forms_service_provider = new FormsServiceProvider;
         $forms_service_provider->boot();
