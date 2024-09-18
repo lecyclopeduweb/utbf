@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace AppUtbf\Admin;
 
 use AppUtbf\Admin\Users;
+use AppUtbf\Admin\Admin;
 
 /**
  * Admin Services Providers
@@ -21,6 +22,7 @@ class AdminServiceProvider
     {
 
         new Users;
+        new Admin;
 
     }
 

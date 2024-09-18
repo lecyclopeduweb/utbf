@@ -1,0 +1,341 @@
+{
+    "key": "group_66eacd4eac70a",
+    "title": "Enfants",
+    "fields": [
+        {
+            "key": "field_66eacd4e695be",
+            "label": "Enfants repeater",
+            "name": "user__childs_repeater__first_name",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Ajouter un enfant",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66eacdfeebed9",
+                    "label": "Nom",
+                    "name": "user__child__last_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66eace14ebeda",
+                    "label": "Prénom",
+                    "name": "user__child___first_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead0ae26794",
+                    "label": "Classe",
+                    "name": "user__child___classroom",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "petite-section": "Petite Section",
+                        "moyenne-section": "Moyenne Section",
+                        "grande-section": "Grande Section",
+                        "cp": "CP",
+                        "ce1": "CE1",
+                        "ce2": "CE2",
+                        "cm1": "CM1",
+                        "cm2": "CM2",
+                        "6eme": "6ème",
+                        "5eme": "5ème"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead15b9a27d",
+                    "label": "École",
+                    "name": "user__child___school",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "sainte-marie-saint-loup-10eme": "Sainte Marie Saint Loup (10ème)",
+                        "chevreul-champavier-5eme": "Chevreul Champavier (5ème)",
+                        "saint-barnabe-12eme": "Saint Barnabé (12ème)",
+                        "saint-jean-baptiste-9eme": "Saint Jean Baptiste (9ème)",
+                        "autre": "Autre"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead1f15cf2b",
+                    "label": "Autre école",
+                    "name": "user__child___other_school",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead1ce5cf2a",
+                    "label": "Date de naissance",
+                    "name": "user__child___birthday",
+                    "aria-label": "",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead23e75ae7",
+                    "label": "Traitement en cours",
+                    "name": "user__child___processing_progress",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead28175ae8",
+                    "label": "Eléments particuliers à signaler (Allergies alimentaires, asthme etc…)",
+                    "name": "user__child___specific_aspects",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead2c575ae9",
+                    "label": "Des recommandations \/ commentaires utiles à savoir sur l’enfant ?",
+                    "name": "user__child___recommendations",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead2e975aea",
+                    "label": "Nom personne à prévenir en cas d’urgence",
+                    "name": "user__child___last_name_emergency",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead32075aeb",
+                    "label": "Prénom personne à prévenir en cas d’urgence",
+                    "name": "user__child___first_name_emergency",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                },
+                {
+                    "key": "field_66ead33875aec",
+                    "label": "Téléphone personne à prévenir en cas d’urgence",
+                    "name": "user__child___phone_emergency",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66eacd4e695be"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "user_form",
+                "operator": "==",
+                "value": "all"
+            },
+            {
+                "param": "user_role",
+                "operator": "!=",
+                "value": "administrator"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Champs additionnels user profil",
+    "show_in_rest": 0,
+    "modified": 1726665753
+}

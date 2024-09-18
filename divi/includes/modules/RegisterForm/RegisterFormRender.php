@@ -58,8 +58,8 @@ if(empty($args))
             <label>
                 <?= (!empty($args['props']['label_zip_code']))? $args['props']['label_zip_code'] : __('Zip code',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="number" name="zip-code" value="">
-            <div class="error zip-code"></div>
+            <input type="number" name="zip_code" value="">
+            <div class="error zip_code"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>

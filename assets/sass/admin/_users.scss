@@ -18,7 +18,7 @@
     #your-profile{
         display: flex;
         flex-direction: column;
-        &> h2:nth-of-type(6){
+        &> h2:nth-of-type(8){
             order:1;
         }
         #fieldset-billing{
@@ -27,7 +27,7 @@
         #fieldset-billing-phone-2{
             order:3;
         }
-        &> h2:nth-of-type(7){
+        &> h2:nth-of-type(9){
             order:4;
         }
         #fieldset-shipping{
@@ -38,6 +38,33 @@
         }
         .submit{
             order:7;
+        }
+        #fieldset-billing{
+            tbody{
+                display: flex;
+                flex-direction: column;
+                tr:nth-last-child(2){
+                    order:1;
+                }
+            }
+        }
+        .form-table{
+            tbody{
+                &>.acf-field-repeater{
+                    &>.acf-label{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+.role-administrator{
+    #your-profile{
+        display: block;
+        #fieldset-billing-phone-2,
+        #fieldset-shipping-phone-2{
+            display: none;
         }
     }
 }

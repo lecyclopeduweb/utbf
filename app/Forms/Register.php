@@ -99,9 +99,9 @@ class Register
             update_user_meta($user_id, 'billing_city', $_POST['city']);
             update_user_meta($user_id, 'shipping_city', $_POST['city']);
         endif;
-        if (isset($_POST['zip-code'])):
-            update_user_meta($user_id, 'billing_postcode', $_POST['zip-code']);
-            update_user_meta($user_id, 'shipping_postcode', $_POST['zip-code']);
+        if (isset($_POST['zip_code'])):
+            update_user_meta($user_id, 'billing_postcode', $_POST['zip_code']);
+            update_user_meta($user_id, 'shipping_postcode', $_POST['zip_code']);
         endif;
         if (isset($_POST['phone'])):
             update_user_meta($user_id, 'billing_phone', $_POST['phone']);

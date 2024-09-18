@@ -5,7 +5,7 @@
  *  @author  "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
 //CACHE
-define('UTBF_SCRIPTS_VERSION','5545i6kcxskx4');
+define('UTBF_SCRIPTS_VERSION','5545ikcxskx4');
 //PROJET
 define('UTBF_SITE_NAME','Une Tête Bien Faite' );
 //URLS
