@@ -19,6 +19,7 @@ class UtbfRegisterForm extends Component {
     const zipCode = this.props.label_zip_code || 'Code postal';
     const city = this.props.label_city || 'Ville';
     const phone = this.props.label_phone || 'Téléphone';
+    const phone2 = this.props.label_phone_2 || 'Téléphone 2';
     const mail = this.props.label_mail || 'E-mail';
     const button = this.props.text_button || 'S\'inscrire';
 
@@ -82,6 +83,14 @@ class UtbfRegisterForm extends Component {
                   <input type="number" name="phone" value="" />
               </div>
               <div className="utbf-form__half-col">
+                  <label>
+                      {phone2}
+                  </label>
+                  <input type="number" name="phone_2" value="" />
+              </div>
+          </div>
+          <div className="utbf-form__row">
+              <div className="utbf-form__full-col">
                   <label>
                       {mail}*
                   </label>

@@ -47,11 +47,13 @@ class ValidateRegister
         $response = [];
 
         foreach($fields as $key => $field):
-            if($utilities->empty_field($field)):
+            if($key=='phone_2' && empty($field)):
+                continue;
+            elseif($utilities->empty_field($field) ):
                 $response[$key] = __('The field is empty',UTBF_TEXT_DOMAIN);
             elseif($key=='zip-code' && $zipcode->error($field)):
                 $response[$key] = $zipcode->error($field);
-            elseif($key=='phone' && $phone->error($field)):
+            elseif(($key=='phone' && $phone->error($field)) || ($key=='phone_2' && $phone->error($field))):
                 $response[$key] = $phone->error($field);
             elseif($key=='user_email' && $email->register($field)):
                 $response[$key] = $email->register($field);

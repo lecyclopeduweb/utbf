@@ -79,6 +79,15 @@ if(empty($args))
         </div>
         <div class="utbf-form__half-col">
             <label>
+                <?= (!empty($args['props']['label_phone_2']))? $args['props']['label_phone_2'] : __('Phone 2',UTBF_TEXT_DOMAIN); ?>
+            </label>
+            <input type="number" name="phone_2" value="">
+            <div class="error phone_2"></div>
+        </div>
+    </div>
+    <div class="utbf-form__row">
+        <div class="utbf-form__full-col">
+            <label>
                 <?= (!empty($args['props']['label_user_email']))? $args['props']['label_user_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>*
             </label>
             <input type="email" name="user_email" value="">

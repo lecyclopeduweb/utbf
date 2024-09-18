@@ -36,9 +36,7 @@ class Email
 
         $response = false;
 
-        if($utilities->empty_field($field)):
-            $response = __('The field is empty',UTBF_TEXT_DOMAIN);
-        elseif($utilities->check_mail($field)) :
+        if($utilities->check_mail($field)) :
             $response = __("Email is not valid",UTBF_TEXT_DOMAIN);
         endif;
 
@@ -60,9 +58,7 @@ class Email
 
         $response = false;
 
-        if($utilities->empty_field($field)):
-            $response = __('The field is empty',UTBF_TEXT_DOMAIN);
-        elseif($utilities->check_mail($field)) :
+        if($utilities->check_mail($field)) :
             $response = __("Email is not valid",UTBF_TEXT_DOMAIN);
         elseif($utilities->check_database_mail($field)):
             $response = __("The email is already registered",UTBF_TEXT_DOMAIN);

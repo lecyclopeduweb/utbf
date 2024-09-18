@@ -89,12 +89,6 @@ class Password
 
         $response = [];
 
-        if($utilities->empty_field($pass)):
-            $response['pass'] = __('The field is empty',UTBF_TEXT_DOMAIN);
-        endif;
-        if ($utilities->empty_field($confirm)) :
-            $response['confirm'] = __('The field is empty',UTBF_TEXT_DOMAIN);
-        endif;
         if (!$utilities->empty_field($pass) && !$utilities->empty_field($confirm)) :
             if($pass != $confirm):
                 $response['pass']  = __('The fields are different',UTBF_TEXT_DOMAIN);

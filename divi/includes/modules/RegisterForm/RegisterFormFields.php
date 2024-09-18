@@ -64,6 +64,13 @@ function get_fields_utbf_register_form() {
             'description'     => '',
             'toggle_slug'     => 'main_content',
         ),
+        'label_phone_2' => array(
+            'label'           => __( 'Label phone 2', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
         'label_user_email' => array(
             'label'           => __( 'Label email', UTBF_TEXT_DOMAIN ),
             'type'            => 'text',

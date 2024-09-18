@@ -125,6 +125,14 @@ msgid "Label phone"
 msgstr "Label téléphone"
 
 #
+msgid "Phone 2"
+msgstr "Téléphone 2"
+
+#
+msgid "Label phone 2"
+msgstr "Label téléphone 2"
+
+#
 msgid "Email"
 msgstr "E-mail"
 

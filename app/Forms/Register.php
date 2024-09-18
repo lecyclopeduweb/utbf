@@ -107,6 +107,10 @@ class Register
             update_user_meta($user_id, 'billing_phone', $_POST['phone']);
             update_user_meta($user_id, 'shipping_phone', $_POST['phone']);
         endif;
+        if (isset($_POST['phone_2'])):
+            update_user_meta($user_id, 'billing_phone_2', $_POST['phone_2']);
+            update_user_meta($user_id, 'shipping_phone_2', $_POST['phone_2']);
+        endif;
 
         $country = 'FR';
         update_user_meta($user_id, 'billing_country', $country);
