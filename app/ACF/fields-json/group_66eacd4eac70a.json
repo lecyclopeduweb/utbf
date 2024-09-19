@@ -5,7 +5,7 @@
         {
             "key": "field_66eacd4e695be",
             "label": "Enfants repeater",
-            "name": "user__childs_repeater__first_name",
+            "name": "user__childs_repeater",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -180,7 +180,7 @@
                 {
                     "key": "field_66ead23e75ae7",
                     "label": "Traitement en cours",
-                    "name": "user__child___processing_progress",
+                    "name": "user__child___medical_treatments",
                     "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
@@ -337,5 +337,5 @@
     "active": true,
     "description": "Champs additionnels user profil",
     "show_in_rest": 0,
-    "modified": 1726665753
+    "modified": 1726677999
 }

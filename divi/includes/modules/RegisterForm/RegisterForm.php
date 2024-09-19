@@ -50,17 +50,29 @@ class UtbfRegisterForm extends ET_Builder_Module {
 	 */
 	function render( $attrs, $content = null, $render_slug ) {
 
+		global $wpdb;
+
+		//Classroom
+        $select_classroom = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE post_excerpt = 'user__child___classroom'");
+		$classroom =(!empty($select_classroom))?((!empty($select_classroom[0]->post_content))? unserialize($select_classroom[0]->post_content)['choices']: []): [];
+
+		//school
+        $select_school = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE post_excerpt = 'user__child___school'");
+		$school =(!empty($select_school))?((!empty($select_school[0]->post_content))? unserialize($select_school[0]->post_content)['choices']: []): [];
 
 		ob_start();
 
 			$args = [
-				'props'   => $this->props,
-				'content' => $this->content,
-				'slug'    => $render_slug
+				'props'   		=> $this->props,
+				'content' 		=> $this->content,
+				'slug'    		=> $render_slug,
+				'classroom'    	=> $classroom,
+				'school'    	=> $school,
 			];
 			include UTBF_DIVI_PATH . '/includes/modules/RegisterForm/RegisterFormRender.php';
 
 			$template = ob_get_contents();
+
 		ob_end_clean();
 
 		return $this->_render_module_wrapper($template, $render_slug);

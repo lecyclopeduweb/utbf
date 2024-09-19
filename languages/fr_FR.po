@@ -85,12 +85,20 @@ msgid "Label first name"
 msgstr "Label prénom"
 
 #
+msgid "Label legal guardian first name"
+msgstr "Label représentant Légal prénom"
+
+#
 msgid "Last name"
 msgstr "Nom"
 
 #
 msgid "Label last name"
 msgstr "Label nom"
+
+#
+msgid "Label legal guardian last name"
+msgstr "Label représentant Légal nom"
 
 #
 msgid "Address"
@@ -101,12 +109,20 @@ msgid "Label address"
 msgstr "Label adresse"
 
 #
+msgid "Label legal guardian address"
+msgstr "Label représentant Légal adresse"
+
+#
 msgid "Zip code"
 msgstr "Code postal"
 
 #
 msgid "Label zip code"
 msgstr "Label code postal"
+
+#
+msgid "Label legal guardian zip code"
+msgstr "Label représentant Légal code postal"
 
 #
 msgid "City"
@@ -117,12 +133,20 @@ msgid "Label city"
 msgstr "Label ville"
 
 #
+msgid "Label legal guardian city"
+msgstr "Label représentant Légal ville"
+
+#
 msgid "Phone"
 msgstr "Téléphone"
 
 #
 msgid "Label phone"
 msgstr "Label téléphone"
+
+#
+msgid "Label legal guardian phone"
+msgstr "Label représentant Légal téléphone"
 
 #
 msgid "Phone 2"
@@ -133,12 +157,20 @@ msgid "Label phone 2"
 msgstr "Label téléphone 2"
 
 #
+msgid "Label legal guardian phone 2"
+msgstr "Label représentant Légal téléphone 2"
+
+#
 msgid "Email"
 msgstr "E-mail"
 
 #
 msgid "Label email"
 msgstr "Label e-mail"
+
+#
+msgid "Label legal guardian email"
+msgstr "Label représentant Légal e-mail"
 
 #
 msgid "Login"
@@ -157,8 +189,72 @@ msgid "Label password"
 msgstr "Label password"
 
 #
+msgid "Phone 2"
+msgstr "Téléphone 2"
+
+#
+msgid "Title informations"
+msgstr "Titre informations"
+
+#
+msgid "Legal guardian"
+msgstr "Représentant Légal"
+
+#
+msgid "Title legal guardian"
+msgstr "Titre représentant Légal"
+
+#
+msgid "Child"
+msgstr "Enfant"
+
+#
+msgid "Title child"
+msgstr "Titre enfant"
+
+#
+msgid "Infos bloc child"
+msgstr "Information bloc enfant"
+
+#
+msgid "Classroom"
+msgstr "Classe"
+
+#
+msgid "School"
+msgstr "École"
+
+#
+msgid "Other"
+msgstr "Autre"
+
+#
+msgid "Birthday"
+msgstr "Date de naissance"
+
+#
+msgid "Medical treatment in progress"
+msgstr "Traitement en cours"
+
+#
+msgid "Special items to report (food allergies, asthma, etc.)"
+msgstr "Eléments particuliers à signaler (Allergies alimentaires, asthme etc…)"
+
+#
+msgid "Any useful recommendations/comments to know about the child?"
+msgstr "Des recommandations / commentaires utiles à savoir sur l’enfant ?"
+
+#
+msgid "Case of emergency"
+msgstr "En cas d’urgence"
+
+#
 msgid "Text Button"
 msgstr "Texte du bouton"
+
+#
+msgid "The form contains errors"
+msgstr "Le formulaire contient des erreurs"
 
 #
 msgid "Register"
@@ -249,5 +345,9 @@ msgid "Account created successfully"
 msgstr "Compte créé avec succés"
 
 #
-msgid "Phone 2"
-msgstr "Téléphone 2"
+msgid "--Please choose an option--"
+msgstr "--Selectionner une option--"
+
+#
+msgid "The date is not valid"
+msgstr "La date n'est pas valide"

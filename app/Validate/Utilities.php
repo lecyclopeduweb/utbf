@@ -93,6 +93,45 @@ class Utilities
     }
 
     /**
+     *  Check Date Format (FR)
+     *  For French date format (dd/mm/yyyy)
+     *
+     * @param string $date      date
+     *
+     * @return bool
+     */
+    public function check_date_format_fr(string $date): bool
+    {
+
+        $pattern = "/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/";
+        return (preg_match($pattern, $date)) ? false : true;
+
+    }
+
+    /**
+     *  Check Date Format (EN)
+     *  For French date format (yyyy-mm-dd)
+     *
+     * @param string $date      date
+     *
+     * @return bool
+     */
+    public function check_date_format_en(string $date): bool
+    {
+
+        $pattern = "/^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/";
+        if (preg_match($pattern, $date)):
+            list($year, $month, $day) = explode('-', $date);
+            if (checkdate((int)$month, (int)$day, (int)$year)) :
+                return false;
+            endif;
+        endif;
+
+        return true;
+
+    }
+
+    /**
      *  Check mail exist In database
      *
      * @param string $userMail      userMail
