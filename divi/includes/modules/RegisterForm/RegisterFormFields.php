@@ -160,7 +160,115 @@ function get_fields_utbf_register_form() {
         ),
         /**
          *
-         * Legal guardian
+         * Child
+         *
+         */
+        'title_child' => array(
+            'label'           => __( 'Title child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_first_name' => array(
+            'label'           => __( 'Label first name child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_last_name' => array(
+            'label'           => __( 'Label last name child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_classroom' => array(
+            'label'           => __( 'Label classroom child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_school' => array(
+            'label'           => __( 'Label school child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_other_school' => array(
+            'label'           => __( 'Label other school child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_birthday' => array(
+            'label'           => __( 'Label birthday child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_medical_treatments' => array(
+            'label'           => __( 'Label medical treatments child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_specific_aspects' => array(
+            'label'           => __( 'Label specific aspects child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_child_recommendations' => array(
+            'label'           => __( 'Label recommendations child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        /**
+         *
+         * Emergency
+         *
+         */
+        'title_emergency' => array(
+            'label'           => __( 'Title emergency', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_emergency_first_name' => array(
+            'label'           => __( 'Label emergency first name', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_emergency_last_name' => array(
+            'label'           => __( 'Label emergency last name', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'label_emergency_phone' => array(
+            'label'           => __( 'Label emergency phone', UTBF_TEXT_DOMAIN ),
+            'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        /**
+         *
+         * Button
          *
          */
         'text_button' => array(

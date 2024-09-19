@@ -297,31 +297,31 @@ if(empty($args))
      */
     ?>
     <h2 class="space-mt-30 space-mb-0">
-        <?= (!empty($args['props']['title_child']))? $args['props']['title_child'] : __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
+        <?= (!empty($args['props']['title_emergency']))? $args['props']['title_emergency'] : __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
     </h2>
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_child_last_name_emergency']))? $args['props']['label_child_last_name_emergency'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_emergency_last_name']))? $args['props']['label_emergency_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="text" name="user__child__last_name_emergency" value="">
-            <div class="error user__child__last_name_emergency"></div>
+            <input type="text" name="user__emergency__last_name" value="">
+            <div class="error user__emergency__last_name"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_child_first_name_emergency']))? $args['props']['label_child_first_name_emergency'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_emergency_first_name']))? $args['props']['label_emergency_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="text" name="user__child__first_name_emergency" value="">
-            <div class="error user__child__first_name_emergency"></div>
+            <input type="text" name="user__emergency__first_name" value="">
+            <div class="error user__emergency__first_name"></div>
         </div>
     </div>
     <div class="utbf-form__row">
         <div class="utbf-form__full-col">
             <label>
-                <?= (!empty($args['props']['label_child_phone_emergency']))? $args['props']['label_child_phone_emergency'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_emergency_phone']))? $args['props']['label_emergency_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="number" name="user__child__phone_emergency" value="">
-            <div class="error user__child__phone_emergency"></div>
+            <input type="number" name="user__emergency__phone" value="">
+            <div class="error user__emergency__phone"></div>
         </div>
     </div>
     <?php

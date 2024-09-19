@@ -86,7 +86,11 @@ msgstr "Label prénom"
 
 #
 msgid "Label legal guardian first name"
-msgstr "Label représentant Légal prénom"
+msgstr "Label représentant prénom"
+
+#
+msgid "Label first name child"
+msgstr "Label enfant prénom"
 
 #
 msgid "Last name"
@@ -98,7 +102,11 @@ msgstr "Label nom"
 
 #
 msgid "Label legal guardian last name"
-msgstr "Label représentant Légal nom"
+msgstr "Label représentant nom"
+
+#
+msgid "Label last name child"
+msgstr "Label enfant nom"
 
 #
 msgid "Address"
@@ -110,7 +118,7 @@ msgstr "Label adresse"
 
 #
 msgid "Label legal guardian address"
-msgstr "Label représentant Légal adresse"
+msgstr "Label représentant adresse"
 
 #
 msgid "Zip code"
@@ -122,7 +130,7 @@ msgstr "Label code postal"
 
 #
 msgid "Label legal guardian zip code"
-msgstr "Label représentant Légal code postal"
+msgstr "Label représentant code postal"
 
 #
 msgid "City"
@@ -134,7 +142,7 @@ msgstr "Label ville"
 
 #
 msgid "Label legal guardian city"
-msgstr "Label représentant Légal ville"
+msgstr "Label représentant ville"
 
 #
 msgid "Phone"
@@ -146,7 +154,7 @@ msgstr "Label téléphone"
 
 #
 msgid "Label legal guardian phone"
-msgstr "Label représentant Légal téléphone"
+msgstr "Label représentant téléphone"
 
 #
 msgid "Phone 2"
@@ -158,7 +166,7 @@ msgstr "Label téléphone 2"
 
 #
 msgid "Label legal guardian phone 2"
-msgstr "Label représentant Légal téléphone 2"
+msgstr "Label représentant téléphone 2"
 
 #
 msgid "Email"
@@ -170,7 +178,7 @@ msgstr "Label e-mail"
 
 #
 msgid "Label legal guardian email"
-msgstr "Label représentant Légal e-mail"
+msgstr "Label représentant e-mail"
 
 #
 msgid "Login"
@@ -189,6 +197,34 @@ msgid "Label password"
 msgstr "Label password"
 
 #
+msgid "Label classroom child"
+msgstr "Label enfant classe"
+
+#
+msgid "Label school child"
+msgstr "Label enfant école"
+
+#
+msgid "Label other school child"
+msgstr "Label enfant autre école"
+
+#
+msgid "Label birthday child"
+msgstr "Label enfant date de naissance"
+
+#
+msgid "Label medical treatments child"
+msgstr "Label enfant traitement en cours"
+
+#
+msgid "Label specific aspects child"
+msgstr "Label enfant éléments particuliers"
+
+#
+msgid "Label recommendations child"
+msgstr "Label enfant recommandations"
+
+#
 msgid "Phone 2"
 msgstr "Téléphone 2"
 
@@ -198,11 +234,11 @@ msgstr "Titre informations"
 
 #
 msgid "Legal guardian"
-msgstr "Représentant Légal"
+msgstr "représentant"
 
 #
 msgid "Title legal guardian"
-msgstr "Titre représentant Légal"
+msgstr "Titre représentant"
 
 #
 msgid "Child"
@@ -235,6 +271,22 @@ msgstr "Date de naissance"
 #
 msgid "Medical treatment in progress"
 msgstr "Traitement en cours"
+
+#
+msgid "Title emergency"
+msgstr "Titre urgence"
+
+#
+msgid "Label emergency first name"
+msgstr "Label urgence prénom"
+
+#
+msgid "Label emergency last name"
+msgstr "Label urgence nom"
+
+#
+msgid "Label emergency phone"
+msgstr "Label urgence téléphone"
 
 #
 msgid "Special items to report (food allergies, asthma, etc.)"
