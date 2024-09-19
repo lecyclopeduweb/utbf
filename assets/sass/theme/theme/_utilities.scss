@@ -24,6 +24,18 @@
     .space-pb-#{$i*10}{
         padding-bottom: #{$i*10}px !important;
     }
+    .space-mr-#{$i*10}{
+        margin-right: #{$i*10}px !important;
+    }
+    .space-pr-#{$i*10}{
+        padding-right: #{$i*10}px !important;;
+    }
+    .space-ml-#{$i*10}{
+        margin-left: #{$i*10}px !important;
+    }
+    .space-pl-#{$i*10}{
+        padding-left: #{$i*10}px !important;
+    }
 }
 // @include transition(.3s);
 @mixin transition($custom-speed){

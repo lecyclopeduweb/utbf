@@ -151,7 +151,7 @@ function get_fields_utbf_register_form() {
             'description'     => '',
             'toggle_slug'     => 'main_content',
         ),
-        'label_legal_guardian_user_email' => array(
+        'label_legal_guardian_email' => array(
             'label'           => __( 'Label legal guardian email', UTBF_TEXT_DOMAIN ),
             'type'            => 'text',
             'option_category' => 'basic_option',
@@ -166,6 +166,13 @@ function get_fields_utbf_register_form() {
         'title_child' => array(
             'label'           => __( 'Title child', UTBF_TEXT_DOMAIN ),
             'type'            => 'text',
+            'option_category' => 'basic_option',
+            'description'     => '',
+            'toggle_slug'     => 'main_content',
+        ),
+        'infos_bloc_child' => array(
+            'label'           => __( 'Infos bloc child', UTBF_TEXT_DOMAIN ),
+            'type'            => 'textarea',
             'option_category' => 'basic_option',
             'description'     => '',
             'toggle_slug'     => 'main_content',

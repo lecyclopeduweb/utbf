@@ -261,7 +261,7 @@ if(empty($args))
                 <?= (!empty($args['props']['label_child_medical_treatments']))? $args['props']['label_child_medical_treatments'] : __('Medical treatment in progress',UTBF_TEXT_DOMAIN); ?>*
             </label>
             <div class="d-flex h-100 align-items-center">
-                <label>
+                <label class="space-mr-10">
                     <input type="radio" name="user__child__medical_treatments" value="yes" />
                     <?= __('Yes',UTBF_TEXT_DOMAIN); ?>
                 </label>
@@ -296,10 +296,10 @@ if(empty($args))
      *
      */
     ?>
-    <h2 class="space-mt-30 space-mb-0">
+    <h2 class="space-mt-30">
         <?= (!empty($args['props']['title_emergency']))? $args['props']['title_emergency'] : __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
     </h2>
-    <div class="utbf-form__row">
+    <div class="utbf-form__row space-mt-20">
         <div class="utbf-form__half-col">
             <label>
                 <?= (!empty($args['props']['label_emergency_last_name']))? $args['props']['label_emergency_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*

@@ -250,6 +250,10 @@ msgstr "Titre enfant"
 
 #
 msgid "Infos bloc child"
+msgstr "Informations bloc enfant"
+
+#
+msgid "Infos bloc child"
 msgstr "Information bloc enfant"
 
 #
@@ -403,3 +407,11 @@ msgstr "--Selectionner une option--"
 #
 msgid "The date is not valid"
 msgstr "La date n'est pas valide"
+
+#
+msgid "Yes"
+msgstr "Oui"
+
+#
+msgid "No"
+msgstr "Non"
