@@ -276,14 +276,14 @@ if(empty($args))
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_child_specific_aspects']))? $args['props']['label_child_specific_aspects'] : __('Special items to report (food allergies, asthma, etc.)',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_child_specific_aspects']))? $args['props']['label_child_specific_aspects'] : __('Special items to report (food allergies, asthma, etc.)',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__child__specific_aspects" value="">
             <div class="error user__child__specific_aspects"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_child_recommendations']))? $args['props']['label_child_recommendations'] : __('Any useful recommendations/comments to know about the child?',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_child_recommendations']))? $args['props']['label_child_recommendations'] : __('Any useful recommendations/comments to know about the child?',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__child__recommendations" value="">
             <div class="error user__child__recommendations"></div>
@@ -304,15 +304,15 @@ if(empty($args))
             <label>
                 <?= (!empty($args['props']['label_emergency_last_name']))? $args['props']['label_emergency_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="text" name="user__emergency__last_name" value="">
-            <div class="error user__emergency__last_name"></div>
+            <input type="text" name="user__child__last_name_emergency" value="">
+            <div class="error user__child__last_name_emergency"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
                 <?= (!empty($args['props']['label_emergency_first_name']))? $args['props']['label_emergency_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="text" name="user__emergency__first_name" value="">
-            <div class="error user__emergency__first_name"></div>
+            <input type="text" name="user__child__first_name_emergency" value="">
+            <div class="error user__child__first_name_emergency"></div>
         </div>
     </div>
     <div class="utbf-form__row">
@@ -320,8 +320,8 @@ if(empty($args))
             <label>
                 <?= (!empty($args['props']['label_emergency_phone']))? $args['props']['label_emergency_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="number" name="user__emergency__phone" value="">
-            <div class="error user__emergency__phone"></div>
+            <input type="number" name="user__child__phone_emergency" value="">
+            <div class="error user__child__phone_emergency"></div>
         </div>
     </div>
     <?php

@@ -53,11 +53,11 @@ class UtbfRegisterForm extends ET_Builder_Module {
 		global $wpdb;
 
 		//Classroom
-        $select_classroom = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE post_excerpt = 'user__child___classroom'");
+        $select_classroom = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE post_type = 'acf-field' AND post_excerpt = 'user__child__classroom'");
 		$classroom =(!empty($select_classroom))?((!empty($select_classroom[0]->post_content))? unserialize($select_classroom[0]->post_content)['choices']: []): [];
 
 		//school
-        $select_school = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE post_excerpt = 'user__child___school'");
+        $select_school = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}posts WHERE post_type = 'acf-field' AND post_excerpt = 'user__child__school'");
 		$school =(!empty($select_school))?((!empty($select_school[0]->post_content))? unserialize($select_school[0]->post_content)['choices']: []): [];
 
 		ob_start();

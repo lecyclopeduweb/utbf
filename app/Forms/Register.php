@@ -50,7 +50,7 @@ class Register
         endif;
 
         $user_id = $this->process_user_creation();
-        $this->user_notification($user_id);
+        //$this->user_notification($user_id);
 
         echo json_encode($response);
         die;
@@ -69,6 +69,8 @@ class Register
     public function process_user_creation()
     {
 
+        global $wpdb;
+
         $user_data = array_merge(
             $_POST,
             [
@@ -84,37 +86,90 @@ class Register
             return false;
         endif;
 
-        // Add additional WooCommerce user meta data
-        if (isset($_POST['first_name'])):
-            update_user_meta($user_id, 'shipping_first_name', $_POST['first_name']);
-        endif;
-        if (isset($_POST['last_name'])):
-            update_user_meta($user_id, 'shipping_last_name', $_POST['last_name']);
-        endif;
-        if (isset($_POST['address'])):
-            update_user_meta($user_id, 'billing_address_1', $_POST['address']);
-            update_user_meta($user_id, 'shipping_address_1', $_POST['address']);
-        endif;
-        if (isset($_POST['city'])):
-            update_user_meta($user_id, 'billing_city', $_POST['city']);
-            update_user_meta($user_id, 'shipping_city', $_POST['city']);
-        endif;
-        if (isset($_POST['zip_code'])):
-            update_user_meta($user_id, 'billing_postcode', $_POST['zip_code']);
-            update_user_meta($user_id, 'shipping_postcode', $_POST['zip_code']);
-        endif;
-        if (isset($_POST['phone'])):
-            update_user_meta($user_id, 'billing_phone', $_POST['phone']);
-            update_user_meta($user_id, 'shipping_phone', $_POST['phone']);
-        endif;
-        if (isset($_POST['phone_2'])):
-            update_user_meta($user_id, 'billing_phone_2', $_POST['phone_2']);
-            update_user_meta($user_id, 'shipping_phone_2', $_POST['phone_2']);
-        endif;
-
+        /**
+         *
+         * Informations
+         *
+         */
+        $infos_single_fields = [
+            'first_name' => 'shipping_first_name',
+            'last_name'  => 'shipping_last_name'
+        ];
+        foreach ($infos_single_fields as $post_key => $meta_key):
+            if (isset($_POST[$post_key])):
+                update_user_meta($user_id, $meta_key, $_POST[$post_key]);
+            endif;
+        endforeach;
+        $infos_double_fields = [
+            'address'    => ['billing_address_1', 'shipping_address_1'],
+            'city'       => ['billing_city', 'shipping_city'],
+            'zip_code'   => ['billing_postcode', 'shipping_postcode'],
+            'phone'      => ['billing_phone', 'shipping_phone'],
+            'phone_2'    => ['billing_phone_2', 'shipping_phone_2']
+        ];
+        foreach ($infos_double_fields as $post_key => $meta_keys):
+            if (isset($_POST[$post_key])):
+                foreach ($meta_keys as $meta_key):
+                    update_user_meta($user_id, $meta_key, $_POST[$post_key]);
+                endforeach;
+            endif;
+        endforeach;
         $country = 'FR';
         update_user_meta($user_id, 'billing_country', $country);
         update_user_meta($user_id, 'shipping_country', $country);
+        /**
+         *
+         * Legal guardian
+         *
+         */
+        $legal_guardian_fields = [
+            'user__legal_guardian__first_name',
+            'user__legal_guardian__last_name',
+            'user__legal_guardian__address',
+            'user__legal_guardian__zip_code',
+            'user__legal_guardian__city',
+            'user__legal_guardian__email',
+            'user__legal_guardian__phone',
+            'user__legal_guardian__phone_2'
+        ];
+        foreach ($legal_guardian_fields as $field):
+            if (isset($_POST[$field])):
+                update_user_meta($user_id, $field, $_POST[$field]);
+            endif;
+        endforeach;
+        /**
+         *
+         * Child
+         *
+         */
+        $child_fields = [
+            'user__child__first_name',
+            'user__child__last_name',
+            'user__child__classroom',
+            'user__child__school',
+            'user__child__other_school',
+            'user__child__birthday',
+            'user__child__medical_treatments',
+            'user__child__specific_aspects',
+            'user__child__recommendations',
+            'user__child__last_name_emergency',
+            'user__child__first_name_emergency',
+            'user__child__phone_emergency',
+        ];
+        foreach ($child_fields as $field):
+            if (isset($_POST[$field])):
+                if($field=='user__child__medical_treatments' && $_POST['user__child__medical_treatments']=='no'):
+                    continue;
+                endif;
+                add_user_meta($user_id, 'user__childs_repeater_0_' . $field, $_POST[$field], false);
+            endif;
+        endforeach;
+        /**
+         *
+         * Repeater : nb child = 1
+         *
+         */
+        add_user_meta($user_id, 'user__childs_repeater', 1,false);
 
         // Return the created user ID
         return $user_id;

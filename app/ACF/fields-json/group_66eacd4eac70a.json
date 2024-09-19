@@ -49,7 +49,7 @@
                 {
                     "key": "field_66eace14ebeda",
                     "label": "Prénom",
-                    "name": "user__child___first_name",
+                    "name": "user__child__first_name",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -71,7 +71,7 @@
                 {
                     "key": "field_66ead0ae26794",
                     "label": "Classe",
-                    "name": "user__child___classroom",
+                    "name": "user__child__classroom",
                     "aria-label": "",
                     "type": "select",
                     "instructions": "",
@@ -107,7 +107,7 @@
                 {
                     "key": "field_66ead15b9a27d",
                     "label": "École",
-                    "name": "user__child___school",
+                    "name": "user__child__school",
                     "aria-label": "",
                     "type": "select",
                     "instructions": "",
@@ -138,7 +138,7 @@
                 {
                     "key": "field_66ead1f15cf2b",
                     "label": "Autre école",
-                    "name": "user__child___other_school",
+                    "name": "user__child__other_school",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -160,7 +160,7 @@
                 {
                     "key": "field_66ead1ce5cf2a",
                     "label": "Date de naissance",
-                    "name": "user__child___birthday",
+                    "name": "user__child__birthday",
                     "aria-label": "",
                     "type": "date_picker",
                     "instructions": "",
@@ -180,7 +180,7 @@
                 {
                     "key": "field_66ead23e75ae7",
                     "label": "Traitement en cours",
-                    "name": "user__child___medical_treatments",
+                    "name": "user__child__medical_treatments",
                     "aria-label": "",
                     "type": "true_false",
                     "instructions": "",
@@ -202,7 +202,7 @@
                 {
                     "key": "field_66ead28175ae8",
                     "label": "Eléments particuliers à signaler (Allergies alimentaires, asthme etc…)",
-                    "name": "user__child___specific_aspects",
+                    "name": "user__child__specific_aspects",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -224,7 +224,7 @@
                 {
                     "key": "field_66ead2c575ae9",
                     "label": "Des recommandations \/ commentaires utiles à savoir sur l’enfant ?",
-                    "name": "user__child___recommendations",
+                    "name": "user__child__recommendations",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -246,7 +246,7 @@
                 {
                     "key": "field_66ead2e975aea",
                     "label": "Nom personne à prévenir en cas d’urgence",
-                    "name": "user__child___last_name_emergency",
+                    "name": "user__child__last_name_emergency",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -268,7 +268,7 @@
                 {
                     "key": "field_66ead32075aeb",
                     "label": "Prénom personne à prévenir en cas d’urgence",
-                    "name": "user__child___first_name_emergency",
+                    "name": "user__child__first_name_emergency",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -290,7 +290,7 @@
                 {
                     "key": "field_66ead33875aec",
                     "label": "Téléphone personne à prévenir en cas d’urgence",
-                    "name": "user__child___phone_emergency",
+                    "name": "user__child__phone_emergency",
                     "aria-label": "",
                     "type": "number",
                     "instructions": "",
@@ -337,5 +337,5 @@
     "active": true,
     "description": "Champs additionnels user profil",
     "show_in_rest": 0,
-    "modified": 1726677999
+    "modified": 1726755098
 }

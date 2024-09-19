@@ -49,7 +49,12 @@ class ValidateRegister
         $response = [];
 
         foreach($fields as $key => $field):
-            if($key=='phone_2' && empty($field)):
+            if(
+                ($key=='phone_2' && empty($field))||
+                ($key=='user__legal_guardian__phone_2' && empty($field))||
+                ($key=='user__child__specific_aspects' && empty($field))||
+                ($key=='user__child__recommendations' && empty($field))
+            ):
                 continue;
             elseif($utilities->empty_field($field) ):
                 $response[$key] = __('The field is empty',UTBF_TEXT_DOMAIN);
@@ -73,7 +78,7 @@ class ValidateRegister
                 $response[$key] = $email->register($field);
            /*  elseif($key=='password' && $password->error_pass($field)):
                 $response[$key] = $password->error_pass($field); */
-            elseif($key=='username' && $username->error($field)):
+            elseif($key=='user_login' && $username->error($field)):
                 $response[$key] = $username->error($field);
             elseif($key=='user__child__birthday' && $date->en($field)):
                 $response[$key] = $date->en($field);
