@@ -219,7 +219,7 @@ if(empty($args))
             <select name="user__child__classroom">
                 <option value=""><?= __('--Please choose an option--',UTBF_TEXT_DOMAIN); ?></option>
                 <?php foreach($args['classroom'] as $key => $value): ?>
-                    <option value="<?= $key; ?>"><?= $value; ?></option>
+                    <option value="<?= $value; ?>"><?= $value; ?></option>
                 <?php endforeach; ?>
             </select>
             <div class="error user__child__classroom"></div>
@@ -233,8 +233,9 @@ if(empty($args))
             <select id="user__child__school" name="user__child__school">
                 <option value=""><?= __('--Please choose an option--',UTBF_TEXT_DOMAIN); ?></option>
                 <?php foreach($args['school'] as $key => $value): ?>
-                    <option value="<?= $key; ?>"><?= $value; ?></option>
+                    <option value="<?= $value; ?>"><?= $value; ?></option>
                 <?php endforeach; ?>
+                <option value="Autre">Autre</option>
             </select>
             <div class="error user__child__school"></div>
         </div>

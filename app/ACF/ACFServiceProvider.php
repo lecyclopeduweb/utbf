@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace AppUtbf\ACF;
 
 use AppUtbf\ACF\Synchro;
+use AppUtbf\ACF\OptionsPage;
 
 /**
  * ACF Services Providers
@@ -21,6 +22,7 @@ class ACFServiceProvider
     {
 
         new Synchro;
+        new OptionsPage;
 
     }
 

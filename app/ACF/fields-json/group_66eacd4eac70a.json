@@ -73,7 +73,7 @@
                     "label": "Classe",
                     "name": "user__child__classroom",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -82,26 +82,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "petite-section": "Petite Section",
-                        "moyenne-section": "Moyenne Section",
-                        "grande-section": "Grande Section",
-                        "cp": "CP",
-                        "ce1": "CE1",
-                        "ce2": "CE2",
-                        "cm1": "CM1",
-                        "cm2": "CM2",
-                        "6eme": "6ème",
-                        "5eme": "5ème"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_66eacd4e695be"
                 },
                 {
@@ -109,7 +95,7 @@
                     "label": "École",
                     "name": "user__child__school",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -118,21 +104,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "sainte-marie-saint-loup-10eme": "Sainte Marie Saint Loup (10ème)",
-                        "chevreul-champavier-5eme": "Chevreul Champavier (5ème)",
-                        "saint-barnabe-12eme": "Saint Barnabé (12ème)",
-                        "saint-jean-baptiste-9eme": "Saint Jean Baptiste (9ème)",
-                        "autre": "Autre"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_66eacd4e695be"
                 },
                 {
@@ -337,5 +314,5 @@
     "active": true,
     "description": "Champs additionnels user profil",
     "show_in_rest": 0,
-    "modified": 1726755098
+    "modified": 1726759479
 }

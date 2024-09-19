@@ -52,7 +52,7 @@
       });
 
       //ArayData : Other School
-      if ($('#user__child__school').val() != 'autre') {
+      if ($('#user__child__school').val() != 'Autre') {
         form_data.delete('user__child__other_school');
       }
 
@@ -115,7 +115,7 @@
      * @return {void}
      */
     function display_other_school() {
-      if ($("#user__child__school").val() == 'autre') {
+      if ($("#user__child__school").val() == 'Autre') {
         $('#user__child__other_school').show();
       } else {
         $('#user__child__other_school').hide();

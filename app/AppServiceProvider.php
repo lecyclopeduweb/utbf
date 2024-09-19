@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace AppUtbf;
 
 use AppUtbf\Divi\Divi;
+use AppUtbf\Users\Users;
 use AppUtbf\Assets\Assets;
 use AppUtbf\ACF\ACFServiceProvider;
 use AppUtbf\Forms\FormsServiceProvider;
@@ -25,8 +26,9 @@ class AppServiceProvider
     public function boot()
     {
 
-        new Assets;
         new Divi;
+        new Users;
+        new Assets;
 
         $acf_service_provider = new ACFServiceProvider;
         $acf_service_provider->boot();
