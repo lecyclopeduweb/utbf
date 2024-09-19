@@ -50,7 +50,7 @@ class Register
         endif;
 
         $user_id = $this->process_user_creation();
-        //$this->user_notification($user_id);
+        $this->user_notification($user_id);
 
         echo json_encode($response);
         die;

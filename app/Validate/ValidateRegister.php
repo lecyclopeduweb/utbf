@@ -76,8 +76,8 @@ class ValidateRegister
                 ($key=='user__legal_guardian__email' && $email->register($field))
             ):
                 $response[$key] = $email->register($field);
-            /* elseif($key=='password' && $password->error_pass($field)):
-                $response[$key] = $password->error_pass($field); */
+            elseif($key=='password' && $password->error_pass($field)):
+                $response[$key] = $password->error_pass($field);
             elseif($key=='user_login' && $username->error($field)):
                 $response[$key] = $username->error($field);
             elseif($key=='user__child__birthday' && $date->en($field)):
