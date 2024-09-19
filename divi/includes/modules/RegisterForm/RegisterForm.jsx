@@ -231,7 +231,7 @@ class UtbfRegisterForm extends Component {
             </div>
             <div className="utbf-form__row">
                 <div className="utbf-form__half-col">
-                    <label>{childSpecificAspects}*</label>
+                    <label>{childSpecificAspects}</label>
                     <input type="text" name="user__child__specific_aspects" value="" />
                 </div>
                 <div className="utbf-form__half-col">
