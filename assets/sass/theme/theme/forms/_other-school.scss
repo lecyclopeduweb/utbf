@@ -1,7 +1,6 @@
-.error{
-    color:red;
+.user__child__other_school{
     display: none;
-    &-wc{
+    &.show{
         display: block;
     }
 }

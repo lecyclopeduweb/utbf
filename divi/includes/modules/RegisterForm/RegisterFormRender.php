@@ -187,142 +187,144 @@ if(empty($args))
      *
      */
     ?>
-    <h2 class="space-mt-30 space-mb-0">
-        <?= (!empty($args['props']['title_child']))? $args['props']['title_child'] : __('Child',UTBF_TEXT_DOMAIN); ?>
-    </h2>
-    <?php if (!empty($args['props']['infos_bloc_child'])): ?>
-        <em>
-            <?= $args['props']['infos_bloc_child']; ?>
-        </em>
-    <?php endif; ?>
-    <div class="utbf-form__row space-mt-20">
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_child_first_name']))? $args['props']['label_child_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="text" name="user__child__first_name" value="">
-            <div class="error user__child__first_name"></div>
-        </div>
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_child_last_name']))? $args['props']['label_child_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="text" name="user__child__last_name" value="">
-            <div class="error user__child__last_name"></div>
-        </div>
-    </div>
-    <div class="utbf-form__row">
-        <div class="utbf-form__full-col">
-            <label>
-                <?= (!empty($args['props']['label_child_classroom']))? $args['props']['label_child_classroom'] : __('Classroom',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <select name="user__child__classroom">
-                <option value=""><?= __('--Please choose an option--',UTBF_TEXT_DOMAIN); ?></option>
-                <?php foreach($args['classroom'] as $key => $value): ?>
-                    <option value="<?= $value; ?>"><?= $value; ?></option>
-                <?php endforeach; ?>
-            </select>
-            <div class="error user__child__classroom"></div>
-        </div>
-    </div>
-    <div class="utbf-form__row">
-        <div class="utbf-form__full-col">
-            <label>
-                <?= (!empty($args['props']['label_child_school']))? $args['props']['label_child_school'] : __('School',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <select id="user__child__school" name="user__child__school">
-                <option value=""><?= __('--Please choose an option--',UTBF_TEXT_DOMAIN); ?></option>
-                <?php foreach($args['school'] as $key => $value): ?>
-                    <option value="<?= $value; ?>"><?= $value; ?></option>
-                <?php endforeach; ?>
-                <option value="Autre">Autre</option>
-            </select>
-            <div class="error user__child__school"></div>
-        </div>
-    </div>
-    <div id="user__child__other_school" class="utbf-form__row">
-        <div class="utbf-form__full-col">
-            <label>
-                <?= (!empty($args['props']['label_child_other_school']))? $args['props']['label_child_other_school'] : __('Other',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="text" name="user__child__other_school" value="">
-            <div class="error user__child__other_school"></div>
-        </div>
-    </div>
-    <div class="utbf-form__row">
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_child_birthday']))? $args['props']['label_child_birthday'] : __('Birthday',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="date" name="user__child__birthday" value="">
-            <div class="error user__child__birthday"></div>
-        </div>
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_child_medical_treatments']))? $args['props']['label_child_medical_treatments'] : __('Medical treatment in progress',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <div class="d-flex h-100 align-items-center">
-                <label class="space-mr-10">
-                    <input type="radio" name="user__child__medical_treatments" value="yes" />
-                    <?= __('Yes',UTBF_TEXT_DOMAIN); ?>
-                </label>
+    <div class="utbf-user-child-form">
+        <h2 class="space-mt-30 space-mb-0">
+            <?= (!empty($args['props']['title_child']))? $args['props']['title_child'] : __('Child',UTBF_TEXT_DOMAIN); ?>
+        </h2>
+        <?php if (!empty($args['props']['infos_bloc_child'])): ?>
+            <em>
+                <?= $args['props']['infos_bloc_child']; ?>
+            </em>
+        <?php endif; ?>
+        <div class="utbf-form__row space-mt-20">
+            <div class="utbf-form__half-col">
                 <label>
-                    <input type="radio" name="user__child__medical_treatments" value="no" />
-                    <?= __('No',UTBF_TEXT_DOMAIN); ?>
+                    <?= (!empty($args['props']['label_child_first_name']))? $args['props']['label_child_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
                 </label>
+                <input type="text" name="user__child__first_name" value="">
+                <div class="error user__child__first_name"></div>
             </div>
-            <div class="error user__child__medical_treatments"></div>
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_last_name']))? $args['props']['label_child_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <input type="text" name="user__child__last_name" value="">
+                <div class="error user__child__last_name"></div>
+            </div>
         </div>
-    </div>
-    <div class="utbf-form__row">
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_child_specific_aspects']))? $args['props']['label_child_specific_aspects'] : __('Special items to report (food allergies, asthma, etc.)',UTBF_TEXT_DOMAIN); ?>
-            </label>
-            <input type="text" name="user__child__specific_aspects" value="">
-            <div class="error user__child__specific_aspects"></div>
+        <div class="utbf-form__row">
+            <div class="utbf-form__full-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_classroom']))? $args['props']['label_child_classroom'] : __('Classroom',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <select name="user__child__classroom">
+                    <option value=""><?= __('--Please choose an option--',UTBF_TEXT_DOMAIN); ?></option>
+                    <?php foreach($args['classroom'] as $key => $value): ?>
+                        <option value="<?= $value; ?>"><?= $value; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <div class="error user__child__classroom"></div>
+            </div>
         </div>
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_child_recommendations']))? $args['props']['label_child_recommendations'] : __('Any useful recommendations/comments to know about the child?',UTBF_TEXT_DOMAIN); ?>
-            </label>
-            <input type="text" name="user__child__recommendations" value="">
-            <div class="error user__child__recommendations"></div>
+        <div class="utbf-form__row">
+            <div class="utbf-form__full-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_school']))? $args['props']['label_child_school'] : __('School',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <select class="user__child__school" name="user__child__school">
+                    <option value=""><?= __('--Please choose an option--',UTBF_TEXT_DOMAIN); ?></option>
+                    <?php foreach($args['school'] as $key => $value): ?>
+                        <option value="<?= $value; ?>"><?= $value; ?></option>
+                    <?php endforeach; ?>
+                    <option value="Autre">Autre</option>
+                </select>
+                <div class="error user__child__school"></div>
+            </div>
         </div>
-    </div>
-    <?php
-    /**
-     *
-     * Emergency
-     *
-     */
-    ?>
-    <h2 class="space-mt-30">
-        <?= (!empty($args['props']['title_emergency']))? $args['props']['title_emergency'] : __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
-    </h2>
-    <div class="utbf-form__row space-mt-20">
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_emergency_last_name']))? $args['props']['label_emergency_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="text" name="user__child__last_name_emergency" value="">
-            <div class="error user__child__last_name_emergency"></div>
+        <div class="utbf-form__row user__child__other_school">
+            <div class="utbf-form__full-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_other_school']))? $args['props']['label_child_other_school'] : __('Other',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <input type="text" name="user__child__other_school" value="">
+                <div class="error user__child__other_school"></div>
+            </div>
         </div>
-        <div class="utbf-form__half-col">
-            <label>
-                <?= (!empty($args['props']['label_emergency_first_name']))? $args['props']['label_emergency_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="text" name="user__child__first_name_emergency" value="">
-            <div class="error user__child__first_name_emergency"></div>
+        <div class="utbf-form__row">
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_birthday']))? $args['props']['label_child_birthday'] : __('Birthday',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <input type="date" name="user__child__birthday" value="">
+                <div class="error user__child__birthday"></div>
+            </div>
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_medical_treatments']))? $args['props']['label_child_medical_treatments'] : __('Medical treatment in progress',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <div class="d-flex h-100 align-items-center">
+                    <label class="space-mr-10">
+                        <input type="radio" name="user__child__medical_treatments" value="yes" />
+                        <?= __('Yes',UTBF_TEXT_DOMAIN); ?>
+                    </label>
+                    <label>
+                        <input type="radio" name="user__child__medical_treatments" value="no" />
+                        <?= __('No',UTBF_TEXT_DOMAIN); ?>
+                    </label>
+                </div>
+                <div class="error user__child__medical_treatments"></div>
+            </div>
         </div>
-    </div>
-    <div class="utbf-form__row">
-        <div class="utbf-form__full-col">
-            <label>
-                <?= (!empty($args['props']['label_emergency_phone']))? $args['props']['label_emergency_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="number" name="user__child__phone_emergency" value="">
-            <div class="error user__child__phone_emergency"></div>
+        <div class="utbf-form__row">
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_specific_aspects']))? $args['props']['label_child_specific_aspects'] : __('Special items to report (food allergies, asthma, etc.)',UTBF_TEXT_DOMAIN); ?>
+                </label>
+                <input type="text" name="user__child__specific_aspects" value="">
+                <div class="error user__child__specific_aspects"></div>
+            </div>
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_child_recommendations']))? $args['props']['label_child_recommendations'] : __('Any useful recommendations/comments to know about the child?',UTBF_TEXT_DOMAIN); ?>
+                </label>
+                <input type="text" name="user__child__recommendations" value="">
+                <div class="error user__child__recommendations"></div>
+            </div>
+        </div>
+        <?php
+        /**
+         *
+         * Emergency
+         *
+         */
+        ?>
+        <h2 class="space-mt-30">
+            <?= (!empty($args['props']['title_emergency']))? $args['props']['title_emergency'] : __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
+        </h2>
+        <div class="utbf-form__row space-mt-20">
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_emergency_last_name']))? $args['props']['label_emergency_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <input type="text" name="user__child__last_name_emergency" value="">
+                <div class="error user__child__last_name_emergency"></div>
+            </div>
+            <div class="utbf-form__half-col">
+                <label>
+                    <?= (!empty($args['props']['label_emergency_first_name']))? $args['props']['label_emergency_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <input type="text" name="user__child__first_name_emergency" value="">
+                <div class="error user__child__first_name_emergency"></div>
+            </div>
+        </div>
+        <div class="utbf-form__row">
+            <div class="utbf-form__full-col">
+                <label>
+                    <?= (!empty($args['props']['label_emergency_phone']))? $args['props']['label_emergency_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
+                </label>
+                <input type="number" name="user__child__phone_emergency" value="">
+                <div class="error user__child__phone_emergency"></div>
+            </div>
         </div>
     </div>
     <?php

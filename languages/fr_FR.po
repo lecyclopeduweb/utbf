@@ -423,3 +423,11 @@ msgstr "Réglages du thème"
 #
 msgid "Childs"
 msgstr "Enfants"
+
+#
+msgid "Your form has been submitted successfully"
+msgstr "Votre formulaire a été envoyé avec succès"
+
+#
+msgid "Your form contains errors"
+msgstr "Votre formulaire contient des erreurs"

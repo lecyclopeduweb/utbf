@@ -50,12 +50,15 @@ class UtbfRegisterForm extends ET_Builder_Module {
 	 */
 	function render( $attrs, $content = null, $render_slug ) {
 
+		//Theme settings : classroom
 		$classroom = [];
 		if( have_rows('theme_settings_classroom','option') ):
 			while( have_rows('theme_settings_classroom','option') ) : the_row();
 				$classroom[] = get_sub_field('classroom');
 			endwhile;
 		endif;
+
+		//Theme settings : School
 		$school = [];
 		if( have_rows('theme_settings_school','option') ):
 			while( have_rows('theme_settings_school','option') ) : the_row();

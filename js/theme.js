@@ -112,21 +112,27 @@
     /**
      * Display
      *
+     * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
+     *
      * @return {void}
      */
-    function display_other_school() {
-      if ($("#user__child__school").val() == 'Autre') {
-        $('#user__child__other_school').show();
+    function display_other_school(that) {
+      let parent = that.closest('.utbf-user-child-form');
+      if (that.val() == 'Autre') {
+        parent.find('.user__child__other_school').show();
       } else {
-        $('#user__child__other_school').hide();
+        parent.find('.user__child__other_school').removeClass('show');
+        parent.find('.user__child__other_school').hide();
+        parent.find('.user__child__other_school').find('input').val('');
       }
     }
 
     /**
      * Events
      */
-    $("#utbf-register-form").on("change", "#user__child__school", function (event) {
-      display_other_school();
+    $("body").on("change", ".user__child__school", function (event) {
+      console.log('display_other_school');
+      display_other_school($(this));
     });
   });
 })(jQuery);
