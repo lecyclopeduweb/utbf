@@ -431,3 +431,11 @@ msgstr "Votre formulaire a été envoyé avec succès"
 #
 msgid "Your form contains errors"
 msgstr "Votre formulaire contient des erreurs"
+
+#
+msgid "New Child"
+msgstr "Nouvel enfant"
+
+#
+msgid "Add Child"
+msgstr "Ajouter un enfant"

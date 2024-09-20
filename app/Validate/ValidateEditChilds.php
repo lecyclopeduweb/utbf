@@ -33,17 +33,15 @@ class ValidateEditChilds
      *
      * @param array $fields    fields
      *
-     * @return void
+     * @return array
      */
-    public function check(array $fields):void
+    public function check(array $fields):array
     {
 
         $date = new Date;
         $email = new Email;
         $phone = new Phone;
         $zipcode = new ZipCode;
-        $password = new Password;
-        $username = new Username;
         $utilities = new Utilities;
 
         $response = [];
@@ -68,7 +66,7 @@ class ValidateEditChilds
             endif;
         endforeach;
 
-        WC()->session->set( 'form_errors', $response);
+        return $response;
 
     }
 

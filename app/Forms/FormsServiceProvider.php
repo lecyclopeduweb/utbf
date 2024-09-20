@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace AppUtbf\Forms;
 
 use AppUtbf\Forms\Register;
+use AppUtbf\Forms\ChildsAccount;
 
 /**
  * Forms Services Providers
@@ -21,6 +22,7 @@ class FormsServiceProvider
     {
 
         new Register;
+        new ChildsAccount;
 
     }
 

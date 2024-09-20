@@ -29,11 +29,6 @@ class Register
     /**
      * Validates form data and creates user
      *
-     * This method handles the user creation process by validating the form data,
-     * creating the user if the data is valid, and sending notifications.
-     * It responds with errors if the validation fails or completes the user
-     * creation process and sends notifications if the data is valid.
-     *
      * @return void
      */
     public function create_user():void
@@ -59,10 +54,6 @@ class Register
 
     /**
      * Processes user creation after validation
-     *
-     * This method takes user input, validates it, assigns a default role,
-     * and inserts a new user into the WordPress database. It returns the
-     * created user's ID or false in case of a failure.
      *
      * @return int|false The created user ID on success, or false on failure.
      */
@@ -178,11 +169,6 @@ class Register
 
     /**
      * Sends notification emails after user account creation
-     *
-     * This method triggers the default WordPress notifications
-     * that are sent after a user account has been created.
-     * It sends an email to the administrator as well as the newly
-     * registered user.
      *
      * @param int $user_id The ID of the newly created user.
      *

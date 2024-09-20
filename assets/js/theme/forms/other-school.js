@@ -28,7 +28,6 @@
          * Events
          */
         $("body").on("change", ".user__child__school", function(event) {
-            console.log('display_other_school');
             display_other_school($(this));
         });
 

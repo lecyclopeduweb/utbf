@@ -6,8 +6,6 @@
 (function($){
     $(document).ready(function(){
 
-        window.xhr = false;
-
         /**
          *Debug form Data
          *

@@ -4,11 +4,26 @@
 .align-items-center{
     align-items: center;
 }
+.d-none{
+    display: none;
+}
 .d-flex{
     display: flex;
 }
+.d-inline-flex{
+    display: inline-flex;
+}
 .h-100{
     height: 100%;
+}
+.m-auto{
+    margin: auto;
+}
+.ml-auto{
+    margin-left: auto;
+}
+.mr-auto{
+    margin-right: auto;
 }
 
 @for $i from 0 through 15 {
