@@ -17,7 +17,7 @@ define('UTBF_PATH_URL', array_filter(explode('/',parse_url(UTBF_CURRENT_URL)['pa
 //URI
 define('UTBF_THEME_URI', site_url().'/wp-content/themes/'.basename(__DIR__));
 define('UTBF_ASSETS_URI', UTBF_THEME_URI . '/assets');
-define('UTBF_IMG_URI', UTBF_ASSETS_URI . '/img');
+define('UTBF_IMG_URI', UTBF_THEME_URI . '/img');
 define('UTBF_TEMPLATES_URI', UTBF_THEME_URI . '/template-parts');
 define('UTBF_UPLOAD_URI', wp_upload_dir()['baseurl']);
 define('UTBF_DIVI_URI', UTBF_THEME_URI.'/divi');

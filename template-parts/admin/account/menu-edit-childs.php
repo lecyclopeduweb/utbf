@@ -21,11 +21,16 @@
                 <?php if($i > 1): ?>
                     <hr class="space-mt-30 space-mb-30">
                 <?php endif; ?>
-                <div class="utbf-user-child-form">
-                    <h2 class="space-mt-0 space-mb-0">
+                <h2 class="toggle-button space-mt-0 space-mb-0" data-child="<?= $nb; ?>">
+                    <div class="toggle-ico">
+                        <?= file_get_contents(UTBF_IMG_URI . '/arrow.svg'); ?>
+                    </div>
+                    <div class="toggle-title">
                         <?= get_user_meta($args['user_id'], $repeater.'user__child__first_name',true); ?> <?= get_user_meta($args['user_id'], $repeater.'user__child__last_name',true); ?>
-                    </h2>
-                    <div class="utbf-form__row space-mt-20">
+                    </div>
+                </h2>
+                <div class="item-child toggle-item utbf-user-child-form" data-child="<?= $nb; ?>">
+                    <div class="utbf-form__row">
                         <div class="utbf-form__half-col form-row">
                             <label>
                                 <?=  __('First name',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
@@ -169,7 +174,7 @@
             <?php endfor; ?>
         <?php endif; ?>
     </div>
-    <div class="buttons d-flex space-mb-20">
+    <div class="buttons d-flex space-mb-20 space-mt-20">
         <div id="button-add-child" class="button button-primary d-inline-flex ml-auto">
             <?=  __('Add Child',UTBF_TEXT_DOMAIN); ?>
         </div>

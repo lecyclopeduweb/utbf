@@ -1,5 +1,5 @@
 /**
- * Childs WooCommerce account
+ * Add Childs WooCommerce account
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
@@ -7,25 +7,11 @@
     $(document).ready(function(){
 
         /**
-         * Scroll To After sucesss
-         *
-         * @return {void}
-         */
-        function scroll_top_after_success(){
-
-            setTimeout(function() {
-                $('html, body').animate({
-                    scrollTop: 0
-                }, 1);
-            }, 200);
-        }
-
-        /**
          * Add Child
          *
          * @return {void}
          */
-        function add_template_child(){
+        function childs_account__add(){
             //init
             let template = $('#template-add-child').html();
             const count = parseInt($('#ChildsAccountForm').attr('data-count'));
@@ -42,12 +28,8 @@
          * Events
          */
         $("body").on("click", "#button-add-child", function(event) {
-            add_template_child();
+            childs_account__add();
         });
-        if ($('.woocommerce-message').length > 0) {
-            scroll_top_after_success();
-        }
-
 
     });
 }(jQuery));

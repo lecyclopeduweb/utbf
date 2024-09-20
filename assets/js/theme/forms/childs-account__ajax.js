@@ -13,7 +13,7 @@
          *
          * @return {void}
          */
-        function ajax_childs_account_form(){
+        function childs_account__ajax(){
 
             if (window.xhr) {
                 window.xhr.abort();
@@ -91,7 +91,7 @@
          * Events
          */
         $("#woocommerce-EditChildsAccountForm").on("click", "#EditChildsAccountForm-send", function(event) {
-            ajax_childs_account_form();
+            childs_account__ajax();
         });
 
 

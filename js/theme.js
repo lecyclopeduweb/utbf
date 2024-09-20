@@ -20,6 +20,39 @@
   });
 })(jQuery);
 /**
+ * Add Childs WooCommerce account
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Add Child
+     *
+     * @return {void}
+     */
+    function childs_account__add() {
+      //init
+      let template = $('#template-add-child').html();
+      const count = parseInt($('#ChildsAccountForm').attr('data-count'));
+      //Update count
+      $("#input_user__childs_repeater").val(count + 1);
+      $('#ChildsAccountForm').attr('data-count', count);
+      //Change input name
+      template = template.replace(/user__childs_repeater_number/g, `user__childs_repeater_${count}`);
+      //Append
+      $('#woocommerce-EditChildsAccountForm #ChildsAccountForm').append(template);
+    }
+
+    /**
+     * Events
+     */
+    $("body").on("click", "#button-add-child", function (event) {
+      childs_account__add();
+    });
+  });
+})(jQuery);
+/**
  * Ajax Childs account
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
@@ -33,7 +66,7 @@
      *
      * @return {void}
      */
-    function ajax_childs_account_form() {
+    function childs_account__ajax() {
       if (window.xhr) {
         window.xhr.abort();
       }
@@ -108,7 +141,96 @@
      * Events
      */
     $("#woocommerce-EditChildsAccountForm").on("click", "#EditChildsAccountForm-send", function (event) {
-      ajax_childs_account_form();
+      childs_account__ajax();
+    });
+  });
+})(jQuery);
+/**
+ * Scroll Childs WooCommerce account
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Scroll To After sucesss
+     *
+     * @return {void}
+     */
+    function childs_account__scroll() {
+      setTimeout(function () {
+        $('html, body').animate({
+          scrollTop: 0
+        }, 1);
+      }, 200);
+    }
+
+    /**
+     * Events
+     */
+    if ($('.woocommerce-message').length > 0) {
+      childs_account__scroll();
+    }
+  });
+})(jQuery);
+/**
+ * Toggle Childs WooCommerce account
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Display Childs toggle
+     *
+     * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
+     *
+     * @return {void}
+     */
+    function childs_account__toggle(that) {
+      let number = that.attr('data-child');
+      $('.item-child[data-child=' + number + ']').toggleClass('visible');
+      that.toggleClass('active');
+    }
+
+    /**
+     * Events
+     */
+    $("#woocommerce-EditChildsAccountForm").on("click", ".toggle-button", function (event) {
+      childs_account__toggle($(this));
+    });
+  });
+})(jQuery);
+/**
+ * Other School
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Display
+     *
+     * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
+     *
+     * @return {void}
+     */
+    function display_other_school(that) {
+      let parent = that.closest('.utbf-user-child-form');
+      if (that.val() == 'Autre') {
+        parent.find('.user__child__other_school').show();
+      } else {
+        parent.find('.user__child__other_school').removeClass('show');
+        parent.find('.user__child__other_school').hide();
+        parent.find('.user__child__other_school').find('input').val('');
+      }
+    }
+
+    /**
+     * Events
+     */
+    $("body").on("change", ".user__child__school", function (event) {
+      display_other_school($(this));
     });
   });
 })(jQuery);
@@ -126,7 +248,7 @@
      *
      * @return {void}
      */
-    function ajax_register_form() {
+    function register__ajax() {
       if (window.xhr) {
         window.xhr.abort();
       }
@@ -189,89 +311,7 @@
      * Events
      */
     $("#utbf-register-form").on("click", "#utbf-register-form-send", function (event) {
-      ajax_register_form();
-    });
-  });
-})(jQuery);
-/**
- * Childs WooCommerce account
- *
- * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
- */
-(function ($) {
-  $(document).ready(function () {
-    /**
-     * Scroll To After sucesss
-     *
-     * @return {void}
-     */
-    function scroll_top_after_success() {
-      setTimeout(function () {
-        $('html, body').animate({
-          scrollTop: 0
-        }, 1);
-      }, 200);
-    }
-
-    /**
-     * Add Child
-     *
-     * @return {void}
-     */
-    function add_template_child() {
-      //init
-      let template = $('#template-add-child').html();
-      const count = parseInt($('#ChildsAccountForm').attr('data-count'));
-      //Update count
-      $("#input_user__childs_repeater").val(count + 1);
-      $('#ChildsAccountForm').attr('data-count', count);
-      //Change input name
-      template = template.replace(/user__childs_repeater_number/g, `user__childs_repeater_${count}`);
-      //Append
-      $('#woocommerce-EditChildsAccountForm #ChildsAccountForm').append(template);
-    }
-
-    /**
-     * Events
-     */
-    $("body").on("click", "#button-add-child", function (event) {
-      add_template_child();
-    });
-    if ($('.woocommerce-message').length > 0) {
-      scroll_top_after_success();
-    }
-  });
-})(jQuery);
-/**
- * Other School
- *
- * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
- */
-(function ($) {
-  $(document).ready(function () {
-    /**
-     * Display
-     *
-     * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
-     *
-     * @return {void}
-     */
-    function display_other_school(that) {
-      let parent = that.closest('.utbf-user-child-form');
-      if (that.val() == 'Autre') {
-        parent.find('.user__child__other_school').show();
-      } else {
-        parent.find('.user__child__other_school').removeClass('show');
-        parent.find('.user__child__other_school').hide();
-        parent.find('.user__child__other_school').find('input').val('');
-      }
-    }
-
-    /**
-     * Events
-     */
-    $("body").on("change", ".user__child__school", function (event) {
-      display_other_school($(this));
+      register__ajax();
     });
   });
 })(jQuery);
