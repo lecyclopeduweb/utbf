@@ -419,3 +419,7 @@ msgstr "Non"
 #
 msgid "Theme settings"
 msgstr "Réglages du thème"
+
+#
+msgid "Childs"
+msgstr "Enfants"

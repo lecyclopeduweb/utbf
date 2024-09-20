@@ -11,6 +11,7 @@ use AppUtbf\ACF\ACFServiceProvider;
 use AppUtbf\Forms\FormsServiceProvider;
 use AppUtbf\Theme\ThemeServiceProvider;
 use AppUtbf\Admin\AdminServiceProvider;
+use AppUtbf\WooCommerce\WooCommerceServiceProvider;
 
 /**
  * App Services Providers
@@ -41,6 +42,9 @@ class AppServiceProvider
 
         $admin_service_provider = new AdminServiceProvider;
         $admin_service_provider->boot();
+
+        $woocommerce_service_provider = new WooCommerceServiceProvider;
+        $woocommerce_service_provider->boot();
 
     }
 
