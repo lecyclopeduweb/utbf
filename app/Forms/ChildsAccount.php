@@ -21,26 +21,120 @@ class ChildsAccount
     public function __construct()
     {
 
-        add_action('wp_ajax_nopriv_utbf_ajax_childs_account_form', [$this,'validate']);
-        add_action('wp_ajax_utbf_ajax_childs_account_form', [$this,'validate']);
+        add_action('wp_ajax_nopriv_utbf_ajax_childs_account_form', [$this,'ajax']);
+        add_action('wp_ajax_utbf_ajax_childs_account_form', [$this,'ajax']);
 
-        add_action('template_redirect', [$this,'save_account_childs'] );
         add_action('wp_loaded', [$this,'wc_add_notice'] );
 
     }
 
     /**
-     * Validate
+     * Ajax
      *
      * @return void
      */
-    public function validate()
+    public function ajax():void
+    {
+
+        //Init
+        $user_id = get_current_user_id();
+        $response = [];
+
+        //Validate
+        $error = $this->validate();
+        if(!empty($error)):
+            $response['error'] = $error;
+            echo json_encode($response);
+            die;
+        endif;
+
+        //Delete
+        $user__childs_repeater = get_user_meta($user_id, 'user__childs_repeater',true);
+        if($user__childs_repeater > $_POST['user__childs_repeater']):
+            $this->delete();
+        endif;
+
+        //update
+        $this->update();
+
+        // Set success message in WooCommerce session
+        if (WC()->session) {
+            WC()->session->set('success', __( 'Your form has been submitted successfully', UTBF_TEXT_DOMAIN ));
+        }
+        $response['success'] = true;
+        echo json_encode($response);
+        die;
+    }
+
+    /**
+     * Delete
+     *
+     * @return void
+     */
+    public function delete():void
+    {
+
+        //init
+        global $wpdb;
+        $user_id = get_current_user_id();
+        $user__childs_repeater = get_user_meta($user_id, 'user__childs_repeater',true);
+
+        //DataBase
+        $table_name = $wpdb->usermeta;
+
+        //iteration
+        $lengt = ($user__childs_repeater - $_POST['user__childs_repeater']);
+        $start = $_POST['user__childs_repeater'];
+
+        for ($i = 0; $i < $lengt; $i++) {
+
+            $nb_delete = $start + $i;
+            $meta_key = 'user__childs_repeater_' . $nb_delete . '%';
+            //Request
+            $wpdb->query(
+                $wpdb->prepare(
+                    "DELETE FROM $table_name WHERE meta_key LIKE %s",
+                    $meta_key
+                )
+            );
+        }
+
+    }
+
+    /**
+     * Update
+     *
+     * @return void
+     */
+    public function update():void
+    {
+        //Init
+        $post = $_POST;
+        $user_id = get_current_user_id();
+
+        //Unset
+        unset($post['action']);
+
+        //update_user_meta
+        foreach($post as $key => $value):
+            if (strpos($key, 'medical_treatments') !== false):
+                $value = ($value == 'yes')? 1 : 0;
+            endif;
+            update_user_meta( $user_id, $key, $value );
+        endforeach;
+    }
+
+    /**
+     * Validate
+     *
+     * @return array
+     */
+    public function validate():array
     {
 
         //Init
         $post = $_POST;
         $validate = new ValidateEditChilds;
-        $response = [];
 
         //Unset
         unset($post['action']);
@@ -54,48 +148,9 @@ class ChildsAccount
             endif;
         endforeach;
 
-        //errors
-        $errors = $validate->check($post);
-        if(!empty($errors)):
-            $response['error'] = $validate->check($post);
-        endif;
-
-        echo json_encode($response);
-        die;
-
+        return $validate->check($post);
     }
 
-     /**
-     * Save Account Childs
-     *
-     * @return void
-     */
-    public function save_account_childs():void
-    {
-
-        if ( isset( $_POST['action'] ) && $_POST['action'] === 'save_childs_account' ):
-
-            //Init
-            $post = $_POST;
-            $user_id = get_current_user_id();
-
-            //Unset
-            unset($post['action']);
-
-            //update_user_meta
-            foreach($post as $key => $value):
-                if (strpos($key, 'medical_treatments') !== false):
-                    $value = ($value == 'yes')? 1 : 0;
-                endif;
-                update_user_meta( $user_id, $key, $value );
-            endforeach;
-
-            //Message Success
-            WC()->session->set( 'success', __( 'Your form has been submitted successfully', UTBF_TEXT_DOMAIN ) );
-
-        endif;
-
-    }
 
     /**
      * Add Notice
@@ -108,9 +163,6 @@ class ChildsAccount
             wc_add_notice(WC()->session->get('success'), 'success');
             WC()->session->set('success', null);
         endif;
-
     }
-
-
 
 }

@@ -9,6 +9,17 @@
         window.xhr = false;
 
         /**
+         * scroll Top
+         *
+         * @return {void}
+         */
+        function scroll_top_child_account(){
+            $('html, body').animate({
+                scrollTop: ($('#woocommerce-EditChildsAccountForm').offset().top)-200
+            }, 1);
+        }
+
+        /**
          * Ajax Send datas
          *
          * @return {void}
@@ -21,8 +32,8 @@
 
              //init
             $('.error').hide();
-            $('.woocommerce-message-error').hide();
-            $('.woocommerce-message[role=alert]').remove();
+            $('.woocommerce-message').hide();
+             $('.woocommerce-message[role=alert]').remove();
 
             //init
             const form_values = $('#woocommerce-EditChildsAccountForm').serializeArray();
@@ -61,27 +72,26 @@
                     let obj = jQuery.parseJSON(response);
                     //Error
                     if(obj.error!== undefined){
-                        console.log(obj.error);
                         $.each(obj.error, function(field, errorMessage) {
-                            console.log(field);
-                            console.log(errorMessage);
-                                $('.error.'+ field).show();
-                                $('.error.'+ field).html(errorMessage);
+                            $('.error.'+ field).show();
+                            $('.error.'+ field).html(errorMessage);
                         });
-                        $('html, body').animate({
-                            scrollTop: ($('#woocommerce-EditChildsAccountForm').offset().top)-100
-                        }, 1);
                         $('.woocommerce-message-error').addClass('woocommerce-message');
                         $('.woocommerce-message-error').show();
+                        scroll_top_child_account();
+                    //Success
+                    }else if(obj.success!== undefined){
+                        location.reload();
                     }else{
-                        let formData = $("#woocommerce-EditChildsAccountForm").serialize();
-                        $.post(window.location.href, formData, function(response) {
-                            location.reload();
-                            //For scrollTo view file childs-account.js
-                        });
+                        $('.woocommerce-message-error-ajax').addClass('woocommerce-message');
+                        $('.woocommerce-message-error-ajax').show();
+                        scroll_top_child_account();
                     }
                 },
                 error: function (data) {
+                     $('.woocommerce-message-error-ajax').addClass('woocommerce-message');
+                    $('.woocommerce-message-error-ajax').show();
+                    scroll_top_child_account();
                 }
             });
 

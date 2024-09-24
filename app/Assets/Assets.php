@@ -57,10 +57,13 @@ class Assets
         //wp_enqueue_script('frontend-bundle.min', UTBF_DIVI_URI . '/scripts/frontend-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
         //wp_enqueue_script('frontend', UTBF_DIVI_URI . '/scripts/frontend.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
 
-
 	    wp_localize_script('theme', 'AJAX_URL', [
 		    'url'   => admin_url('admin-ajax.php'),
 		    'nonce' => wp_create_nonce('ajax_url_nonce')
+	    ]);
+
+	    wp_localize_script('theme', 'VAR', [
+		    'confirm_delete_child'   => __('Are you sure you want to delete this child?',UTBF_TEXT_DOMAIN),
 	    ]);
 
     }

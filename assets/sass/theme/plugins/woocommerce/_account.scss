@@ -1,0 +1,18 @@
+$delete-size : 30px;
+#ChildsAccountForm{
+    .item-child{
+        &-header{
+            display: flex;
+        }
+        &-delete{
+            margin-left: auto;
+            cursor: pointer;
+            height: $delete-size;
+            width: $delete-size;
+            svg{
+                height: $delete-size;
+                width: $delete-size;
+            }
+        }
+    }
+}

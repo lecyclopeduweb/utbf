@@ -71,7 +71,7 @@ class Account
 
         //Childs count
         $childs_repeater = get_field('user__childs_repeater', 'user_'.$user_id);
-        $count = (!empty($childs_repeater)) ? count(get_field('user__childs_repeater', 'user_'.$user_id)) : 0;
+        $count = (!empty($childs_repeater)) ? ((is_array($childs_repeater))? count($childs_repeater) : $childs_repeater) : 0;
 
         //Theme settings : classroom
         $classroom = [];
