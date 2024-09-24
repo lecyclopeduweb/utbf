@@ -16,7 +16,7 @@
                 <?= __('New Child',UTBF_TEXT_DOMAIN); ?>
             </h2>
             <div class="item-child-delete" data-child="data_number">
-                <?= file_get_contents(UTBF_IMG_URI . '/delete.svg'); ?>
+                <?= file_get_contents(UTBF_IMG_PATH . '/delete.svg'); ?>
             </div>
         </div>
         <div class="utbf-form__row space-mt-20">

@@ -25,7 +25,7 @@ define('UTBF_DIVI_URI', UTBF_THEME_URI.'/divi');
 define('UTBF_THEME_PATH', dirname(__FILE__));
 define('UTBF_APP_PATH', UTBF_THEME_PATH . '/app');
 define('UTBF_ASSETS_PATH', UTBF_THEME_PATH. '/assets');
-define('UTBF_IMG_PATH', UTBF_ASSETS_PATH. '/img');
+define('UTBF_IMG_PATH', UTBF_THEME_PATH. '/img');
 define('UTBF_THEME_PARENT_PATH', get_template_directory());
 define('UTBF_PATH_ACF_JSON', UTBF_THEME_PATH . '/app/ACF/fields-json');
 define('UTBF_UPLOAD_PATH', wp_upload_dir()['basedir']);

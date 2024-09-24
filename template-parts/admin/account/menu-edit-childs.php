@@ -28,14 +28,14 @@
                     <div class="item-child-header">
                         <h2 class="toggle-button space-mt-0 space-mb-0" data-child="<?= $nb; ?>">
                             <div class="toggle-ico">
-                                <?= file_get_contents(UTBF_IMG_URI . '/arrow.svg'); ?>
+                                <?= file_get_contents(UTBF_IMG_PATH . '/arrow.svg'); ?>
                             </div>
                             <div class="toggle-title">
                                 <?= get_user_meta($args['user_id'], $repeater.'user__child__first_name',true); ?> <?= get_user_meta($args['user_id'], $repeater.'user__child__last_name',true); ?>
                             </div>
                         </h2>
                         <div class="item-child-delete" data-child="<?= $nb; ?>">
-                            <?= file_get_contents(UTBF_IMG_URI . '/delete.svg'); ?>
+                            <?= file_get_contents(UTBF_IMG_PATH . '/delete.svg'); ?>
                         </div>
                     </div>
                     <div class="item-child toggle-item utbf-user-child-form" data-child="<?= $nb; ?>">

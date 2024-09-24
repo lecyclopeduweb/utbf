@@ -180,7 +180,8 @@ class ChildsAccount
             $notices = wc_get_notices();
             $user_id = get_current_user_id();
             $user__childs_repeater = get_user_meta($user_id, 'user__childs_repeater',true);
-            if($user__childs_repeater == '0' && !$notices):
+            $has_childs = (!empty($user__childs_repeater))? (($user__childs_repeater!='0')? true : false): false;
+            if(!$has_childs && !$notices):
                 wc_add_notice(__('No children attached to the account', UTBF_TEXT_DOMAIN), 'notice');
             endif;
         endif;
