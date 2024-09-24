@@ -33,7 +33,8 @@
              //init
             $('.error').hide();
             $('.woocommerce-message').hide();
-             $('.woocommerce-message[role=alert]').remove();
+            $('.woocommerce-notices-wrapper').hide();
+            $('.woocommerce-message[role=alert]').remove();
 
             //init
             const form_values = $('#woocommerce-EditChildsAccountForm').serializeArray();

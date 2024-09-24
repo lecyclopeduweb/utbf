@@ -88,6 +88,7 @@
       //init
       $('.error').hide();
       $('.woocommerce-message').hide();
+      $('.woocommerce-notices-wrapper').hide();
       $('.woocommerce-message[role=alert]').remove();
 
       //init

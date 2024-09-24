@@ -447,3 +447,7 @@ msgstr "Etes-vous sûr de vouloir supprimer cet enfant ?"
 #
 msgid "Ajax registration has a problem. Please contact the site administrator"
 msgstr "L'enregistrement ajax a un problème. Veuillez contacter l'administrateur du site"
+
+#
+msgid "No children attached to the account"
+msgstr "Pas d'enfant rattaché au compte"
