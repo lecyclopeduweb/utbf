@@ -6,7 +6,7 @@ namespace AppUtbf\Forms;
 
 use AppUtbf\Validate\ValidateEditChilds;
 /**
- * ChildsAccount
+ * Childs Account
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
@@ -21,12 +21,10 @@ class ChildsAccount
     public function __construct()
     {
 
-
         add_action('wp_ajax_nopriv_utbf_ajax_childs_account_form', [$this,'ajax']);
         add_action('wp_ajax_utbf_ajax_childs_account_form', [$this,'ajax']);
 
         add_action('wp_loaded', [$this,'wc_add_notice'] );
-        add_action('wp_loaded', [$this,'wc_add_notice_empty_childs'] );
 
     }
 
@@ -60,9 +58,11 @@ class ChildsAccount
         $this->update();
 
         // Set success message in WooCommerce session
-        if (WC()->session) {
-            WC()->session->set('success', __( 'Your form has been submitted successfully', UTBF_TEXT_DOMAIN ));
-        }
+        if (class_exists( 'WooCommerce' )):
+            if (WC()->session) :
+                WC()->session->set('success', __( 'Your form has been submitted successfully', UTBF_TEXT_DOMAIN ));
+            endif;
+        endif;
         $response['success'] = true;
         echo json_encode($response);
         die;
@@ -153,7 +153,6 @@ class ChildsAccount
         return $validate->check($post);
     }
 
-
     /**
      * Add Notice
      *
@@ -161,28 +160,17 @@ class ChildsAccount
      */
     public function wc_add_notice():void
     {
-        if (WC()->session && WC()->session->get('success')):
-            wc_add_notice(WC()->session->get('success'), 'success');
-            WC()->session->set('success', null);
-        endif;
 
-    }
-
-    /**
-     * Add Notice empty childs
-     *
-     * @return void
-     */
-    public function wc_add_notice_empty_childs():void
-    {
-
-        if (strpos(UTBF_CURRENT_URL, wc_get_account_endpoint_url('edit-childs')) !== false):
-            $notices = wc_get_notices();
-            $user_id = get_current_user_id();
-            $user__childs_repeater = get_user_meta($user_id, 'user__childs_repeater',true);
-            $has_childs = (!empty($user__childs_repeater))? (($user__childs_repeater!='0')? true : false): false;
-            if(!$has_childs && !$notices):
-                wc_add_notice(__('No children attached to the account', UTBF_TEXT_DOMAIN), 'notice');
+        if (class_exists( 'WooCommerce' )):
+            if (strpos(UTBF_CURRENT_URL, wc_get_account_endpoint_url('edit-childs')) !== false):
+                //if empty
+                $notices = wc_get_notices();
+                $user_id = get_current_user_id();
+                $user__childs_repeater = get_user_meta($user_id, 'user__childs_repeater',true);
+                $has_childs = (!empty($user__childs_repeater))? (($user__childs_repeater!='0')? true : false): false;
+                if(!$has_childs && !$notices):
+                    wc_add_notice(__('No children attached to the account', UTBF_TEXT_DOMAIN), 'notice');
+                endif;
             endif;
         endif;
 

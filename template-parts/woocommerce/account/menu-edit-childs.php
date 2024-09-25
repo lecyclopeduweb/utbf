@@ -190,9 +190,8 @@
         </div>
     </div>
     <button id="EditChildsAccountForm-send" type="button" class="woocommerce-Button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
-    <input type="hidden" name="action" value="save_childs_account" />
     <input id="input_user__childs_repeater" type="hidden" name="user__childs_repeater" value="<?= $args['count']; ?>" />
 </form>
 <div id="template-add-child" class="d-none">
-    <?= load_template( UTBF_THEME_PATH . '/template-parts/admin/account/menu-edit-add-child.php',null,$args); ?>
+    <?= load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/account/menu-edit-add-child.php',null,$args); ?>
 </div>

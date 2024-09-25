@@ -451,3 +451,7 @@ msgstr "L'enregistrement ajax a un problème. Veuillez contacter l'administrateu
 #
 msgid "No children attached to the account"
 msgstr "Pas d'enfant rattaché au compte"
+
+#
+msgid "Legal guardian"
+msgstr "Représentant légal"

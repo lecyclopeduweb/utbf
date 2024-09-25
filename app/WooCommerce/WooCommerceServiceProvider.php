@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace AppUtbf\WooCommerce;
 
 use AppUtbf\WooCommerce\Account;
+use AppUtbf\WooCommerce\WooCommerce;
 
 /**
  * WooCommerce Services Providers
@@ -21,6 +22,7 @@ class WooCommerceServiceProvider
     {
 
         new Account;
+        new WooCommerce;
 
     }
 

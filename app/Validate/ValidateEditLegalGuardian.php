@@ -10,11 +10,11 @@ use AppUtbf\Validate\Phone;
 use AppUtbf\Validate\ZipCode;
 use AppUtbf\Validate\Utilities;
 /**
- * Edit Childs
+ * Edit Legal Guardian
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
-class ValidateEditChilds
+class ValidateEditLegalGuardian
 {
 
     /**
@@ -45,11 +45,7 @@ class ValidateEditChilds
         $response = [];
 
         foreach($fields as $key => $field):
-            if(
-                (preg_match('/phone_2/', $key) && empty($field))||
-                (preg_match('/specific_aspects/', $key) && empty($field))||
-                (preg_match('/recommendations/', $key) && empty($field))
-            ):
+            if(preg_match('/phone_2/', $key) && empty($field)):
                 continue;
             elseif ($utilities->empty_field($field)) :
                $response[$key] = __('The field is empty',UTBF_TEXT_DOMAIN);
@@ -59,8 +55,6 @@ class ValidateEditChilds
                 $response[$key] = $phone->error($field);
             elseif(preg_match('/email/', $key) && $email->register($field)):
                 $response[$key] = $email->register($field);
-            elseif(preg_match('/birthday/', $key) && $date->en($field)):
-                $response[$key] = $date->en($field);
             endif;
         endforeach;
 

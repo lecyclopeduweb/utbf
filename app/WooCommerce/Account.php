@@ -23,6 +23,7 @@ class Account
         add_action('init', [$this,'add_endpoint']);
         add_action('woocommerce_account_menu_items', [$this,'add_menus']);
         add_action('woocommerce_account_edit-childs_endpoint', [$this,'render_menu_edit_childs']);
+        add_action('woocommerce_account_edit-legal-guardian_endpoint', [$this,'render_menu_edit_legal_guardian']);
 
     }
 
@@ -34,6 +35,7 @@ class Account
     public function add_endpoint():void
     {
 
+        add_rewrite_endpoint( 'edit-legal-guardian', EP_ROOT | EP_PAGES );
         add_rewrite_endpoint( 'edit-childs', EP_ROOT | EP_PAGES );
 
     }
@@ -49,7 +51,8 @@ class Account
     {
 
         $new_link = [
-            'edit-childs' => __('Childs',UTBF_TEXT_DOMAIN),
+            'edit-legal-guardian'   => __('Legal guardian',UTBF_TEXT_DOMAIN),
+            'edit-childs'           => __('Childs',UTBF_TEXT_DOMAIN),
         ];
         $menu_links = array_slice( $menu_links, 0, 5, true )
                     + $new_link
@@ -91,11 +94,33 @@ class Account
 
         ob_start();
 
-            load_template( UTBF_THEME_PATH . '/template-parts/admin/account/menu-edit-childs.php',null,[
+            load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/account/menu-edit-childs.php',null,[
                 'user_id'       => $user_id,
                 'count'         => $count,
                 'classroom'    	=> $classroom,
 				'school'    	=> $school,
+            ]);
+            $template_part = ob_get_contents();
+
+        ob_end_clean();
+        echo $template_part;
+
+    }
+
+    /**
+     * Render Menu Edit Legal Guardian
+     *
+     * @return void
+     */
+    public function render_menu_edit_legal_guardian():void
+    {
+
+        $user_id = get_current_user_id();
+
+        ob_start();
+
+            load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/account/menu-edit-legal-guardian.php',null,[
+                'user_id'       => $user_id,
             ]);
             $template_part = ob_get_contents();
 

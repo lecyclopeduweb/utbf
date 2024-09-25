@@ -6,6 +6,7 @@ namespace AppUtbf\Forms;
 
 use AppUtbf\Forms\Register;
 use AppUtbf\Forms\ChildsAccount;
+use AppUtbf\Forms\LegalGuardianAccount;
 
 /**
  * Forms Services Providers
@@ -23,6 +24,7 @@ class FormsServiceProvider
 
         new Register;
         new ChildsAccount;
+        new LegalGuardianAccount;
 
     }
 
