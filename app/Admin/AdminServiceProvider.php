@@ -4,7 +4,6 @@ declare (strict_types = 1);
 
 namespace AppUtbf\Admin;
 
-use AppUtbf\Admin\Users;
 use AppUtbf\Admin\Admin;
 
 /**
@@ -21,7 +20,6 @@ class AdminServiceProvider
     public function boot()
     {
 
-        new Users;
         new Admin;
 
     }

@@ -4,6 +4,7 @@ declare (strict_types = 1);
 
 namespace AppUtbf\WooCommerce;
 
+use AppUtbf\Validate\Phone;
 /**
  * Account
  *
@@ -20,10 +21,36 @@ class Account
     public function __construct()
     {
 
+        //Endpoint
         add_action('init', [$this,'add_endpoint']);
         add_action('woocommerce_account_menu_items', [$this,'add_menus']);
+
+        //Edit childs
         add_action('woocommerce_account_edit-childs_endpoint', [$this,'render_menu_edit_childs']);
+
+        //Edit Legal Guardia
         add_action('woocommerce_account_edit-legal-guardian_endpoint', [$this,'render_menu_edit_legal_guardian']);
+
+        //User profile Add Billing Phone 2
+        add_action('show_user_profile',[$this,'add_user_profile_billing_phone_2']);
+        add_action('edit_user_profile',[$this,'add_user_profile_billing_phone_2']);
+
+        //User profile Add Shipping Phone 2
+        add_action('show_user_profile',[$this,'add_user_profile_shipping_phone_2']);
+        add_action('edit_user_profile',[$this,'add_user_profile_shipping_phone_2']);
+
+        //User profile Save Billing && Shipping Phone 2
+        add_action('personal_options_update', [$this,'save_user_profile_billing_shipping_phone_2']);
+        add_action('edit_user_profile_update', [$this,'save_user_profile_billing_shipping_phone_2']);
+
+        //Account Add Billing Phone 2
+        add_filter('woocommerce_billing_fields', [$this,'add_account_billing_phone_2'], 10, 1);
+
+        //Account Add shipping Phone 2
+        add_filter('woocommerce_shipping_fields', [$this,'add_account_shipping_phone_2'], 10, 1);
+
+        //Account Validate Billing && shipping Phone 2
+        add_action('woocommerce_after_save_address_validation', [$this,'validate_account_billing_shipping_phone_2'], 10, 3);
 
     }
 
@@ -126,6 +153,161 @@ class Account
 
         ob_end_clean();
         echo $template_part;
+
+    }
+
+    /**
+     * Add Billing Phone 2
+     *
+     * @param object $user    user
+     *
+     * @return void
+     */
+    public function add_user_profile_billing_phone_2($user):void
+    {
+
+        ob_start();
+
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/users/billing-phone-2.php',null,[
+                'user'=>$user
+            ]);
+            $template_part = ob_get_contents();
+
+        ob_end_clean();
+        echo $template_part;
+
+    }
+
+    /**
+     * Add Shipping Phone 2
+     *
+     * @param object $user    user
+     *
+     * @return void
+     */
+    public function add_user_profile_shipping_phone_2($user):void
+    {
+
+        ob_start();
+
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/users/shipping-phone-2.php',null,[
+                'user'=>$user
+            ]);
+            $template_part = ob_get_contents();
+
+        ob_end_clean();
+        echo $template_part;
+
+    }
+
+    /**
+     * Save billing && shipping Phone_2
+     *
+     * @param int $user_id    user_id
+     *
+     * @return void|bool
+     */
+    public function save_user_profile_billing_shipping_phone_2($user_id)
+    {
+
+        if (!current_user_can('edit_user', $user_id)):
+            return false;
+        endif;
+        update_user_meta($user_id, 'billing_phone_2', $_POST['billing_phone_2']);
+        update_user_meta($user_id, 'shipping_phone_2', $_POST['shipping_phone_2']);
+
+    }
+
+    /**
+     * Add Account billing Phone_2
+     *
+     * @param array $fields    user_id
+     *
+     * @return array
+     */
+    public function add_account_billing_phone_2(array $fields): array
+    {
+
+        $fields['billing_phone_2'] = [
+            'type'        => 'number', // Type of filed
+            'label'       => __('Phone 2', UTBF_TEXT_DOMAIN), // The field label
+            'required'    => false, // Is this field required?
+            'class'       => ['form-row-wide'], // CSS class of the field
+            'clear'       => true, // Reset flow after this field
+            'priority'    => 105, // Position of the field in the form
+        ];
+
+        return $fields;
+
+    }
+
+    /**
+     * Add Account shipping Phone_2
+     *
+     * @param array $fields    user_id
+     *
+     * @return array
+     */
+    public function add_account_shipping_phone_2(array $fields): array
+    {
+
+        $fields['shipping_phone'] = [
+            'type'        => 'number', // Type of filed
+            'label'       => __('Phone', UTBF_TEXT_DOMAIN), // The field label
+            'required'    => true, // Is this field required?
+            'class'       => ['form-row-wide'], // CSS class of the field
+            'clear'       => true, // Reset flow after this field
+            'priority'    => 75, // Position of the field in the form
+        ];
+        $fields['shipping_phone_2'] = [
+            'type'        => 'number', // Type of filed
+            'label'       => __('Phone 2', UTBF_TEXT_DOMAIN), // The field label
+            'required'    => false, // Is this field required?
+            'class'       => ['form-row-wide'], // CSS class of the field
+            'clear'       => true, // Reset flow after this field
+            'priority'    => 75, // Position of the field in the form
+        ];
+
+        return $fields;
+
+    }
+
+    /**
+     * Validate Account billing && shipping Phone_2
+     *
+     * @param int    $user_id      The ID of the user whose address is being updated.
+     * @param string $load_address The type of address being updated (e.g., 'billing' or 'shipping').
+     * @param array  $address      The array containing the address data submitted by the user.
+     *
+     * @return void
+     */
+    public function validate_account_billing_shipping_phone_2(int $user_id, string $load_address, array $address): void
+    {
+
+        $validate = new Phone;
+
+        if ($load_address === 'billing') :
+            if (!empty($_POST['billing_phone_2'])):
+                $error = $validate->error($_POST['billing_phone_2']);
+                if($error):
+                    wc_add_notice(__('Phone 2', UTBF_TEXT_DOMAIN).' : '.$error, 'error');
+                endif;
+            endif;
+        endif;
+        if ($load_address === 'shipping') :
+            if (!empty($_POST['shipping_phone'])):
+                $error = $validate->error($_POST['shipping_phone']);
+                if($error):
+                    wc_add_notice(__('Phone', UTBF_TEXT_DOMAIN).' : '.$error, 'error');
+                endif;
+            endif;
+            if (!empty($_POST['shipping_phone_2'])):
+                $error = $validate->error($_POST['shipping_phone_2']);
+                if($error):
+                    wc_add_notice( __('Phone 2', UTBF_TEXT_DOMAIN).' : '.$error, 'error');
+                endif;
+            endif;
+        endif;
 
     }
 
