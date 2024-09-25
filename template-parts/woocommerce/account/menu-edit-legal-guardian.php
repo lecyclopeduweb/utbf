@@ -16,7 +16,7 @@
 </div>
 <form id="woocommerce-EditLegalGuardianAccountForm" class="edit-account" method="post" action="">
 
-    <div class="utbf-form__row space-mt-20">
+    <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
                 <?= (!empty($args['props']['label_legal_guardian_first_name']))? $args['props']['label_legal_guardian_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
