@@ -154,15 +154,16 @@ class ChildsAccount
     }
 
     /**
-     * Add Notice empty childs
+     * Add Notice
      *
      * @return void
      */
-    public function wc_add_notice_empty_childs():void
+    public function wc_add_notice():void
     {
 
         if (class_exists( 'WooCommerce' )):
             if (strpos(UTBF_CURRENT_URL, wc_get_account_endpoint_url('edit-childs')) !== false):
+                //empty
                 $notices = wc_get_notices();
                 $user_id = get_current_user_id();
                 $user__childs_repeater = get_user_meta($user_id, 'user__childs_repeater',true);
