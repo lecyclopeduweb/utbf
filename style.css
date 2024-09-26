@@ -20,3 +20,19 @@
 
 /** Styles header **/
 .nav-principale .main-menu {display:flex;justify-content:end;align-items:center;}
+
+/** Fiche produit **/
+.product-ecole .dmach-postmeta-value:before, .product-prix p:before, .product-stock p:before {
+	content:"";
+	display:inline-block;
+	width:20px;
+	height:20px;
+	background:url(/wp-content/themes/divi-child/img/picto-ecole.webp) no-repeat center center;
+	margin-right:3px;
+}
+.product-prix p:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
+.product-stock p:before {
+	background:url(/wp-content/themes/divi-child/img/picto-enfant.webp) no-repeat center center;
+	width:24px;
+	height:24px;
+} 
