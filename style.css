@@ -3,6 +3,20 @@
  Author: Djulyinzesky
  Author URI: https://djulyinzesky.fr/
  Template: Divi
- Version: 1.0.1
+ Version: 1.0.0
 */
-.nav-secondaire .utbf-infos {display:flex;}
+
+/** Styles sur nav **/
+.nav-secondaire .et_pb_column {padding-top:0;}
+.nav-secondaire .utbf-infos {display:flex;flex-direction:row;align-items:center;}
+.nav-secondaire .utbf-infos .utbf-info-tel {margin-right:15px; margin-bottom:0;}
+.nav-secondaire .utbf-infos .et_pb_main_blurb_image {margin-bottom:0px; width:auto;}
+.nav-secondaire .utbf-infos .et_pb_blurb_container {padding-left:5px;}
+
+.nav-secondaire .utbf-info-reseaux li {margin-bottom:0px;}
+.nav-secondaire .utbf-info-reseaux li a {margin-right:0;}
+.nav-secondaire .utbf-info-reseaux li a.icon {height:40px;width:40px;}
+.nav-secondaire .utbf-info-reseaux li a.icon:before {line-height:40px;margin:0 auto;}
+
+/** Styles header **/
+.nav-principale .main-menu {display:flex;justify-content:end;align-items:center;}
