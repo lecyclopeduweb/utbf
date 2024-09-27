@@ -25,14 +25,16 @@
 .product-ecole .dmach-postmeta-value:before, .product-prix p:before, .product-stock p:before {
 	content:"";
 	display:inline-block;
-	width:20px;
-	height:20px;
+	width:24px;
+	height:24px;
 	background:url(/wp-content/themes/divi-child/img/picto-ecole.webp) no-repeat center center;
-	margin-right:3px;
+	margin-right:7px;
 }
 .product-prix p:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
 .product-stock p:before {
 	background:url(/wp-content/themes/divi-child/img/picto-enfant.webp) no-repeat center center;
-	width:24px;
-	height:24px;
-} 
+}
+.product-ecole .dmach-postmeta-value, .product-prix p, .product-stock p {display:flex;}
+
+/** Images à la une blog */
+.et_pb_image_container {margin:-19px -19px 29px;}
