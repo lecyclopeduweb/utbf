@@ -35,13 +35,15 @@ class Users
     public function add_user_profile_custom_tabs($user):void
     {
 
-        ob_start();
+        if($user->roles[0] != 'administrator'):
+            ob_start();
 
-            load_template( UTBF_THEME_PATH . '/template-parts/admin/users/custom-tabs.php',null,[]);
-            $template_part = ob_get_contents();
+                load_template( UTBF_THEME_PATH . '/template-parts/admin/users/custom-tabs.php',null,[]);
+                $template_part = ob_get_contents();
 
-        ob_end_clean();
-        echo $template_part;
+            ob_end_clean();
+            echo $template_part;
+        endif;
 
     }
 

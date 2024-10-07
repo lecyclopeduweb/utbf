@@ -1,25 +1,26 @@
 .user-edit-php{
-    #your-profile > h2,
-    #your-profile > .form-table,
-    .user-language-wrap,
-    .application-passwords,
-    .user-description-wrap,
-    .user-url-wrap,
-    .show-admin-bar,
-    .user-comment-shortcuts-wrap,
-    .user-admin-color-wrap,
-    .user-rich-editing-wrap{
-        display:none;
+    &:not(.profil-user-role-administrator){
+        #your-profile > h2,
+        #your-profile > .form-table,
+        .user-language-wrap,
+        .application-passwords,
+        .user-description-wrap,
+        .user-url-wrap,
+        .show-admin-bar,
+        .user-comment-shortcuts-wrap,
+        .user-admin-color-wrap,
+        .user-rich-editing-wrap{
+            display:none;
+        }
+        #your-profile > #h2-rich_editing,
+        #your-profile > #form-table-user_login,
+        #your-profile > #form-table-email,
+        #your-profile > #h2-pass1,
+        #your-profile > #form-table-pass1
+        {
+            display:block;
+        }
     }
-    #your-profile > #h2-rich_editing,
-    #your-profile > #form-table-user_login,
-    #your-profile > #form-table-email,
-    #your-profile > #h2-pass1,
-    #your-profile > #form-table-pass1
-    {
-        display:block;
-    }
-
 }
 .profile-php,
 .user-edit-php{
