@@ -22,7 +22,7 @@
 .nav-principale .main-menu {display:flex;justify-content:end;align-items:center;}
 
 /** Fiche produit **/
-.product-ecole .dmach-postmeta-value:before, .product-prix p:before, .product-stock p:before {
+.utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before {
 	content:"";
 	display:inline-block;
 	width:24px;
@@ -30,11 +30,10 @@
 	background:url(/wp-content/themes/divi-child/img/picto-ecole.webp) no-repeat center center;
 	margin-right:7px;
 }
-.product-prix p:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
-.product-stock p:before {
+.utbf-product .product-price .amount:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
+.utbf-product .product-stock .stock:before {
 	background:url(/wp-content/themes/divi-child/img/picto-enfant.webp) no-repeat center center;
 }
-.product-ecole .dmach-postmeta-value, .product-prix p, .product-stock p {display:flex;}
 
 /** Images à la une blog */
 .et_pb_image_container {margin:-19px -19px 29px;}
