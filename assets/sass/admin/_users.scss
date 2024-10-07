@@ -1,7 +1,6 @@
 .user-edit-php{
-    #your-profile > h2:nth-of-type(2),
-    #your-profile > h2:nth-of-type(3),
-    #your-profile > h2:nth-of-type(4),
+    #your-profile > h2,
+    #your-profile > .form-table,
     .user-language-wrap,
     .application-passwords,
     .user-description-wrap,
@@ -10,30 +9,42 @@
     .user-comment-shortcuts-wrap,
     .user-admin-color-wrap,
     .user-rich-editing-wrap{
-        display:none !important;
+        display:none;
     }
+    #your-profile > #h2-rich_editing,
+    #your-profile > #form-table-user_login,
+    #your-profile > #form-table-email,
+    #your-profile > #h2-pass1,
+    #your-profile > #form-table-pass1
+    {
+        display:block;
+    }
+
 }
 .profile-php,
 .user-edit-php{
     #your-profile{
         display: flex;
         flex-direction: column;
-        &> h2:nth-of-type(8){
+        .nav-tab-wrapper{
+            order:-1;
+        }
+        #h2-billing_first_name{
             order:1;
         }
-        #fieldset-billing{
+        #form-table-billing_first_name{
             order:2;
         }
-        #fieldset-billing-phone-2{
+        #form-table-billing_phone_2{
             order:3;
         }
-        &> h2:nth-of-type(9){
+        #h2-copy_billing{
             order:4;
         }
-        #fieldset-shipping{
+        #form-table-copy_billing{
             order:5;
         }
-        #fieldset-shipping-phone-2{
+        #form-table-shipping_phone_2{
             order:6;
         }
         .submit{

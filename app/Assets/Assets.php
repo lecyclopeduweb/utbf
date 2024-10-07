@@ -90,6 +90,7 @@ class Assets
     {
 
         wp_enqueue_style('admin', UTBF_THEME_URI . '/css/admin.min.css', false, UTBF_SCRIPTS_VERSION, 'all');
+        wp_enqueue_script('admin', UTBF_THEME_URI . '/js/admin.min.js', array('jquery'), UTBF_SCRIPTS_VERSION, true);
         wp_enqueue_script('flatpickr', UTBF_THEME_URI . '/js/admin.min.js', array('jquery'), UTBF_SCRIPTS_VERSION, true);
 
     }

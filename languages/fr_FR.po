@@ -455,3 +455,7 @@ msgstr "Pas d'enfant rattaché au compte"
 #
 msgid "Legal guardian"
 msgstr "Représentant légal"
+
+#
+msgid "Addresses"
+msgstr "Adresses"
