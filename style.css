@@ -34,6 +34,10 @@
 .utbf-product .product-stock .stock:before {
 	background:url(/wp-content/themes/divi-child/img/picto-enfant.webp) no-repeat center center;
 }
+.utbf-product .product_meta {border:none;padding-top:0;}
+.utbf-product .product-meta span {display:block;}
+.utbf-product .product-category span.categories, .utbf-product .product-price .amount, .utbf-product .product-stock .stock {display:flex;}
+.utbf-product .product-category, .utbf-product .product-price, .utbf-product .product-stock {padding:0 20px;}
 
 /** Images à la une blog */
 .et_pb_image_container {margin:-19px -19px 29px;}
