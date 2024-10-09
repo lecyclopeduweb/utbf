@@ -12,7 +12,7 @@
 <tr id="user-1">
     <td class="parent column-parent" data-colname="<?= __('Parent',UTBF_TEXT_DOMAIN); ?>">
         <strong>
-            <a href="http://www.utbf.local/wp-admin/user-edit.php?user_id=<?= $args['ID']; ?>&amp;wp_http_referer=%2Fwp-admin%2Fusers.php">
+            <a href="<?= site_url(); ?>/wp-admin/user-edit.php?user_id=<?= $args['ID']; ?>&amp;wp_http_referer=%2Fwp-admin%2Fusers.php">
                 <?= $args['first_name'][0]; ?> <?= $args['last_name'][0]; ?>
             </a>
         </strong>
