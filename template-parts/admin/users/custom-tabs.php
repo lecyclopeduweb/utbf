@@ -4,6 +4,8 @@
  *
  * @package      WordPress
  * @author       "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ *
+ * @var Array     $args              Args
  */
 ?>
 <div class="nav-tab-wrapper">

@@ -459,3 +459,47 @@ msgstr "Représentant légal"
 #
 msgid "Addresses"
 msgstr "Adresses"
+
+#
+msgid "Search account"
+msgstr "Rechercher un compte"
+
+#
+msgid "Search for accounts"
+msgstr "Rechercher des comptes"
+
+#
+msgid "No results"
+msgstr "Aucun résultats"
+
+#
+msgid "No Childs"
+msgstr "Aucuns enfants"
+
+#
+msgid "Number of items displayed"
+msgstr "Nombre d'éléments affichés"
+
+#
+msgid "elements"
+msgstr "éléments"
+
+#
+msgid "element"
+msgstr "élément"
+
+#
+msgid "on"
+msgstr "sur"
+
+#
+msgid "Previous page"
+msgstr "Page précédente"
+
+#
+msgid "Current page"
+msgstr "Page actuelle"
+
+#
+msgid "Next page"
+msgstr "Page suivante"

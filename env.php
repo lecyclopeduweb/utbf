@@ -5,7 +5,7 @@
  *  @author  "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
 //CACHE
-define('UTBF_SCRIPTS_VERSION','h4o6ouemlvp7i0');
+define('UTBF_SCRIPTS_VERSION','ak860c4xy2m27cj');
 //PROJET
 define('UTBF_SITE_NAME','Une Tête Bien Faite' );
 //URLS
@@ -32,3 +32,6 @@ define('UTBF_UPLOAD_PATH', wp_upload_dir()['basedir']);
 define('UTBF_DIVI_PATH', UTBF_THEME_PATH . '/divi');
 //TRAD
 define('UTBF_TEXT_DOMAIN', 'divi-child');
+//SEARCH
+define('UTBF_PPP_USERS_SEARCH', 10);
+define('UTBF_PPP_ARRAY_USERS_SEARCH', [1,2,3,5,10]);

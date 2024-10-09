@@ -5,7 +5,8 @@
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
 $array_folder = [
-    'app'
+    'app',
+    'functions'
 ];
 
 /**
