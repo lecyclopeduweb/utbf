@@ -7,22 +7,22 @@
 */
 
 /** Styles sur nav **/
-.nav-secondaire .et_pb_column {padding-top:0;}
-.nav-secondaire .utbf-infos {display:flex;flex-direction:row;align-items:center;}
-.nav-secondaire .utbf-infos .utbf-info-tel {margin-right:15px; margin-bottom:0;}
-.nav-secondaire .utbf-infos .et_pb_main_blurb_image {margin-bottom:0px; width:auto;}
-.nav-secondaire .utbf-infos .et_pb_blurb_container {padding-left:5px;}
+.nav-secondaire .et_pb_column {padding-top:0 !important;}
+.nav-secondaire .utbf-infos {display:flex !important;flex-direction:row !important;align-items:center !important;}
+.nav-secondaire .utbf-infos .utbf-info-tel {margin-right:15px !important; margin-bottom:0 !important;}
+.nav-secondaire .utbf-infos .et_pb_main_blurb_image {margin-bottom:0px !important; width:auto !important;}
+.nav-secondaire .utbf-infos .et_pb_blurb_container {padding-left:5px !important;}
 
-.nav-secondaire .utbf-info-reseaux li {margin-bottom:0px;}
-.nav-secondaire .utbf-info-reseaux li a {margin-right:0;}
-.nav-secondaire .utbf-info-reseaux li a.icon {height:40px;width:40px;}
-.nav-secondaire .utbf-info-reseaux li a.icon:before {line-height:40px;margin:0 auto;}
+.nav-secondaire .utbf-info-reseaux li {margin-bottom:0px !important;}
+.nav-secondaire .utbf-info-reseaux li a {margin-right:0 !important;}
+.nav-secondaire .utbf-info-reseaux li a.icon {height:40px !important;width:40px !important;}
+.nav-secondaire .utbf-info-reseaux li a.icon:before {line-height:40px !important;margin:0 auto !important;}
 
 /** Styles header **/
-.nav-principale .main-menu {display:flex;justify-content:end;align-items:center;}
+.nav-principale .main-menu {display:flex !important;justify-content:end !important;align-items:center !important;}
 
 /** Fiche produit **/
-.product-ecole .dmach-postmeta-value:before, .product-prix p:before, .product-stock p:before {
+.utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before {
 	content:"";
 	display:inline-block;
 	width:24px;
@@ -30,11 +30,24 @@
 	background:url(/wp-content/themes/divi-child/img/picto-ecole.webp) no-repeat center center;
 	margin-right:7px;
 }
-.product-prix p:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
-.product-stock p:before {
+.utbf-product .product-price .amount:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
+.utbf-product .product-stock .stock:before {
 	background:url(/wp-content/themes/divi-child/img/picto-enfant.webp) no-repeat center center;
 }
-.product-ecole .dmach-postmeta-value, .product-prix p, .product-stock p {display:flex;}
+.utbf-product .product_meta {border:none;padding-top:0;}
+.utbf-product .product-meta span {display:block;}
+.utbf-product .product-category span.categories, .utbf-product .product-price .amount, .utbf-product .product-stock .stock {display:flex;}
+.utbf-product .product-category, .utbf-product .product-price, .utbf-product .product-stock {padding:0 20px;}
 
 /** Images à la une blog */
 .et_pb_image_container {margin:-19px -19px 29px;}
+
+/** Breadcrumb **/
+.breadcrumb-item a {text-decoration:underline;}
+
+/** Page Boutique **/
+.utbf-filtres .button_container  {text-align:center;}
+
+/** Mon compte **/
+.bc-account-content-container {width:80%; max-width:1080px; margin:0 auto;}
+.bc-account-content-container .woocommerce-MyAccount-navigation {float:none; width:auto;}
