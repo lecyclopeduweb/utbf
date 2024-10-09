@@ -145,7 +145,9 @@ class Search
     public function getTotalUsers(): int
     {
 
-        return count($this->combined) ?: count(get_users());
+        return count($this->getUsers()) ?: count(get_users(
+            ['role__not_in' => ['administrator']]
+        ));
 
     }
 
@@ -163,10 +165,11 @@ class Search
 
         $offset = ($this->paged - 1) * $this->limite;
 
-        $args['number'] =  $this->limite;
-        $args['offset'] =  $offset;
+        $args['number']         =  $this->limite;
+        $args['offset']         =  $offset;
+        $args['role__not_in']   =  ['administrator'];
         if(!empty($users_ids)):
-            $args['include'] =  $users_ids;
+            $args['include']    =  $users_ids;
         endif;
 
         $users = get_users($args);
