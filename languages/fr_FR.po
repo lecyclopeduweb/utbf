@@ -453,6 +453,10 @@ msgid "No children attached to the account"
 msgstr "Pas d'enfant rattaché au compte"
 
 #
+msgid "You do not have any children attached to your account. Please add one."
+msgstr "Vous n'avez aucun enfant rattaché à votre compte. Merci d'en ajouter un."
+
+#
 msgid "Legal guardian"
 msgstr "Représentant légal"
 
@@ -503,3 +507,15 @@ msgstr "Page actuelle"
 #
 msgid "Next page"
 msgstr "Page suivante"
+
+#
+msgid "Error"
+msgstr "Erreur"
+
+#
+msgid "Go to your children's section account"
+msgstr 'Rendez-vous dans votre compte partie "Enfants"'
+
+#
+msgid "Go to my account"
+msgstr "Se rendre sur mon compte"
