@@ -22,7 +22,7 @@
 .nav-principale .main-menu {display:flex !important;justify-content:end !important;align-items:center !important;}
 
 /** Fiche produit **/
-.utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before {
+.utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before, .utbf-product .product-stock .out-of-stock:before {
 	content:"";
 	display:inline-block;
 	width:24px;
@@ -32,11 +32,17 @@
 }
 .utbf-product .product-price .amount:before {background:url(/wp-content/themes/divi-child/img/picto-prix.webp) no-repeat center center; background-size:20px;}
 .utbf-product .product-stock .stock:before {
-	background:url(/wp-content/themes/divi-child/img/picto-enfant.webp) no-repeat center center;
+	background:url(/wp-content/themes/divi-child/img/picto-enfant-enstock.webp) no-repeat center center;
+}
+.utbf-product .product-stock .stock.available-on-backorder:before {
+	background:url(/wp-content/themes/divi-child/img/picto-enfant-dernieresplaces.webp) no-repeat center center;
+}
+.utbf-product .product-stock .out-of-stock:before {
+	background:url(/wp-content/themes/divi-child/img/picto-enfant-indisponible.webp) no-repeat center center;
 }
 .utbf-product .product_meta {border:none;padding-top:0;}
 .utbf-product .product-meta span {display:block;}
-.utbf-product .product-category span.categories, .utbf-product .product-price .amount, .utbf-product .product-stock .stock {display:flex;}
+.utbf-product .product-category span.categories, .utbf-product .product-price .amount, .utbf-product .product-stock .stock, .utbf-product .product-stock .out-of-stock {display:flex;}
 .utbf-product .product-category, .utbf-product .product-price, .utbf-product .product-stock {padding:0 20px;}
 
 /** Images à la une blog */
