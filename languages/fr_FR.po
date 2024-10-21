@@ -77,6 +77,10 @@ msgid "UTBF Register form"
 msgstr "UTBF Formulaire d’inscription"
 
 #
+msgid "Name"
+msgstr "Nom"
+
+#
 msgid "First name"
 msgstr "Prénom"
 
@@ -519,3 +523,63 @@ msgstr 'Rendez-vous dans votre compte partie "Enfants"'
 #
 msgid "Go to my account"
 msgstr "Se rendre sur mon compte"
+
+#
+msgid "Select a child"
+msgstr "Selectionner un enfant"
+
+#
+msgid "Select a classroom"
+msgstr "Selectionner une classe"
+
+#
+msgid "No children selected."
+msgstr "Aucun enfant séléctionné"
+
+#
+msgid "You have not selected your child."
+msgstr "Vous n'avez pas séléctionné votre enfant."
+
+#
+msgid "You have not selected all children."
+msgstr "Vous n'avez pas séléctionné tous les enfants."
+
+#
+msgid "You must select different children."
+msgstr "Vous devez séléctionner des enfants différents."
+
+#
+msgid "You must complete the contact details of the person to be notified in the event of an emergency for each child."
+msgstr "Vous devez compléter les coordonnées de la personne à prévernir en cas d'urgence pour chaque enfant."
+
+#
+msgid "number"
+msgstr "numéro"
+
+#
+msgid "You must select a school for each child."
+msgstr "Vous devez séléctionner une école pour chaque enfant."
+
+#
+msgid "Canteen"
+msgstr "Cantine"
+
+#
+msgid "Daycare"
+msgstr "Garderie"
+
+#
+msgid "day"
+msgstr "jour"
+
+#
+msgid "half day"
+msgstr "demi-journée"
+
+#
+msgid "Canteen prices"
+msgstr "Prix de la cantine"
+
+#
+msgid "Daycare prices"
+msgstr "Prix de la garderie"

@@ -111,6 +111,70 @@
                     "parent_repeater": "field_650c41fafdde1"
                 }
             ]
+        },
+        {
+            "key": "field_6711301ab34de",
+            "label": "Stages",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6711305ab34df",
+            "label": "Prix par défaut de l'option cantine",
+            "name": "theme_settings_product_canteen_option_price",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 6,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "€ \/ jour"
+        },
+        {
+            "key": "field_671130bcb34e0",
+            "label": "Prix par défaut de l'option garderie",
+            "name": "theme_settings_product_daycare_option_price",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "€ \/ demi-journée"
         }
     ],
     "location": [
@@ -131,5 +195,5 @@
     "active": true,
     "description": "Menu additionnel dans le menu Réglages",
     "show_in_rest": 0,
-    "modified": 1726759910
+    "modified": 1729514558
 }

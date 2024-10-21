@@ -5,6 +5,7 @@ declare (strict_types = 1);
 namespace AppUtbf\WooCommerce;
 
 use AppUtbf\WooCommerce\Cart;
+use AppUtbf\WooCommerce\Notice;
 use AppUtbf\WooCommerce\Account;
 use AppUtbf\WooCommerce\WooCommerce;
 use AppUtbf\WooCommerce\SingleProduct;
@@ -24,6 +25,7 @@ class WooCommerceServiceProvider
     {
 
         new Cart;
+        new Notice;
         new Account;
         new WooCommerce;
         new SingleProduct;

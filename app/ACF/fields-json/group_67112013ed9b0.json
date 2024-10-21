@@ -1,0 +1,159 @@
+{
+    "key": "group_67112013ed9b0",
+    "title": "Stages",
+    "fields": [
+        {
+            "key": "field_671120140189c",
+            "label": "Option cantine",
+            "name": "product_canteen_option",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "lundi": "Lundi",
+                "mardi": "Mardi",
+                "mercredi": "Mercredi",
+                "jeudi": "Jeudi",
+                "vendredi": "Vendredi",
+                "samedi": "Samedi",
+                "dimanche": "Dimanche"
+            },
+            "default_value": [
+                "lundi",
+                "mardi",
+                "mercredi",
+                "jeudi",
+                "vendredi"
+            ],
+            "return_format": "array",
+            "allow_custom": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Ajouter un nouveau choix"
+        },
+        {
+            "key": "field_67112f71fb156",
+            "label": "Prix de l'option cantine",
+            "name": "product_canteen_option_price",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 6,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "€ \/ jour"
+        },
+        {
+            "key": "field_6711295458bc6",
+            "label": "Option garderie",
+            "name": "product_daycare_option",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "lundi-08h-08h45": "Lundi \/ 08h - 08h45",
+                "lundi-17h-18h": "Lundi \/ 17h - 18h",
+                "mardi-08h-08h45": "Mardi \/ 08h - 08h45",
+                "mardi-17h-18h": "Mardi \/ 17h - 18h",
+                "mercredi-08h-08h45": "Mercredi \/ 08h - 08h45",
+                "mercredi-17h-18h": "Mercredi \/ 17h - 18h",
+                "jeudi-08h-08h45": "Jeudi \/ 08h - 08h45",
+                "jeudi-17h-18h": "Jeudi \/ 17h - 18h",
+                "vendredi-08h-08h45": "Vendredi \/ 08h - 08h45",
+                "vendredi-17h-18h": "Vendredi \/ 17h - 18h",
+                "samedi-08h-08h45": "Samedi \/ 08h - 08h45",
+                "samedi-17h-18h": "Samedi \/ 17h - 18h",
+                "dimanche-08h-08h45": "Dimanche \/ 08h - 08h45",
+                "dimanche-17h-18h": "Dimanche \/ 17h - 18h"
+            },
+            "default_value": [
+                "lundi-08h-08h45",
+                "lundi-17h-18h",
+                "mardi-08h-08h45",
+                "mardi-17h-18h",
+                "mercredi-08h-08h45",
+                "mercredi-17h-18h",
+                "jeudi-08h-08h45",
+                "jeudi-17h-18h",
+                "vendredi-08h-08h45",
+                "vendredi-17h-18h"
+            ],
+            "return_format": "array",
+            "allow_custom": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Ajouter un nouveau choix"
+        },
+        {
+            "key": "field_67112fc0ed33d",
+            "label": "Prix de l'option garderie",
+            "name": "product_daycare_option_price",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 2,
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "€ \/ demi-journée"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1729514549
+}

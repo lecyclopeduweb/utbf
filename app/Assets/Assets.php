@@ -4,6 +4,7 @@ declare (strict_types = 1);
 
 namespace AppUtbf\Assets;
 
+use AppUtbf\Users\Childs;
 /**
  * Assets
  *
@@ -33,6 +34,9 @@ class Assets
      */
     public function enqueue_scripts():void
     {
+
+        $childs = new Childs;
+        $get_childs = $childs->get_childs();
 
         $parenthandle = 'divi-style';
         $theme = wp_get_theme();
@@ -64,6 +68,10 @@ class Assets
 
 	    wp_localize_script('theme', 'VAR', [
 		    'confirm_delete_child'   => __('Are you sure you want to delete this child?',UTBF_TEXT_DOMAIN),
+	    ]);
+
+	    wp_localize_script('theme', 'CHILDS', [
+		    'count'           => count($get_childs),
 	    ]);
 
     }
