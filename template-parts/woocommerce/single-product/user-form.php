@@ -76,7 +76,7 @@
                             </label>
                             <div class="single-product-childs__canteen-checkboxs">
                                 <?php foreach($args['canteen'] as $key => $value): ?>
-                                    <?php $checked = (isset($_POST['childs']))? $_POST['childs'][$i]['canteen'][$value['value']] : false;?>
+                                    <?php $checked = (isset($_POST['childs']))? ((isset($_POST['childs'][$i]['canteen'][$value['value']]))? true : false) : false;?>
                                     <label>
                                         <input type="checkbox" name="childs[<?= $i; ?>][canteen][<?= $value['value']; ?>]" value="<?= $value['label']; ?>" <?php if(!empty($checked)): echo 'checked'; endif;?>> <?= $value['label']; ?>
                                     </label>
@@ -100,7 +100,7 @@
                             </label>
                             <div class="single-product-childs__daycare-checkboxs">
                                 <?php foreach($args['daycare'] as $key => $value): ?>
-                                    <?php $checked = (isset($_POST['childs']))? $_POST['childs'][$i]['daycare'][$value['value']] : false;?>
+                                    <?php $checked = (isset($_POST['childs']))? ((isset($_POST['childs'][$i]['daycare'][$value['value']]))? true : false) : false;?>
                                     <label>
                                         <input type="checkbox" name="childs[<?= $i; ?>][daycare][<?= $value['value']; ?>]" value="<?= $value['label']; ?>" <?php if(!empty($checked)): echo 'checked'; endif;?>> <?= $value['label']; ?>
                                     </label>
