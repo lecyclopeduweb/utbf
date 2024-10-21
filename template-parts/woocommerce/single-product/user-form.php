@@ -68,21 +68,23 @@
                  *
                  */
                 ?>
-                <div class="utbf-form__row single-product-childs__canteen">
-                    <div class="utbf-form__full-col form-row">
-                        <label>
-                            <?= __('Canteen',UTBF_TEXT_DOMAIN); ?> <i>(<?= $args['canteen_price'];?>€ /<?= __('day',UTBF_TEXT_DOMAIN); ?>)</i>
-                        </label>
-                        <div class="single-product-childs__canteen-checkboxs">
-                            <?php foreach($args['canteen'] as $key => $value): ?>
-                                <?php $checked = (isset($_POST['childs']))? $_POST['childs'][$i]['canteen'][$value['value']] : false;?>
-                                <label>
-                                    <input type="checkbox" name="childs[<?= $i; ?>][canteen][<?= $value['value']; ?>]" value="<?= $value['label']; ?>" <?php if(!empty($checked)): echo 'checked'; endif;?>> <?= $value['label']; ?>
-                                </label>
-                             <?php endforeach; ?>
+                <?php if(!empty($args['canteen'])): ?>
+                    <div class="utbf-form__row single-product-childs__canteen">
+                        <div class="utbf-form__full-col form-row">
+                            <label>
+                                <?= __('Canteen',UTBF_TEXT_DOMAIN); ?> <i>(<?= $args['canteen_price'];?>€ /<?= __('day',UTBF_TEXT_DOMAIN); ?>)</i>
+                            </label>
+                            <div class="single-product-childs__canteen-checkboxs">
+                                <?php foreach($args['canteen'] as $key => $value): ?>
+                                    <?php $checked = (isset($_POST['childs']))? $_POST['childs'][$i]['canteen'][$value['value']] : false;?>
+                                    <label>
+                                        <input type="checkbox" name="childs[<?= $i; ?>][canteen][<?= $value['value']; ?>]" value="<?= $value['label']; ?>" <?php if(!empty($checked)): echo 'checked'; endif;?>> <?= $value['label']; ?>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <?php
                 /**
                  *
@@ -90,21 +92,23 @@
                  *
                  */
                 ?>
-                <div class="utbf-form__row single-product-childs__daycare">
-                    <div class="utbf-form__full-col form-row">
-                        <label>
-                            <?= __('Daycare',UTBF_TEXT_DOMAIN); ?> <i>(<?= $args['daycare_price'];?>€ /<?= __('half day',UTBF_TEXT_DOMAIN); ?>)</i>
-                        </label>
-                        <div class="single-product-childs__daycare-checkboxs">
-                            <?php foreach($args['daycare'] as $key => $value): ?>
-                                <?php $checked = (isset($_POST['childs']))? $_POST['childs'][$i]['daycare'][$value['value']] : false;?>
-                                <label>
-                                    <input type="checkbox" name="childs[<?= $i; ?>][daycare][<?= $value['value']; ?>]" value="<?= $value['label']; ?>" <?php if(!empty($checked)): echo 'checked'; endif;?>> <?= $value['label']; ?>
-                                </label>
-                             <?php endforeach; ?>
+                <?php if(!empty($args['daycare'])): ?>
+                    <div class="utbf-form__row single-product-childs__daycare">
+                        <div class="utbf-form__full-col form-row">
+                            <label>
+                                <?= __('Daycare',UTBF_TEXT_DOMAIN); ?> <i>(<?= $args['daycare_price'];?>€ /<?= __('half day',UTBF_TEXT_DOMAIN); ?>)</i>
+                            </label>
+                            <div class="single-product-childs__daycare-checkboxs">
+                                <?php foreach($args['daycare'] as $key => $value): ?>
+                                    <?php $checked = (isset($_POST['childs']))? $_POST['childs'][$i]['daycare'][$value['value']] : false;?>
+                                    <label>
+                                        <input type="checkbox" name="childs[<?= $i; ?>][daycare][<?= $value['value']; ?>]" value="<?= $value['label']; ?>" <?php if(!empty($checked)): echo 'checked'; endif;?>> <?= $value['label']; ?>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <?php
                 /**
                  *
