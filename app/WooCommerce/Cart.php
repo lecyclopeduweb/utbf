@@ -30,6 +30,9 @@ class Cart
         //Prices
         add_action('woocommerce_cart_calculate_fees', [$this, 'modify_cart_fees_product_price']);
 
+        //Quantity
+        add_filter('woocommerce_cart_item_quantity', [$this,'change_quantity_input'], 10, 3);
+
     }
 
     /**
@@ -269,6 +272,21 @@ class Cart
                 WC()->cart->add_fee(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_daycare, true);
             endforeach;
         endif;
+
+    }
+
+    /**
+     * Change Quantity Input
+     *
+     * @param string   $product_quantity  HTML content of quantity input.
+     * @param string   $cart_item_key     Cart item key.
+     * @param array    $cart_item         Cart item data array.
+     *
+     * @return string  Returns the product quantity as a string.
+     */
+    function change_quantity_input($product_quantity, $cart_item_key, $cart_item) {
+
+        return $cart_item['quantity'];
 
     }
 
