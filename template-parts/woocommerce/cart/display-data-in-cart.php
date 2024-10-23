@@ -32,7 +32,7 @@
      *
      */
     ?>
-    <?php if($args['canteen']): ?>
+    <?php if(!empty($args['canteen'])): ?>
         - <?=  __('Canteen', UTBF_TEXT_DOMAIN); ?> :
         <?php $i = 0;  foreach ($args['canteen'] as $canteen): ?>
             <?php if( $i != 0): ?>, <?php endif; ?>
@@ -46,7 +46,7 @@
      *
      */
     ?>
-    <?php if($args['daycare']): ?>
+    <?php if(!empty($args['daycare'])): ?>
         - <?=  __('Daycare', UTBF_TEXT_DOMAIN); ?> :
         <?php $i = 0;  foreach ($args['daycare'] as $daycare): ?>
             <?php if( $i != 0): ?>, <?php endif; ?>

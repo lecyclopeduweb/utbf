@@ -39,7 +39,7 @@
          *
          */
         ?>
-        <?php if($args['child']['canteen']): ?>
+        <?php if(!empty($args['child']['canteen'])): ?>
             <li>
                 <strong><?=  __('Canteen', UTBF_TEXT_DOMAIN); ?> : </strong>
                 <ul>
@@ -62,7 +62,7 @@
          *
          */
         ?>
-        <?php if($args['child']['daycare']): ?>
+        <?php if(!empty($args['child']['daycare'])): ?>
             <li>
                 <strong><?=  __('Daycare', UTBF_TEXT_DOMAIN); ?> :</strong>
                 <ul>

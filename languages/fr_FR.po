@@ -429,6 +429,10 @@ msgid "Childs"
 msgstr "Enfants"
 
 #
+msgid "child"
+msgstr "enfant"
+
+#
 msgid "Your form has been submitted successfully"
 msgstr "Votre formulaire a été envoyé avec succès"
 
@@ -583,3 +587,7 @@ msgstr "Prix de la cantine"
 #
 msgid "Daycare prices"
 msgstr "Prix de la garderie"
+
+#
+msgid "Discount for multiple children"
+msgstr "Réduction pour plusieurs enfants"

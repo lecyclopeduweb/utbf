@@ -135,6 +135,29 @@
             "step": "",
             "prepend": "",
             "append": "€ \/ demi-journée"
+        },
+        {
+            "key": "field_6717d1cb09174",
+            "label": "Pourcentage de réduction",
+            "name": "product_decreasing_rate_percentage",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "A partir de 2 stages similaires",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "min": 0,
+            "max": 100,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": 1,
+            "prepend": "",
+            "append": "%"
         }
     ],
     "location": [
@@ -155,5 +178,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729514549
+    "modified": 1729614337
 }

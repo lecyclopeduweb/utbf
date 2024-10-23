@@ -4,6 +4,7 @@ declare (strict_types = 1);
 
 namespace AppUtbf\WooCommerce;
 
+use AppUtbf\WooCommerce\Prices;
 /**
  * Cart
  *
@@ -20,10 +21,14 @@ class Cart
     public function __construct()
     {
 
+        //Childs Item Datas
         add_filter('woocommerce_add_cart_item_data', [$this, 'add_cart_item_data'], 10, 2);
         add_filter('woocommerce_get_cart_item_from_session', [$this, 'get_cart_item_from_session'], 10, 2);
         add_filter('woocommerce_get_item_data', [$this, 'display_data_in_cart'], 10, 2);
         add_action('woocommerce_add_order_item_meta', [$this,'save_data_in_order'], 10, 2);
+
+        //Prices
+        add_action('woocommerce_cart_calculate_fees', [$this, 'modify_cart_fees_product_price']);
 
     }
 
@@ -81,12 +86,9 @@ class Cart
         $product_id = $cart_item['product_id'];
 
         //Prices
-        $canteen_option_price_default = get_field('theme_settings_product_canteen_option_price','option');
-        $daycare_option_price_default = get_field('theme_settings_product_daycare_option_price','option');
-        $canteen_option_price = get_field('product_canteen_option_price',$product_id);
-        $daycare_option_price = get_field('product_daycare_option_price',$product_id);
-        $canteen_price = ($canteen_option_price)? $canteen_option_price : (($canteen_option_price_default)? $canteen_option_price_default : 6);
-        $daycare_price = ($daycare_option_price)? $daycare_option_price : (($daycare_option_price_default)? $daycare_option_price_default : 2);
+        $prices = new Prices;
+        $canteen_price = $prices->get_canteen($product_id);
+        $daycare_price = $prices->get_daycare($product_id);
 
         if (isset($cart_item['childs']) && is_array($cart_item['childs'])):
             foreach ($cart_item['childs'] as $key => $child):
@@ -132,15 +134,13 @@ class Cart
      *
      * @return void
      */
-    function save_data_in_order(int $item_id, array $values): void {
+    function save_data_in_order(int $item_id, array $values): void
+    {
 
         //Prices
-        $canteen_option_price_default = get_field('theme_settings_product_canteen_option_price','option');
-        $daycare_option_price_default = get_field('theme_settings_product_daycare_option_price','option');
-        $canteen_option_price = get_field('product_canteen_option_price',$item_id);
-        $daycare_option_price = get_field('product_daycare_option_price',$item_id);
-        $canteen_price = ($canteen_option_price)? $canteen_option_price : (($canteen_option_price_default)? $canteen_option_price_default : 6);
-        $daycare_price = ($daycare_option_price)? $daycare_option_price : (($daycare_option_price_default)? $daycare_option_price_default : 2);
+        $prices = new Prices;
+        $canteen_price = $prices->get_canteen($item_id);
+        $daycare_price = $prices->get_daycare($item_id);
 
         if (isset($values['childs']) && is_array($values['childs'])):
             foreach ($values['childs'] as $key => $child):
@@ -166,6 +166,107 @@ class Cart
 
                 endif;
 
+            endforeach;
+        endif;
+
+    }
+
+    /**
+     * Modify Cart Product Price
+     *
+     * @return void
+     */
+    function modify_cart_fees_product_price(): void
+    {
+
+        // Check if cart is not empty
+        if (WC()->cart->is_empty())
+            return;
+
+        $prices = new Prices;
+        static $processed_products = [];
+        static $fee_canteens = [];
+        static $fee_daycares = [];
+        static $total_discount = 0;
+
+        foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item):
+
+            $product = $cart_item['data'];
+            $product_id = $product->get_id();
+
+            if (in_array($product_id, $processed_products))
+                continue; // Skip if the product has already been processed
+
+            $childs = isset($cart_item['childs']) ? $cart_item['childs'] : '';
+
+            //Prices
+            $canteen_price = $prices->get_canteen($product_id);
+            $daycare_price = $prices->get_daycare($product_id);
+            $decreasing_percentage = $prices->get_decreasing_rate_percentage($product_id);
+
+            if (!empty($childs)):
+
+                //Init Price
+                $output_price = $product->get_price();
+
+                // Add decreasing rate
+                if( (count($childs)>=2) && ((int)$decreasing_percentage!=0) ):
+                    $decreasing = (($output_price * $decreasing_percentage) * (count($childs)-1)) /100;
+                    $total_discount += $decreasing;
+                endif;
+
+                foreach($childs as $key => $child):
+
+                    // Add Canteen
+                    if(!empty($child['canteen'])):
+                        $fee_canteens[$key] = (count($child['canteen']) * (int)$canteen_price);
+                    endif;
+
+                    // Add Daycare
+                    if(!empty($child['daycare'])):
+                        $fee_daycares[$key] = (count($child['daycare']) * (int)$daycare_price);
+                    endif;
+
+                endforeach;
+
+                // Add the product ID to the processed products table
+                $processed_products[] = $product_id;
+
+            endif;
+        endforeach;
+
+        $this->apply_wc_cart_add_fees($total_discount, $fee_canteens, $fee_daycares);
+
+    }
+
+    /**
+     * Apply WC()->cart->add_fee
+     *
+     * @param int       $total_discount       Discount
+     * @param array     $fee_canteens         Canteens
+     * @param array     $fee_daycares         Daycares
+     *
+     * @return void
+     */
+    function apply_wc_cart_add_fees($total_discount, $fee_canteens, $fee_daycares): void
+    {
+
+        // Discount
+        if ($total_discount > 0) :
+            WC()->cart->add_fee(__('Discount for multiple children', UTBF_TEXT_DOMAIN), - $total_discount, true);
+        endif;
+
+        //Canteen
+        if (!empty($fee_canteens)) :
+            foreach($fee_canteens as $key => $fee_canteen):
+                WC()->cart->add_fee(__('Canteen', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_canteen, true);
+            endforeach;
+        endif;
+
+        //Daycare
+        if (!empty($fee_daycares)) :
+            foreach($fee_daycares as $key => $fee_daycare):
+                WC()->cart->add_fee(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_daycare, true);
             endforeach;
         endif;
 
