@@ -591,3 +591,15 @@ msgstr "Prix de la garderie"
 #
 msgid "Discount for multiple children"
 msgstr "Réduction pour plusieurs enfants"
+
+#
+msgid "Authorization to publish photos on the secure blog"
+msgstr "Autorisation de publication des photos sur le blog sécurisé"
+
+#
+msgid "Authorization to publish photos on the association's communication tools (website, FB, IG, etc.)"
+msgstr "Autorisation de publication des photos sur les outils de communication de l'asso (site web, FB, IG, ...)"
+
+#
+msgid "Consent not selected."
+msgstr "Consentements non séléctionnés."

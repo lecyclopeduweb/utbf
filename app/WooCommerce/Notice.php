@@ -25,6 +25,7 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
+        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_consent'], 10, 3);
 
     }
 
@@ -185,6 +186,30 @@ class Notice
 
                 endif;
             endforeach;
+
+        endif;
+
+        return $passed;
+    }
+
+    /**
+     * Notice Consent
+     *
+     * @param bool $passed Whether the validation has passed.
+     * @param int $product_id The ID of the product being added to the cart.
+     * @param int $quantity The quantity of the product being added.
+     *
+     * @return bool
+     */
+    public function notice_consent($passed, $product_id, $quantity):bool
+    {
+
+        if (empty($_POST['consent-blog']) || empty($_POST['consent-communication'])) :
+
+            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+            $notice .=  __( 'Consent not selected.' , UTBF_TEXT_DOMAIN );
+            wc_add_notice($notice, 'error');
+            return false;
 
         endif;
 

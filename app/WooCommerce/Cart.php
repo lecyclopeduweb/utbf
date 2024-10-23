@@ -53,6 +53,9 @@ class Cart
             wc_add_notice(__('Custom data added to cart', UTBF_TEXT_DOMAIN), 'success');
         endif;
 
+        $cart_item_data['consent-blog'] = $_POST['consent-blog'];
+        $cart_item_data['consent-communication'] = $_POST['consent-communication'];
+
         return $cart_item_data;
 
     }
@@ -71,6 +74,8 @@ class Cart
         if (isset($values['childs'])):
             $cart_item['childs'] = $values['childs'];
         endif;
+        $cart_item['consent-blog'] = $values['consent-blog'];
+        $cart_item['consent-communication'] = $values['consent-communication'];
 
         return $cart_item;
     }
@@ -125,6 +130,16 @@ class Cart
             endforeach;
         endif;
 
+        $item_data[] = array(
+            'name'  => __('Authorization to publish photos on the secure blog', UTBF_TEXT_DOMAIN),
+            'display' => $cart_item['consent-blog'],
+        );
+
+        $item_data[] = array(
+            'name'  => __("Authorization to publish photos on the association's communication tools (website, FB, IG, etc.)", UTBF_TEXT_DOMAIN),
+            'display' => $cart_item['consent-communication'],
+        );
+
         return $item_data;
 
     }
@@ -171,6 +186,18 @@ class Cart
 
             endforeach;
         endif;
+
+        wc_add_order_item_meta(
+            $item_id,
+            __('Authorization to publish photos on the secure blog', UTBF_TEXT_DOMAIN),
+            $values['consent-blog']
+        );
+
+        wc_add_order_item_meta(
+            $item_id,
+            __("Authorization to publish photos on the association's communication tools (website, FB, IG, etc.)", UTBF_TEXT_DOMAIN),
+            $values['consent-communication']
+        );
 
     }
 
