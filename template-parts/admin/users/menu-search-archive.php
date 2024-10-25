@@ -31,15 +31,17 @@
 
         </div>
 
-        <div class="tablenav top">
+        <?php if($args['count']>$args['ppp_get']) : ?>
+            <div class="tablenav top">
 
-            <div class="tablenav-pages">
-                <?php
-                load_template( UTBF_THEME_PATH . '/template-parts/admin/components/pagination.php',null,array_merge($args,['layout'=>'thead']));
-                ?>
+                <div class="tablenav-pages">
+                    <?php
+                    load_template( UTBF_THEME_PATH . '/template-parts/admin/components/pagination.php',null,array_merge($args,['layout'=>'thead']));
+                    ?>
+                </div>
+
             </div>
-
-        </div>
+        <?php endif; ?>
 
         <table class="wp-list-table widefat fixed striped table-view-list users">
             <thead>
@@ -59,7 +61,7 @@
                 <?php else:?>
                     <tr >
                         <td class="colspanchange" colspan="3">
-                            <?= __('No results', UTBF_TEXT_DOMAIN);?>
+                            <?= __('No result', UTBF_TEXT_DOMAIN);?>
                         </td>
                     </tr>
                 <?php endif;?>
@@ -75,15 +77,17 @@
         </table>
 
 
-        <div class="tablenav bottom">
+        <?php if($args['count']>$args['ppp_get']) : ?>
+            <div class="tablenav bottom">
 
-            <div class="tablenav-pages">
-                <?php
-                load_template( UTBF_THEME_PATH . '/template-parts/admin/components/pagination.php',null,array_merge($args,['layout'=>'tfoot']));
-                ?>
+                <div class="tablenav-pages">
+                    <?php
+                    load_template( UTBF_THEME_PATH . '/template-parts/admin/components/pagination.php',null,array_merge($args,['layout'=>'tfoot']));
+                    ?>
+                </div>
+
             </div>
-
-        </div>
+        <?php endif; ?>
 
 
     </form>

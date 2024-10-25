@@ -1,0 +1,7 @@
+.form-table{
+    &__wrap{
+        .widefat td, .widefat th {
+            padding: 8px 10px;
+        }
+    }
+}

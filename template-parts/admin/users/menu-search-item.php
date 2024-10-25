@@ -7,7 +7,6 @@
  *
  * @var Array     $user              User
  */
-//var_dump($args);
 ?>
 <tr id="user-1">
     <td class="parent column-parent" data-colname="<?= __('Parent',UTBF_TEXT_DOMAIN); ?>">

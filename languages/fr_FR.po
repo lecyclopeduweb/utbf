@@ -481,8 +481,8 @@ msgid "Search for accounts"
 msgstr "Rechercher des comptes"
 
 #
-msgid "No results"
-msgstr "Aucun résultats"
+msgid "No result"
+msgstr "Aucun résultat"
 
 #
 msgid "No Childs"
@@ -603,3 +603,19 @@ msgstr "Autorisation de publication des photos sur les outils de communication d
 #
 msgid "Consent not selected."
 msgstr "Consentements non séléctionnés."
+
+#
+msgid "Orders"
+msgstr "Commandes"
+
+#
+msgid "Order"
+msgstr "Commande"
+
+#
+msgid "State"
+msgstr "État"
+
+#
+msgid "No order"
+msgstr "Aucune commande"

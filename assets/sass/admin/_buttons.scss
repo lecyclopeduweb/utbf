@@ -1,0 +1,59 @@
+/* Base style for the custom select container */
+.custom-select {
+    position: relative;
+    width: auto;
+    font-size: 14px;
+}
+
+/* Style for the selected value */
+.select-selected {
+    background-color: #fff;
+    border: 1px solid #8c8f94;
+    padding: 5px 30px 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Arrow down added via CSS */
+    &::after {
+        content: "›";
+        transform: rotate(90deg);
+        font-size: 31px;
+        color: #555;
+        position: absolute;
+        right: 5px;
+    }
+}
+
+/* List of items */
+.select-items {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 99;
+    width: 100%;
+    display: none; /* Hidden by default */
+
+    div {
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
+}
+
+/* Show items on click */
+.select-items.select-show {
+    display: block;
+}
+
+/* Style for the selected item in the list */
+.select-item.selected {
+    background-color: #007bff;
+    color: white;
+}
