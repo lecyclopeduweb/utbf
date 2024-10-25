@@ -52,7 +52,36 @@
                         <label for="current-page-selector" class="screen-reader-text">
                             <?= __( 'Current page',UTBF_TEXT_DOMAIN); ?>
                         </label>
-                        <input class="current-page" id="current-page-selector" slug-paged="<?= $args['slug_paged']; ?>" total-pages="<?= ceil($args['count']/$args['ppp_get']); ?>" type="text" name="<?= $args['slug_paged'] ?>" value="<?= $args['paged'] ?>" size="1" aria-describedby="table-paging" />
+                        <div class="current-page"
+                            id="current-page-selector"
+                            data-slug-p="<?= $args['slug_paged']; ?>"
+                            contenteditable="true"
+                            onblur="
+                                updateUrl();
+                            "
+                            onkeydown="
+                                if (event.key === 'Enter') {
+                                    event.preventDefault(); // Prevent line break
+                                    updateUrl();
+                                }
+                            "
+                            style="cursor: pointer; display: inline-block;border-radius: 4px;padding: 5px 10px 5px 10px; border: 1px solid #8c8f94; text-align: center;background:#fff;">
+                            <?= $args['paged']; ?>
+                        </div>
+                        <script>
+                            function updateUrl() {
+                                var currentUrl = window.location.href;
+                                var slugP = document.getElementById('current-page-selector').getAttribute('data-slug-p');
+                                var selectedValue = document.getElementById('current-page-selector').innerText.trim();
+                                var regex = new RegExp('([?&])' + encodeURIComponent(slugP) + '=.*?(&|$)', 'i');
+                                if (regex.test(currentUrl)) {
+                                    currentUrl = currentUrl.replace(regex, '$1' + encodeURIComponent(slugP) + '=' + encodeURIComponent(selectedValue) + '$2');
+                                } else {
+                                    currentUrl += (currentUrl.includes('?') ? '&' : '?') + encodeURIComponent(slugP) + '=' + encodeURIComponent(selectedValue);
+                                }
+                                window.location.href = currentUrl;
+                            }
+                        </script>
                     <?php endif; ?>
                     <?php if($args['layout']!='all'):?>
                         <span class="tablenav-paging-text">

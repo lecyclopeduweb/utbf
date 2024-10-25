@@ -20,7 +20,7 @@
 
         <div class="tablenav-pages">
             <?php
-            load_template( UTBF_THEME_PATH . '/template-parts/admin/components/post-per-page-buttons.php',null,$args);
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/components/post-per-page.php',null,$args);
             ?>
         </div>
 
