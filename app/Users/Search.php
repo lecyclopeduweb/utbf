@@ -140,12 +140,14 @@ class Search
     /**
      * Get total users found
      *
+     * @param string $s      Query Search
+     *
      * @return int
      */
-    public function getTotalUsers(): int
+    public function getTotalUsers($s): int
     {
 
-        return count($this->getUsers()) ?: count(get_users(
+        return !empty($s) ? count($this->getUsersTotal()) : count(get_users(
             ['role__not_in' => ['administrator']]
         ));
 
@@ -160,13 +162,40 @@ class Search
     public function getUsers(): array
     {
 
-
         $users_ids = (!empty($this->combined))? $this->combined : [];
 
         $offset = ($this->paged - 1) * $this->limite;
 
         $args['number']         =  $this->limite;
         $args['offset']         =  $offset;
+        $args['role__not_in']   =  ['administrator'];
+        if(!empty($users_ids)):
+            $args['include']    =  $users_ids;
+        endif;
+
+        $users = get_users($args);
+
+        if(!empty($users)):
+            foreach($users as $key => $user):
+                $user_meta = get_user_meta($user->ID);
+                $users[$key] = array_merge((array) $user, $user_meta);
+            endforeach;
+        endif;
+
+        return $users;
+
+    }
+
+    /**
+     * Get Users Total
+     *
+     * @return array
+     */
+    public function getUsersTotal(): array
+    {
+
+        $users_ids = (!empty($this->combined))? $this->combined : [];
+
         $args['role__not_in']   =  ['administrator'];
         if(!empty($users_ids)):
             $args['include']    =  $users_ids;

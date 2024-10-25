@@ -99,7 +99,7 @@ class Admin
                    ->getUsers();
 
         $count =
-            $search->getTotalUsers();
+            $search->getTotalUsers($s);
 
         $limite =
             $search->getLimite();
