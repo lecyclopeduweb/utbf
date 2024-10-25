@@ -17,6 +17,7 @@
     <select name="ppp" class="filter-ppp postform ml-10"
         slug-ppp="<?= $args['slug_ppp']; ?>"
         base-url="<?= $args['base_url']; ?>"
+        keep_param='<?= (!empty($args['keep_param']))? json_encode($args['keep_param']): ''; ?>'
         <?php if(!empty($args['s'])): echo 'search="'.$args['s'].'"'; endif; ?>
         onchange="
             var baseUrl = this.getAttribute('base-url');
