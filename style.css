@@ -54,6 +54,21 @@
 /** Page Boutique **/
 .utbf-filtres .button_container  {text-align:center;}
 
+/** Notices **/
+.wc-block-components-notice-banner, .woocommerce-info {width:80%; max-width:1080px; margin:16px auto !important;}
+
 /** Mon compte **/
 .bc-account-content-container {width:80%; max-width:1080px; margin:0 auto;}
 .bc-account-content-container .woocommerce-MyAccount-navigation {float:none; width:auto;}
+.bc-account-content #woocommerce-EditLegalGuardianAccountForm,.bc-account-content  #woocommerce-EditChildsAccountForm {padding:81px 0;}
+
+/** Validation commande **/
+/*.woocommerce .et_pb_row .woocommerce-cart-form {display:none;}*/
+.woocommerce .et_pb_row .cart-collaterals, .woocommerce .et_pb_row .checkout-area {
+	width:80%;
+	max-width:1080px; 
+	margin:0 auto;
+	padding:0 !important;
+}
+.woocommerce .woocommerce-checkout #customer_details {margin-bottom:30px;}
+
