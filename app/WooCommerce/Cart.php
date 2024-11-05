@@ -187,9 +187,6 @@ class Cart
 
             if (!empty($childs)):
 
-                //Init Price
-                $product_price = $product->get_price();
-
                 foreach($childs as $key => $child):
 
                     // Add Canteen
@@ -271,6 +268,7 @@ class Cart
                 $product_price = $product->get_price();
 
                 $decreasing_percentage = $prices->get_decreasing_rate_percentage($product_id);
+
                 if( (count($childs)>=2) && ((int)$decreasing_percentage!=0) ):
                     $product_price = $product_price - $decreasing_percentage;
                     $cart_item['data']->set_price($product_price);
