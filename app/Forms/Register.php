@@ -60,12 +60,11 @@ class Register
     public function process_user_creation()
     {
 
-        global $wpdb;
-
         $user_data = array_merge(
             $_POST,
             [
                 'role'              => 'subscriber',
+                'user_pass'         => $_POST['password']
             ]
         );
         unset($user_data['zip-code'], $user_data['address'], $user_data['city'], $user_data['phone'], $user_data['action']);
