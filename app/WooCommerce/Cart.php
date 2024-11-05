@@ -259,7 +259,7 @@ class Cart
         foreach ($cart->get_cart() as $cart_item_key => $cart_item) :
 
             $product = $cart_item['data'];
-            $product_id = $product->get_id();
+            $product_id = $cart_item['product_id'];
 
             $childs = isset($cart_item['childs']) ? $cart_item['childs'] : '';
 

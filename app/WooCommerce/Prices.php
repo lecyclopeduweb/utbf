@@ -75,6 +75,7 @@ class Prices
 
         $decreasing_rate_percentage_default = get_field('theme_settings_product_decreasing_rate_percentage','option');
 
+
         if($post_id):
             $decreasing_rate_percentage = get_field('product_decreasing_rate_percentage',$post_id);
             return ($decreasing_rate_percentage)? (int)$decreasing_rate_percentage : (($decreasing_rate_percentage_default)? (int)$decreasing_rate_percentage_default : (int)UTBF_DECREASING_RATE_PERCENTAGE);
