@@ -197,7 +197,7 @@
             "placeholder": "",
             "step": 1,
             "prepend": "",
-            "append": "%"
+            "append": "€"
         }
     ],
     "location": [
@@ -218,5 +218,5 @@
     "active": true,
     "description": "Menu additionnel dans le menu Réglages",
     "show_in_rest": 0,
-    "modified": 1730826378
+    "modified": 1730826430
 }

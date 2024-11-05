@@ -157,7 +157,7 @@
             "placeholder": "",
             "step": 1,
             "prepend": "",
-            "append": "%"
+            "append": "€"
         }
     ],
     "location": [
@@ -178,5 +178,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730826348
+    "modified": 1730826454
 }
