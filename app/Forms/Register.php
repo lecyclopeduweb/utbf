@@ -63,8 +63,12 @@ class Register
         $user_data = array_merge(
             $_POST,
             [
+                'user_nicename'     => $_POST['first_name'] . ' ' . $_POST['last_name'],
+                'display_name'      => $_POST['first_name'] . ' ' . $_POST['last_name'],
+                'nickname'          => $_POST['first_name'] . ' ' . $_POST['last_name'],
+                'user_login'        => $_POST['user_email'],
+                'user_pass'         => $_POST['password'],
                 'role'              => 'subscriber',
-                'user_pass'         => $_POST['password']
             ]
         );
         unset($user_data['zip-code'], $user_data['address'], $user_data['city'], $user_data['phone'], $user_data['action']);

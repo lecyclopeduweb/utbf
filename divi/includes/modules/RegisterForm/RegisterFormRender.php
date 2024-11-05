@@ -25,10 +25,10 @@ if(empty($args))
     <div class="utbf-form__row space-mt-20">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_user_login']))? $args['props']['label_user_login'] : __('Login',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_user_email']))? $args['props']['label_user_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="text" name="user_login" value="">
-            <div class="error user_login"></div>
+            <input type="email" name="user_email" value="">
+            <div class="error user_email"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
@@ -93,15 +93,6 @@ if(empty($args))
             </label>
             <input type="number" name="phone_2" value="">
             <div class="error phone_2"></div>
-        </div>
-    </div>
-    <div class="utbf-form__row">
-        <div class="utbf-form__full-col">
-            <label>
-                <?= (!empty($args['props']['label_user_email']))? $args['props']['label_user_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>*
-            </label>
-            <input type="email" name="user_email" value="">
-            <div class="error user_email"></div>
         </div>
     </div>
     <?php
