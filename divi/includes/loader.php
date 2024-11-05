@@ -1,5 +1,4 @@
 <?php
-
 if ( ! class_exists( 'ET_Builder_Element' ) ) {
 	return;
 }

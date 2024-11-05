@@ -48,7 +48,7 @@ class UtbfRegisterForm extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	function render( $attrs, $content = null, $render_slug ) {
+	function render( $attrs, $render_slug, $content = null) {
 
 		//Theme settings : classroom
 		$classroom = [];
