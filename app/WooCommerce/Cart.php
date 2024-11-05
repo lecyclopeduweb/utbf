@@ -210,7 +210,9 @@ class Cart
             endif;
         endforeach;
 
-        $this->apply_wc_cart_add_fees($product_price, $fee_canteens, $fee_daycares);
+        if(!empty($product_price)):
+            $this->apply_wc_cart_add_fees($product_price, $fee_canteens, $fee_daycares);
+        endif;
 
     }
 
