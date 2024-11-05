@@ -29,6 +29,7 @@ class Cart
 
         //Prices
         add_action('woocommerce_cart_calculate_fees', [$this, 'modify_cart_fees_product_price']);
+        add_action('woocommerce_before_calculate_totals', [$this,'modify_cart_product_price'], 10, 1);
 
         //Quantity
         add_filter('woocommerce_cart_item_quantity', [$this,'change_quantity_input'], 10, 3);
@@ -92,11 +93,6 @@ class Cart
 
         $product_id = $cart_item['product_id'];
 
-        //Prices
-        $prices = new Prices;
-        $canteen_price = $prices->get_canteen($product_id);
-        $daycare_price = $prices->get_daycare($product_id);
-
         if (isset($cart_item['childs']) && is_array($cart_item['childs'])):
             foreach ($cart_item['childs'] as $key => $child):
 
@@ -111,20 +107,6 @@ class Cart
                     'name'  => __('Child', UTBF_TEXT_DOMAIN) . ' ' . __('number',UTBF_TEXT_DOMAIN) . ' ' . ($key+1),
                     'display' =>$template_part,
                 );
-
-                if(!empty($child['canteen'])):
-                    $item_data[] = array(
-                        'name'  => __('Canteen prices', UTBF_TEXT_DOMAIN) . ' ' . __('number',UTBF_TEXT_DOMAIN) . ' ' . ($key+1),
-                        'display' =>count($child['canteen']) * (int)$canteen_price . '€',
-                    );
-                endif;
-
-                if(!empty($child['daycare'])):
-                    $item_data[] = array(
-                        'name'  => __('Daycare prices', UTBF_TEXT_DOMAIN) . ' ' . __('number',UTBF_TEXT_DOMAIN) . ' ' . ($key+1),
-                        'display' =>count($child['daycare']) * (int)$daycare_price . '€',
-                    );
-                endif;
 
             endforeach;
         endif;
@@ -144,11 +126,6 @@ class Cart
     function save_data_in_order(int $item_id, array $values): void
     {
 
-        //Prices
-        $prices = new Prices;
-        $canteen_price = $prices->get_canteen($item_id);
-        $daycare_price = $prices->get_daycare($item_id);
-
         if (isset($values['childs']) && is_array($values['childs'])):
             foreach ($values['childs'] as $key => $child):
 
@@ -158,8 +135,6 @@ class Cart
 
                         get_template_part( 'template-parts/woocommerce/checkout/display-data-in-checkout',null, [
                             'child'             =>  $child,
-                            'canteen_price'     =>  $canteen_price,
-                            'daycare_price'     =>  $daycare_price
                         ]);
                         $template_part = ob_get_contents();
 
@@ -176,17 +151,6 @@ class Cart
             endforeach;
         endif;
 
-        wc_add_order_item_meta(
-            $item_id,
-            __('Authorization to publish photos on the secure blog', UTBF_TEXT_DOMAIN),
-            $values['consent-blog']
-        );
-
-        wc_add_order_item_meta(
-            $item_id,
-            __("Authorization to publish photos on the association's communication tools (website, FB, IG, etc.)", UTBF_TEXT_DOMAIN),
-            $values['consent-communication']
-        );
 
     }
 
@@ -206,7 +170,6 @@ class Cart
         static $processed_products = [];
         static $fee_canteens = [];
         static $fee_daycares = [];
-        static $total_discount = 0;
 
         foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item):
 
@@ -221,18 +184,11 @@ class Cart
             //Prices
             $canteen_price = $prices->get_canteen($product_id);
             $daycare_price = $prices->get_daycare($product_id);
-            $decreasing_percentage = $prices->get_decreasing_rate_percentage($product_id);
 
             if (!empty($childs)):
 
                 //Init Price
-                $output_price = $product->get_price();
-
-                // Add decreasing rate
-                if( (count($childs)>=2) && ((int)$decreasing_percentage!=0) ):
-                    $decreasing = (($output_price * $decreasing_percentage) * (count($childs)-1)) /100;
-                    $total_discount += $decreasing;
-                endif;
+                $product_price = $product->get_price();
 
                 foreach($childs as $key => $child):
 
@@ -254,9 +210,10 @@ class Cart
             endif;
         endforeach;
 
-        $this->apply_wc_cart_add_fees($total_discount, $fee_canteens, $fee_daycares);
+        $this->apply_wc_cart_add_fees($product_price, $fee_canteens, $fee_daycares);
 
     }
+
 
     /**
      * Apply WC()->cart->add_fee
@@ -288,6 +245,45 @@ class Cart
                 WC()->cart->add_fee(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_daycare, true);
             endforeach;
         endif;
+
+    }
+
+    /**
+     * Modifies the product price in the cart before the totals are calculated.
+     *
+     * @param \WC_Cart $cart The cart object.
+     *
+     * @return void
+     */
+    function modify_cart_product_price($cart): void
+    {
+
+        // Check if the cart is empty
+        if (is_admin() && !defined('DOING_AJAX'))
+            return;
+
+        $prices = new Prices;
+
+        foreach ($cart->get_cart() as $cart_item_key => $cart_item) :
+
+            $product = $cart_item['data'];
+            $product_id = $product->get_id();
+
+            $childs = isset($cart_item['childs']) ? $cart_item['childs'] : '';
+
+            if (!empty($childs)):
+
+                $product_price = $product->get_price();
+
+                $decreasing_percentage = $prices->get_decreasing_rate_percentage($product_id);
+                if( (count($childs)>=2) && ((int)$decreasing_percentage!=0) ):
+                    $product_price = $product_price - $decreasing_percentage;
+                    $cart_item['data']->set_price($product_price);
+                endif;
+
+            endif;
+
+        endforeach;
 
     }
 
