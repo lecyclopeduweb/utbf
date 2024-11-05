@@ -210,9 +210,8 @@ class Cart
             endif;
         endforeach;
 
-        if(!empty($product_price)):
-            $this->apply_wc_cart_add_fees($product_price, $fee_canteens, $fee_daycares);
-        endif;
+
+        $this->apply_wc_cart_add_fees($fee_canteens, $fee_daycares);
 
     }
 
@@ -220,19 +219,13 @@ class Cart
     /**
      * Apply WC()->cart->add_fee
      *
-     * @param int       $total_discount       Discount
      * @param array     $fee_canteens         Canteens
      * @param array     $fee_daycares         Daycares
      *
      * @return void
      */
-    function apply_wc_cart_add_fees($total_discount, $fee_canteens, $fee_daycares): void
+    function apply_wc_cart_add_fees($fee_canteens, $fee_daycares): void
     {
-
-        // Discount
-        if ($total_discount > 0) :
-            WC()->cart->add_fee(__('Discount for multiple children', UTBF_TEXT_DOMAIN), - $total_discount, true);
-        endif;
 
         //Canteen
         if (!empty($fee_canteens)) :

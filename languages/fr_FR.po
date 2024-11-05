@@ -589,10 +589,6 @@ msgid "Daycare prices"
 msgstr "Prix de la garderie"
 
 #
-msgid "Discount for multiple children"
-msgstr "Réduction pour plusieurs enfants"
-
-#
 msgid "Authorization to publish photos on the secure blog"
 msgstr "Autorisation de publication des photos sur le blog sécurisé"
 
