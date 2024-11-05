@@ -25,7 +25,7 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
-        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_consent'], 10, 3);
+        //add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_consent'], 10, 3);
 
     }
 
@@ -201,7 +201,7 @@ class Notice
      *
      * @return bool
      */
-    public function notice_consent($passed, $product_id, $quantity):bool
+    /* public function notice_consent($passed, $product_id, $quantity):bool
     {
 
         if (empty($_POST['consent-blog']) || empty($_POST['consent-communication'])) :
@@ -214,6 +214,6 @@ class Notice
         endif;
 
         return $passed;
-    }
+    } */
 
 }

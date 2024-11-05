@@ -50,7 +50,6 @@ class Cart
         if (isset($_POST['childs']) && is_array($_POST['childs'])):
             $cart_item_data['childs'] = $_POST['childs'];
             $cart_item_data['childs_key'] = md5(microtime() . rand());
-            wc_add_notice(__('Custom data added to cart', UTBF_TEXT_DOMAIN), 'success');
         endif;
 
         $cart_item_data['consent-blog'] = $_POST['consent-blog'];
@@ -129,16 +128,6 @@ class Cart
 
             endforeach;
         endif;
-
-        $item_data[] = array(
-            'name'  => __('Authorization to publish photos on the secure blog', UTBF_TEXT_DOMAIN),
-            'display' => $cart_item['consent-blog'],
-        );
-
-        $item_data[] = array(
-            'name'  => __("Authorization to publish photos on the association's communication tools (website, FB, IG, etc.)", UTBF_TEXT_DOMAIN),
-            'display' => $cart_item['consent-communication'],
-        );
 
         return $item_data;
 
