@@ -178,7 +178,7 @@
         },
         {
             "key": "field_6717d055e02a5",
-            "label": "Pourcentage par défaut de réduction",
+            "label": "Réduction par défaut",
             "name": "theme_settings_product_decreasing_rate_percentage",
             "aria-label": "",
             "type": "number",
@@ -218,5 +218,5 @@
     "active": true,
     "description": "Menu additionnel dans le menu Réglages",
     "show_in_rest": 0,
-    "modified": 1729614251
+    "modified": 1730826378
 }

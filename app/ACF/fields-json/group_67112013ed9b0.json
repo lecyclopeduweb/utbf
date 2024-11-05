@@ -138,7 +138,7 @@
         },
         {
             "key": "field_6717d1cb09174",
-            "label": "Pourcentage de réduction",
+            "label": "Réduction",
             "name": "product_decreasing_rate_percentage",
             "aria-label": "",
             "type": "number",
@@ -178,5 +178,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729614337
+    "modified": 1730826348
 }
