@@ -219,74 +219,6 @@
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_66eacd4e695be"
-                },
-                {
-                    "key": "field_66ead2e975aea",
-                    "label": "Nom personne à prévenir en cas d’urgence",
-                    "name": "user__child__last_name_emergency",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66eacd4e695be"
-                },
-                {
-                    "key": "field_66ead32075aeb",
-                    "label": "Prénom personne à prévenir en cas d’urgence",
-                    "name": "user__child__first_name_emergency",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66eacd4e695be"
-                },
-                {
-                    "key": "field_66ead33875aec",
-                    "label": "Téléphone personne à prévenir en cas d’urgence",
-                    "name": "user__child__phone_emergency",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "min": "",
-                    "max": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "step": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66eacd4e695be"
                 }
             ]
         }
@@ -314,5 +246,5 @@
     "active": true,
     "description": "Champs additionnels user profil",
     "show_in_rest": 0,
-    "modified": 1726759479
+    "modified": 1730914736
 }

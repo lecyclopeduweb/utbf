@@ -47,10 +47,6 @@ class UtbfRegisterForm extends Component {
     const childSpecificAspects = this.props.label_child_specific_aspects || 'Eléments particuliers à signaler (Allergies alimentaires, asthme etc…)';
     const childRecommendations = this.props.label_child_recommendations || 'Des recommandations / commentaires utiles à savoir sur l’enfant ?';
 
-    const emergencyFirstName = this.props.label_emergency_first_name || 'Prénom';
-    const emergencyLastName = this.props.label_emergency_last_name || 'Nom';
-    const emergencyPhone = this.props.label_emergency_phone || 'Téléphone';
-
     return (
         <form  className="utbf-form" id="utbf-register-form" method="post" action="">
             {/* Section: Informations */}
@@ -237,25 +233,6 @@ class UtbfRegisterForm extends Component {
                 <div className="utbf-form__half-col">
                     <label>{childRecommendations}</label>
                     <input type="text" name="user__child__recommendations"  value="" />
-                </div>
-            </div>
-
-            {/* Section: Emergency Contact */}
-            <h2 className="space-mt-30">{title_emergency}</h2>
-            <div className="utbf-form__row">
-                <div className="utbf-form__half-col">
-                    <label>{emergencyFirstName}*</label>
-                    <input type="text" name="user__emergency_contact__first_name" value="" />
-                </div>
-                <div className="utbf-form__half-col">
-                    <label>{emergencyLastName}*</label>
-                    <input type="text" name="user__emergency_contact__last_name" value="" />
-                </div>
-            </div>
-            <div className="utbf-form__row">
-                <div className="utbf-form__full-col">
-                    <label>{emergencyPhone}*</label>
-                    <input type="number" name="user__emergency_contact__phone" value="" />
                 </div>
             </div>
 

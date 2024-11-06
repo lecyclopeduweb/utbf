@@ -114,40 +114,5 @@
                 <div class="error user__childs_repeater_number_user__child__recommendations"></div>
             </div>
         </div>
-        <?php
-        /**
-         *
-         * Emergency
-         *
-         */
-        ?>
-        <h3 class="space-mt-30">
-            <?=  __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
-        </h3>
-        <div class="utbf-form__row space-mt-20">
-            <div class="utbf-form__half-col form-row">
-                <label>
-                    <?= __('Last name',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
-                </label>
-                <input class="input-text" type="text" name="user__childs_repeater_number_user__child__last_name_emergency" value="">
-                <div class="error user__childs_repeater_number_user__child__last_name_emergency"></div>
-            </div>
-            <div class="utbf-form__half-col form-row">
-                <label>
-                    <?=  __('First name',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
-                </label>
-                <input class="input-text" type="text" name="user__childs_repeater_number_user__child__first_name_emergency" value="">
-                <div class="error user__childs_repeater_number_user__child__first_name_emergency"></div>
-            </div>
-        </div>
-        <div class="utbf-form__row">
-            <div class="utbf-form__full-col form-row">
-                <label>
-                    <?=  __('Phone',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
-                </label>
-                <input class="input-text" type="number" name="user__childs_repeater_number_user__child__phone_emergency" value="">
-                <div class="error user__childs_repeater_number_user__child__phone_emergency"></div>
-            </div>
-        </div>
     </div>
 </div>

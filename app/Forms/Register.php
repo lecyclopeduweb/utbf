@@ -146,9 +146,6 @@ class Register
             'user__child__medical_treatments',
             'user__child__specific_aspects',
             'user__child__recommendations',
-            'user__child__last_name_emergency',
-            'user__child__first_name_emergency',
-            'user__child__phone_emergency',
         ];
         foreach ($child_fields as $field):
             if (isset($_POST[$field])):

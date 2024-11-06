@@ -282,41 +282,6 @@ if(empty($args))
                 <div class="error user__child__recommendations"></div>
             </div>
         </div>
-        <?php
-        /**
-         *
-         * Emergency
-         *
-         */
-        ?>
-        <h2 class="space-mt-30">
-            <?= (!empty($args['props']['title_emergency']))? $args['props']['title_emergency'] : __('Case of emergency',UTBF_TEXT_DOMAIN); ?>
-        </h2>
-        <div class="utbf-form__row space-mt-20">
-            <div class="utbf-form__half-col">
-                <label>
-                    <?= (!empty($args['props']['label_emergency_last_name']))? $args['props']['label_emergency_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
-                </label>
-                <input type="text" name="user__child__last_name_emergency" value="">
-                <div class="error user__child__last_name_emergency"></div>
-            </div>
-            <div class="utbf-form__half-col">
-                <label>
-                    <?= (!empty($args['props']['label_emergency_first_name']))? $args['props']['label_emergency_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
-                </label>
-                <input type="text" name="user__child__first_name_emergency" value="">
-                <div class="error user__child__first_name_emergency"></div>
-            </div>
-        </div>
-        <div class="utbf-form__row">
-            <div class="utbf-form__full-col">
-                <label>
-                    <?= (!empty($args['props']['label_emergency_phone']))? $args['props']['label_emergency_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
-                </label>
-                <input type="number" name="user__child__phone_emergency" value="">
-                <div class="error user__child__phone_emergency"></div>
-            </div>
-        </div>
     </div>
     <?php
     /**

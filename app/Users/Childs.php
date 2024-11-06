@@ -53,9 +53,6 @@ class Childs
                 'medical_treatments'        =>  get_user_meta($user_id, $repeater.'user__child__medical_treatments',true),
                 'specific_aspects'          =>  get_user_meta($user_id, $repeater.'user__child__specific_aspects',true),
                 'recommendations'           =>  get_user_meta($user_id, $repeater.'user__child__recommendations',true),
-                'last_name_emergency'       =>  get_user_meta($user_id, $repeater.'user__child__last_name_emergency',true),
-                'first_name_emergency'      =>  get_user_meta($user_id, $repeater.'user__child__first_name_emergency',true),
-                'phone_emergency'           =>  get_user_meta($user_id, $repeater.'user__child__phone_emergency',true),
             ];
 
         endfor;
