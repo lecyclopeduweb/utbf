@@ -265,6 +265,14 @@ msgid "Classroom"
 msgstr "Classe"
 
 #
+msgid "Classrooms"
+msgstr "Classes"
+
+#
+msgid "Classrooms authorized"
+msgstr "Classes autorisées"
+
+#
 msgid "School"
 msgstr "École"
 
