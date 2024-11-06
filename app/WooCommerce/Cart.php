@@ -25,7 +25,7 @@ class Cart
         add_filter('woocommerce_add_cart_item_data', [$this, 'add_cart_item_data'], 10, 2);
         add_filter('woocommerce_get_cart_item_from_session', [$this, 'get_cart_item_from_session'], 10, 2);
         add_filter('woocommerce_get_item_data', [$this, 'display_data_in_cart'], 10, 2);
-        add_action('woocommerce_add_order_item_meta', [$this,'save_data_in_order'], 10, 2);
+        add_action('woocommerce_checkout_create_order_line_item', [$this,'save_data_in_order'], 10, 4);
 
         //Prices
         add_action('woocommerce_cart_calculate_fees', [$this, 'modify_cart_fees_product_price']);
@@ -55,9 +55,6 @@ class Cart
             $cart_item_data['childs_key'] = md5(microtime() . rand());
         endif;
 
-        $cart_item_data['consent-blog'] = $_POST['consent-blog'];
-        $cart_item_data['consent-communication'] = $_POST['consent-communication'];
-
         return $cart_item_data;
 
     }
@@ -78,10 +75,9 @@ class Cart
         if (isset($values['childs'])):
             $cart_item['childs'] = $values['childs'];
         endif;
-        $cart_item['consent-blog'] = $values['consent-blog'];
-        $cart_item['consent-communication'] = $values['consent-communication'];
 
         return $cart_item;
+
     }
 
     /**
@@ -96,8 +92,6 @@ class Cart
      */
     public function display_data_in_cart($item_data, $cart_item):array
     {
-
-        $product_id = $cart_item['product_id'];
 
         if (isset($cart_item['childs']) && is_array($cart_item['childs'])):
             foreach ($cart_item['childs'] as $key => $child):
@@ -126,12 +120,14 @@ class Cart
      *
      * Save custom data to order item meta.
      *
-     * @param int   $item_id The ID of the order item.
-     * @param array $values The cart item values.
+     * @param WC_Order_Item_Product $item         The order item object.
+     * @param string                $cart_item_key The unique cart item key.
+     * @param array                 $values       The cart item data array.
+     * @param WC_Order              $order        The order object.
      *
      * @return void
      */
-    function save_data_in_order(int $item_id, array $values): void
+    function save_data_in_order($item, $cart_item_key, $values, $order): void
     {
 
         if (isset($values['childs']) && is_array($values['childs'])):
@@ -148,11 +144,7 @@ class Cart
 
                     ob_end_clean();
 
-                    wc_add_order_item_meta(
-                        $item_id,
-                        __('Child', UTBF_TEXT_DOMAIN) . ' ' . __('number',UTBF_TEXT_DOMAIN) . ' ' . ($key+1),
-                        $template_part
-                    );
+                    $item->update_meta_data( $child['name'],  $template_part );
 
                 endif;
 
@@ -201,12 +193,12 @@ class Cart
 
                     // Add Canteen
                     if(!empty($child['canteen'])):
-                        $fee_canteens[$key] = (count($child['canteen']) * (int)$canteen_price);
+                        $fee_canteens[$child['name']] = (count($child['canteen']) * (int)$canteen_price);
                     endif;
 
                     // Add Daycare
                     if(!empty($child['daycare'])):
-                        $fee_daycares[$key] = (count($child['daycare']) * (int)$daycare_price);
+                        $fee_daycares[$child['name']] = (count($child['daycare']) * (int)$daycare_price);
                     endif;
 
                 endforeach;
@@ -239,14 +231,16 @@ class Cart
         //Canteen
         if (!empty($fee_canteens)) :
             foreach($fee_canteens as $key => $fee_canteen):
-                WC()->cart->add_fee(__('Canteen', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_canteen, true);
+                //WC()->cart->add_fee(__('Canteen', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_canteen, true);
+                WC()->cart->add_fee(__('Canteen', UTBF_TEXT_DOMAIN) . ' ' . $key , + $fee_canteen, true);
             endforeach;
         endif;
 
         //Daycare
         if (!empty($fee_daycares)) :
             foreach($fee_daycares as $key => $fee_daycare):
-                WC()->cart->add_fee(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_daycare, true);
+                //WC()->cart->add_fee(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child',UTBF_TEXT_DOMAIN)  . ' ' .  __('number',UTBF_TEXT_DOMAIN)  . ' ' .  ($key + 1) , + $fee_daycare, true);
+                WC()->cart->add_fee(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . $key , + $fee_daycare, true);
             endforeach;
         endif;
 
