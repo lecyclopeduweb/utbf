@@ -15,12 +15,12 @@
          */
         function childs_account__delete(that){
             //init
-            const count = parseInt($('#ChildsAccountForm').attr('data-count'));
+            let count = parseInt($('#ChildsAccountForm').attr('data-count'));
             //Update count
             $("#input_user__childs_repeater").val(count-1);
             $('#ChildsAccountForm').attr('data-count',count-1);
             //Pos
-            const pos = that.attr('data-child');
+            let pos = that.attr('data-child');
             //Remove item
             $('#ChildsAccountForm .wrapper-item-child[data-child='+pos+']').remove();
             //reindex
@@ -32,8 +32,8 @@
                 $(this).html(child_html);
                 $(this).attr('data-child',index);
             });
-            //Remove hr
-            $('#ChildsAccountForm hr[data-child='+pos+']').remove();
+            //Save data
+            childs_account__ajax();
         }
 
         /**

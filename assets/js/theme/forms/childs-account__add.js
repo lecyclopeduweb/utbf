@@ -23,8 +23,6 @@
             template = template.replace(/data_number/g, `${count}`);
             //Append
             $('#woocommerce-EditChildsAccountForm #ChildsAccountForm').append(template);
-            //remove hr
-            $('#ChildsAccountForm hr[data-child=0]').remove();
         }
 
         /**

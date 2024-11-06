@@ -27,9 +27,6 @@
                 $repeater = 'user__childs_repeater_'.$nb.'_';
                 ?>
                 <div class="wrapper-item-child" data-child="<?= $nb; ?>">
-                    <?php if($i > 1): ?>
-                        <hr class="space-mt-30 space-mb-30" data-child="<?= $nb; ?>">
-                    <?php endif; ?>
                     <div class="item-child-header">
                         <h2 class="toggle-button space-mt-0 space-mb-0" data-child="<?= $nb; ?>">
                             <div class="toggle-ico">
@@ -156,6 +153,18 @@
     </div>
     <button id="EditChildsAccountForm-send" type="button" class="woocommerce-Button space-mt-20 button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
     <input id="input_user__childs_repeater" type="hidden" name="user__childs_repeater" value="<?= $args['count']; ?>" />
+    <?php
+    /**
+     *
+     * Loader
+     *
+     */
+    ?>
+    <div class="wrapper-loader">
+        <div class="loader">
+            <?= file_get_contents(UTBF_IMG_URI . '/loader.svg'); ?>
+        </div>
+    </div>
 </form>
 <div id="template-add-child" class="d-none">
     <?= load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/account/menu-edit-add-child.php',null,$args); ?>

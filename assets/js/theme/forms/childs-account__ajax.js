@@ -24,7 +24,7 @@
          *
          * @return {void}
          */
-        function childs_account__ajax(){
+        window.childs_account__ajax = function(){
 
             if (window.xhr) {
                 window.xhr.abort();
@@ -35,6 +35,7 @@
             $('.woocommerce-message').hide();
             $('.woocommerce-notices-wrapper').hide();
             $('.woocommerce-message[role=alert]').remove();
+            $('#woocommerce-EditChildsAccountForm').find('.wrapper-loader').css('display','flex');
 
             //init
             const form_values = $('#woocommerce-EditChildsAccountForm').serializeArray();

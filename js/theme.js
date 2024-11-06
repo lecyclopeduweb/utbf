@@ -20,83 +20,6 @@
   });
 })(jQuery);
 /**
- * Add Select Childs WooCommerce Single Product
- *
- * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
- */
-(function ($) {
-  $(document).ready(function () {
-    /**
-     * Init max Qty
-     *
-     * @return {void}
-     */
-    function childs_single_product__init_max_qty() {
-      $('body.single-product input.qty').attr('max', CHILDS.count);
-    }
-
-    /**
-     * Controle QTY
-     *
-     * @return {int}
-     */
-    function childs_single_product__controle_qty() {
-      //init
-      let qty = parseInt($('body.single-product input.qty').val(), 10);
-      let childsCount = parseInt(CHILDS.count, 10);
-
-      //Limite Max Qty
-      if (qty > childsCount) {
-        $('body.single-product input.qty').val(childsCount);
-        qty = childsCount;
-      }
-      //Limite Qty Negative
-      if (Number(qty) < 0) {
-        $('body.single-product input.qty').val(1);
-        qty = 1;
-      }
-      return qty;
-    }
-
-    /**
-     * Add Select Child
-     *
-     * @return {void}
-     */
-    function childs_single_product__addRemove_select() {
-      //init
-      let selectChildHtml = $('.single-product-childs').find('.single-product-childs__item').first().prop('outerHTML');
-      let countSelectChild = $('.single-product-childs').children().length;
-      let qty = childs_single_product__controle_qty();
-
-      //Add || Remove select
-      if (qty > countSelectChild) {
-        let numberAddSelect = qty - countSelectChild;
-        let regex = new RegExp('childs\\[0\\]', 'g');
-        let regex2 = new RegExp('<span class="number">1<\\/span>', 'g');
-        for (let i = 0; i < numberAddSelect; i++) {
-          let updatedHtml = selectChildHtml.replace(regex, "childs[" + countSelectChild + "]").replace(regex2, '<span class="number">' + (countSelectChild + 1) + '</span>');
-          $('.single-product-childs').append(updatedHtml);
-          countSelectChild++;
-        }
-      } else {
-        let numberRemoveSelect = countSelectChild - qty;
-        if (numberRemoveSelect > 0) {
-          $('.single-product-childs').children().slice(-numberRemoveSelect).remove();
-        }
-      }
-    }
-
-    /**
-     * Events
-     */
-    childs_single_product__init_max_qty();
-    $("body.single-product").on("change", "input.qty", function (event) {
-      childs_single_product__addRemove_select();
-    });
-  });
-})(jQuery);
-/**
  * Add Childs WooCommerce account
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
@@ -120,8 +43,6 @@
       template = template.replace(/data_number/g, `${count}`);
       //Append
       $('#woocommerce-EditChildsAccountForm #ChildsAccountForm').append(template);
-      //remove hr
-      $('#ChildsAccountForm hr[data-child=0]').remove();
     }
 
     /**
@@ -157,7 +78,7 @@
      *
      * @return {void}
      */
-    function childs_account__ajax() {
+    window.childs_account__ajax = function () {
       if (window.xhr) {
         window.xhr.abort();
       }
@@ -167,6 +88,7 @@
       $('.woocommerce-message').hide();
       $('.woocommerce-notices-wrapper').hide();
       $('.woocommerce-message[role=alert]').remove();
+      $('#woocommerce-EditChildsAccountForm').find('.wrapper-loader').css('display', 'flex');
 
       //init
       const form_values = $('#woocommerce-EditChildsAccountForm').serializeArray();
@@ -227,7 +149,7 @@
           scroll_top_child_account();
         }
       });
-    }
+    };
 
     /**
      * Events
@@ -253,12 +175,12 @@
      */
     function childs_account__delete(that) {
       //init
-      const count = parseInt($('#ChildsAccountForm').attr('data-count'));
+      let count = parseInt($('#ChildsAccountForm').attr('data-count'));
       //Update count
       $("#input_user__childs_repeater").val(count - 1);
       $('#ChildsAccountForm').attr('data-count', count - 1);
       //Pos
-      const pos = that.attr('data-child');
+      let pos = that.attr('data-child');
       //Remove item
       $('#ChildsAccountForm .wrapper-item-child[data-child=' + pos + ']').remove();
       //reindex
@@ -270,8 +192,8 @@
         $(this).html(child_html);
         $(this).attr('data-child', index);
       });
-      //Remove hr
-      $('#ChildsAccountForm hr[data-child=' + pos + ']').remove();
+      //Save data
+      childs_account__ajax();
     }
 
     /**
@@ -545,6 +467,83 @@
      */
     $("#utbf-register-form").on("click", "#utbf-register-form-send", function (event) {
       register__ajax();
+    });
+  });
+})(jQuery);
+/**
+ * Add Select Childs WooCommerce Single Product
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Init max Qty
+     *
+     * @return {void}
+     */
+    function childs_single_product__init_max_qty() {
+      $('body.single-product input.qty').attr('max', CHILDS.count);
+    }
+
+    /**
+     * Controle QTY
+     *
+     * @return {int}
+     */
+    function childs_single_product__controle_qty() {
+      //init
+      let qty = parseInt($('body.single-product input.qty').val(), 10);
+      let childsCount = parseInt(CHILDS.count, 10);
+
+      //Limite Max Qty
+      if (qty > childsCount) {
+        $('body.single-product input.qty').val(childsCount);
+        qty = childsCount;
+      }
+      //Limite Qty Negative
+      if (Number(qty) < 0) {
+        $('body.single-product input.qty').val(1);
+        qty = 1;
+      }
+      return qty;
+    }
+
+    /**
+     * Add Select Child
+     *
+     * @return {void}
+     */
+    function childs_single_product__addRemove_select() {
+      //init
+      let selectChildHtml = $('.single-product-childs').find('.single-product-childs__item').first().prop('outerHTML');
+      let countSelectChild = $('.single-product-childs').children().length;
+      let qty = childs_single_product__controle_qty();
+
+      //Add || Remove select
+      if (qty > countSelectChild) {
+        let numberAddSelect = qty - countSelectChild;
+        let regex = new RegExp('childs\\[0\\]', 'g');
+        let regex2 = new RegExp('<span class="number">1<\\/span>', 'g');
+        for (let i = 0; i < numberAddSelect; i++) {
+          let updatedHtml = selectChildHtml.replace(regex, "childs[" + countSelectChild + "]").replace(regex2, '<span class="number">' + (countSelectChild + 1) + '</span>');
+          $('.single-product-childs').append(updatedHtml);
+          countSelectChild++;
+        }
+      } else {
+        let numberRemoveSelect = countSelectChild - qty;
+        if (numberRemoveSelect > 0) {
+          $('.single-product-childs').children().slice(-numberRemoveSelect).remove();
+        }
+      }
+    }
+
+    /**
+     * Events
+     */
+    childs_single_product__init_max_qty();
+    $("body.single-product").on("change", "input.qty", function (event) {
+      childs_single_product__addRemove_select();
     });
   });
 })(jQuery);

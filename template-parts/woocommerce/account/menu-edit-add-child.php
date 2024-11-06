@@ -9,7 +9,6 @@
  */
 ?>
 <div class="wrapper-item-child" data-child="data_number">
-    <hr class="space-mt-30 space-mb-30" data-child="data_number">
     <div class="utbf-user-child-form">
         <div class="item-child-header">
             <h2 class="space-mt-0 space-mb-0">

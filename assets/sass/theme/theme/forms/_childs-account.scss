@@ -1,0 +1,9 @@
+#ChildsAccountForm{
+    .wrapper-item-child{
+        border-bottom: 1px solid gray;
+        padding: 12px 0;
+        &:last-child{
+            border:0px;
+        }
+    }
+}
