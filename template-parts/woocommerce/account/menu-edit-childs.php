@@ -15,6 +15,11 @@
     <?=  __( 'Ajax registration has a problem. Please contact the site administrator', UTBF_TEXT_DOMAIN ); ?>
 </div>
 <form id="woocommerce-EditChildsAccountForm" class="edit-account" method="post" action="">
+    <div class="button-add-child__wrapper buttons d-flex space-mb-20">
+        <a id="button-add-child" class="button button-primary d-inline-flex ml-auto">
+            <?=  __('Add a new child',UTBF_TEXT_DOMAIN); ?>
+        </a>
+    </div>
     <div id="ChildsAccountForm" data-count="<?= $args['count']; ?>">
         <?php if($args['count']>0): ?>
             <?php for ($i = 1; $i <= $args['count']; $i++):
@@ -90,7 +95,7 @@
                         <div class="utbf-form__row user__child__other_school <?php if(!empty($other_school)): echo 'show'; endif;?>">
                             <div class="utbf-form__full-col form-row">
                                 <label>
-                                    <?= __('Other',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
+                                    <?= __('Specify the name of the school',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
                                 </label>
                                 <input class="input-text" type="text" name="<?= $repeater; ?>user__child__other_school" value="<?= get_user_meta($args['user_id'], $repeater.'user__child__other_school',true); ?>">
                                 <div class="error <?= $repeater.'user__child__other_school'; ?>"></div>
@@ -149,12 +154,7 @@
             <?php endfor; ?>
         <?php endif; ?>
     </div>
-    <div class="buttons d-flex space-mb-20 space-mt-20">
-        <div id="button-add-child" class="button button-primary d-inline-flex ml-auto">
-            <?=  __('Add Child',UTBF_TEXT_DOMAIN); ?>
-        </div>
-    </div>
-    <button id="EditChildsAccountForm-send" type="button" class="woocommerce-Button button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
+    <button id="EditChildsAccountForm-send" type="button" class="woocommerce-Button space-mt-20 button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php esc_attr_e( 'Save changes', 'woocommerce' ); ?>"><?php esc_html_e( 'Save changes', 'woocommerce' ); ?></button>
     <input id="input_user__childs_repeater" type="hidden" name="user__childs_repeater" value="<?= $args['count']; ?>" />
 </form>
 <div id="template-add-child" class="d-none">

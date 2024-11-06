@@ -651,3 +651,11 @@ msgstr "Pour inscrire votre enfant à ce stage, merci de vous connecter ou de cr
 #
 msgid "My children"
 msgstr "Mes enfants"
+
+#
+msgid "Specify the name of the school"
+msgstr "Préciser le nom de l'école"
+
+#
+msgid "Add a new child"
+msgstr "Ajouter un nouvel enfant"

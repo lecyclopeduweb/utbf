@@ -235,7 +235,7 @@ if(empty($args))
         <div class="utbf-form__row user__child__other_school">
             <div class="utbf-form__full-col">
                 <label>
-                    <?= (!empty($args['props']['label_child_other_school']))? $args['props']['label_child_other_school'] : __('Other',UTBF_TEXT_DOMAIN); ?>*
+                    <?= (!empty($args['props']['label_child_other_school']))? $args['props']['label_child_other_school'] : __('Specify the name of the school',UTBF_TEXT_DOMAIN); ?>*
                 </label>
                 <input type="text" name="user__child__other_school" value="">
                 <div class="error user__child__other_school"></div>

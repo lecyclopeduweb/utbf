@@ -67,7 +67,7 @@
         <div class="utbf-form__row user__child__other_school">
             <div class="utbf-form__full-col form-row">
                 <label>
-                    <?= __('Other',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
+                    <?= __('Specify the name of the school',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
                 </label>
                 <input class="input-text" type="text" name="user__childs_repeater_number_user__child__other_school" value="">
                 <div class="error user__childs_repeater_number_user__child__other_school"></div>
