@@ -116,7 +116,10 @@
                  *
                  */
                 ?>
-                <div class="utbf-form__row space-mt-20 single-product-childs__emergency">
+                <div class="space-mt-20 space-mb-10 single-product-childs__title">
+                    <?= __('Emergency contact person',UTBF_TEXT_DOMAIN); ?>
+                </div>
+                <div class="utbf-form__row single-product-childs__emergency">
                     <div class="utbf-form__half-col form-row">
                         <label>
                             <?= __('Last name',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>

@@ -96,16 +96,29 @@ class Cart
         if (isset($cart_item['childs']) && is_array($cart_item['childs'])):
             foreach ($cart_item['childs'] as $key => $child):
 
-                ob_start();
-
-                    get_template_part( 'template-parts/woocommerce/cart/display-data-in-cart',null, $child);
-                    $template_part = ob_get_contents();
-
-                ob_end_clean();
-
                 $item_data[] = array(
-                    'name'  => __('Child', UTBF_TEXT_DOMAIN) . ' ' . __('number',UTBF_TEXT_DOMAIN) . ' ' . ($key+1),
-                    'display' =>$template_part,
+                    'name'  => $child['name'],
+                    'display' =>'',
+                );
+                $item_data[] = array(
+                    'name'  => __('Classroom', UTBF_TEXT_DOMAIN),
+                    'display' =>$child['classroom'],
+                );
+                if(!empty($child['canteen'])):
+                    $item_data[] = array(
+                        'name'  => __('Canteen', UTBF_TEXT_DOMAIN),
+                        'display' =>implode(',', $child['canteen']),
+                    );
+                endif;
+                if(!empty($child['daycare'])):
+                    $item_data[] = array(
+                        'name'  => __('Daycare', UTBF_TEXT_DOMAIN),
+                        'display' =>implode(',', $child['daycare']),
+                    );
+                endif;
+                $item_data[] = array(
+                    'name'  => __('Emergency contact person', UTBF_TEXT_DOMAIN),
+                    'display' =>$child['first_name_emergency'] . ' ' . $child['last_name_emergency'] . ' / ' . $child['phone_emergency'] ,
                 );
 
             endforeach;

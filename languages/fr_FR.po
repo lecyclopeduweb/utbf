@@ -635,3 +635,7 @@ msgstr "Un enfant est ajouté dans le même produit dans les commandes."
 #
 msgid "This product does not allow the addition of the class"
 msgstr "Ce produit n'autorise pas l'ajout de la class"
+
+#
+msgid "Emergency contact person"
+msgstr "Personne à contacter en cas d’urgence"

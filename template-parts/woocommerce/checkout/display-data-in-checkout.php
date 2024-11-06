@@ -67,7 +67,7 @@
          */
         ?>
         <li>
-            <strong><?=  __('Case of emergency', UTBF_TEXT_DOMAIN); ?> :</strong>
+            <strong><?=  __('Emergency contact person', UTBF_TEXT_DOMAIN); ?> :</strong>
             <?=  $args['child']['first_name_emergency']; ?> <?=  $args['child']['last_name_emergency']; ?> / <?=  $args['child']['phone_emergency']; ?>
         </li>
     </ul>
