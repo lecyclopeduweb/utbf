@@ -26,6 +26,7 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_cart'], 10, 3);
+        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_orders'], 10, 3);
 
     }
 
@@ -238,6 +239,52 @@ class Notice
 
             endif;
         endif;
+
+        return $passed;
+
+    }
+
+    /**
+     * Notice Child is already in Orders
+     *
+     * @param bool $passed Whether the validation has passed.
+     * @param int $product_id The ID of the product being added to the cart.
+     * @param int $quantity The quantity of the product being added.
+     *
+     * @return bool
+     */
+    public function notice_child_already_in_orders($passed, $product_id, $quantity):bool
+    {
+
+
+        $childs = $_POST['childs'];
+
+        $args = [
+            'customer_id' => get_current_user_id( ),
+            'status'      => array('wc-completed', 'wc-processing'),
+            'limit'       => -1
+        ];
+
+        $orders = wc_get_orders($args);
+
+        foreach ($orders as $order) :
+
+            $items = $order->get_items();
+            foreach ($items as $item_id => $item) :
+
+                foreach($childs as $child):
+
+                    $meta_value = $item->get_meta($child['name']);
+                    if($meta_value!=''):
+
+                        $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                        $notice .=  __( 'A child is added in the same product in the orders.' , UTBF_TEXT_DOMAIN );
+                        wc_add_notice($notice, 'error');
+                        return false;
+                    endif;
+                endforeach;
+            endforeach;
+        endforeach;
 
         return $passed;
 
