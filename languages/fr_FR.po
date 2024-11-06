@@ -647,3 +647,7 @@ msgstr "S'identifier"
 #
 msgid "To register your child for this course, please log in or create an account."
 msgstr "Pour inscrire votre enfant à ce stage, merci de vous connecter ou de créer un compte."
+
+#
+msgid "My children"
+msgstr "Mes enfants"

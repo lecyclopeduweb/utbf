@@ -16,6 +16,10 @@
 </div>
 <form id="woocommerce-EditLegalGuardianAccountForm" class="edit-account" method="post" action="">
 
+    <h2 class="space-mb-10">
+        <?= __('Legal guardian',UTBF_TEXT_DOMAIN); ?> 2
+    </h2>
+
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>

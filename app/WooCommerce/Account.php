@@ -82,12 +82,12 @@ class Account
     {
 
         $new_link = [
-            'edit-legal-guardian'   => __('Legal guardian',UTBF_TEXT_DOMAIN),
-            'edit-childs'           => __('Childs',UTBF_TEXT_DOMAIN),
+            'edit-legal-guardian'   => __('Legal guardian',UTBF_TEXT_DOMAIN) . ' 2',
+            'edit-childs'           => __('My children',UTBF_TEXT_DOMAIN),
         ];
-        $menu_links = array_slice( $menu_links, 0, 5, true )
+        $menu_links = array_slice( $menu_links, 0, 4, true )
                     + $new_link
-                    + array_slice( $menu_links, 5, NULL, true );
+                    + array_slice( $menu_links, 4, NULL, true );
 
         return $menu_links;
 
