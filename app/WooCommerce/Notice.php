@@ -25,6 +25,7 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
+        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_cart'], 10, 3);
 
     }
 
@@ -189,6 +190,57 @@ class Notice
         endif;
 
         return $passed;
+    }
+
+    /**
+     * Notice Child is already in cart
+     *
+     * @param bool $passed Whether the validation has passed.
+     * @param int $product_id The ID of the product being added to the cart.
+     * @param int $quantity The quantity of the product being added.
+     *
+     * @return bool
+     */
+    public function notice_child_already_in_cart($passed, $product_id, $quantity):bool
+    {
+
+        if ( WC()->cart ) :
+            if (isset($_POST['childs'])) :
+
+                $cart = WC()->cart;
+
+                //Get Names of Childs $_POST
+                $post_childs = $_POST['childs'];
+                $post_childs_names = array_column($post_childs, 'name');
+
+                foreach ( $cart->get_cart() as $cart_item_key => $cart_item ):
+
+                    if($product_id ==  $cart_item['product_id']):
+
+                        //Get Names of Childs cart_item
+                        $cart_item_childs_names = array_column($cart_item['childs'], 'name');
+
+                        //Matching Names
+                        $matching_names = array_intersect($post_childs_names, $cart_item_childs_names);
+
+                        if (!empty($matching_names)):
+
+                            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                            $notice .=  __( 'A child is added in the same product in the cart.' , UTBF_TEXT_DOMAIN );
+                            wc_add_notice($notice, 'error');
+                            return false;
+
+                        endif;
+
+                    endif;
+
+                endforeach;
+
+            endif;
+        endif;
+
+        return $passed;
+
     }
 
 }

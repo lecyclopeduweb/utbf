@@ -615,3 +615,7 @@ msgstr "État"
 #
 msgid "No order"
 msgstr "Aucune commande"
+
+#
+msgid "A child is added in the same product in the cart."
+msgstr "Un enfant est ajouté dans le même produit dans le panier."
