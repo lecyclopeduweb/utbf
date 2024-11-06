@@ -37,6 +37,8 @@ class Cart
     }
 
     /**
+     * Childs Item Datas
+     *
      * Add custom data to the cart item
      * This hook allows you to add additional information to the product data in the cart.
      *
@@ -61,6 +63,8 @@ class Cart
     }
 
     /**
+     * Childs Item Datas
+     *
      * Ensure the custom data is loaded from the session correctly.
      *
      * @param array $cart_item The current cart item array.
@@ -81,6 +85,8 @@ class Cart
     }
 
     /**
+     * Childs Item Datas
+     *
      * Display custom data in the cart and checkout pages.
      *
      * @param array $item_data The current cart item data to display.
@@ -116,6 +122,8 @@ class Cart
     }
 
     /**
+     * Childs Item Datas
+     *
      * Save custom data to order item meta.
      *
      * @param int   $item_id The ID of the order item.
@@ -155,6 +163,8 @@ class Cart
     }
 
     /**
+     * Add Canteen && Daycare line Fee
+     *
      * Modify Cart Product Price
      *
      * @return void
@@ -214,6 +224,8 @@ class Cart
 
 
     /**
+     * Add Canteen && Daycare line Fee
+     *
      * Apply WC()->cart->add_fee
      *
      * @param array     $fee_canteens         Canteens
@@ -241,6 +253,8 @@ class Cart
     }
 
     /**
+     * Change Price if 2 childs or more
+     *
      * Modifies the product price in the cart before the totals are calculated.
      *
      * @param \WC_Cart $cart The cart object.
@@ -281,7 +295,7 @@ class Cart
     }
 
     /**
-     * Change Quantity Input
+     * Change Quantity Input to simple html integer
      *
      * @param string   $product_quantity  HTML content of quantity input.
      * @param string   $cart_item_key     Cart item key.

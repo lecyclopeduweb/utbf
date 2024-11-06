@@ -55,6 +55,8 @@ class Account
     }
 
     /**
+     * Menu Account
+     *
      * Add Endpoint
      *
      * @return void
@@ -68,6 +70,8 @@ class Account
     }
 
     /**
+     * Menu Account
+     *
      * Add Menus
      *
      * @param array $menu_links        The menu links on the "My Account" page.
@@ -90,6 +94,8 @@ class Account
     }
 
     /**
+     * Menu Account : Page
+     *
      * Render Menu Edit Childs
      *
      * @return void
@@ -135,6 +141,8 @@ class Account
     }
 
     /**
+     * Menu Account : Page
+     *
      * Render Menu Edit Legal Guardian
      *
      * @return void
@@ -157,6 +165,8 @@ class Account
     }
 
     /**
+     * Add user Back End
+     *
      * Add Billing Phone 2
      *
      * @param object $user    user
@@ -179,6 +189,8 @@ class Account
     }
 
     /**
+     * Add user Back End
+     *
      * Add Shipping Phone 2
      *
      * @param object $user    user
@@ -201,6 +213,8 @@ class Account
     }
 
     /**
+     * Add user Back End
+     *
      * Save billing && shipping Phone_2
      *
      * @param int $user_id    user_id
@@ -219,6 +233,8 @@ class Account
     }
 
     /**
+     * Add WooCommerce form checkout
+     *
      * Add Account billing Phone_2
      *
      * @param array $fields    user_id
@@ -242,6 +258,8 @@ class Account
     }
 
     /**
+     * Add WooCommerce form checkout
+     *
      * Add Account shipping Phone_2
      *
      * @param array $fields    user_id
@@ -273,6 +291,8 @@ class Account
     }
 
     /**
+     * Add WooCommerce form checkout
+     *
      * Validate Account billing && shipping Phone_2
      *
      * @param int    $user_id      The ID of the user whose address is being updated.

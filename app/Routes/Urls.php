@@ -22,6 +22,8 @@ class Urls
     }
 
     /**
+     * Utilities : Not used
+     *
      * Remove Query Arg Exceptions
      *
      * @param string $url                   url
@@ -46,6 +48,8 @@ class Urls
     }
 
     /**
+     * Utilities : functions.php
+     *
      * Replace query args
      *
      * @param string $current_url           Current Url

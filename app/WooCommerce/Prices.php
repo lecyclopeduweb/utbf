@@ -22,6 +22,8 @@ class Prices
     }
 
     /**
+     * Utilities
+     *
      * Get Canteen price
      *
      * @param int $post_id      Post ID
@@ -43,6 +45,8 @@ class Prices
     }
 
     /**
+     * Utilities
+     *
      * Get Daycare price
      *
      * @param int $post_id      Post ID
@@ -64,6 +68,8 @@ class Prices
     }
 
     /**
+     * Utilities
+     *
      * Get Decreasing Rate Percentage
      *
      * @param int $post_id      Post ID

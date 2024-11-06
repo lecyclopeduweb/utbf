@@ -26,6 +26,8 @@ class Users
     }
 
     /**
+     * Utilities
+     *
      * Add default classroom in theme settings
      *
      * @return void
@@ -56,6 +58,8 @@ class Users
     }
 
     /**
+     * Utilities
+     *
      * Add default school in theme settings
      *
      * @return void

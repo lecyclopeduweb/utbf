@@ -30,6 +30,8 @@ class Checkout
     }
 
     /**
+     * Consent Checkboxs
+     *
      * Adds a consent checkbox on the checkout page
      *
      * @return void
@@ -49,6 +51,8 @@ class Checkout
     }
 
     /**
+     * Consent Checkboxs
+     *
      * Validate that the checkbox is checked before placing the order.
      *
      * @return void
@@ -67,6 +71,8 @@ class Checkout
     }
 
     /**
+     * Consent Checkboxs
+     *
      * Saves the value of the checkbox in the command metadata.
      *
      * @param int $order_id The order ID.
@@ -87,6 +93,8 @@ class Checkout
     }
 
     /**
+     * Consent Checkboxs
+     *
      * Shows the status of the checkbox in the order summary.
      *
      * @param int $order_id The order ID.
