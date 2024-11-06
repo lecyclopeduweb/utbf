@@ -469,8 +469,8 @@ msgid "No children attached to the account"
 msgstr "Pas d'enfant rattaché au compte"
 
 #
-msgid "You do not have any children attached to your account. Please add one."
-msgstr "Vous n'avez aucun enfant rattaché à votre compte. Merci d'en ajouter un."
+msgid "You do not have any children attached to your account. Please add one from your space."
+msgstr "Vous n'avez pas d'enfant rattaché à votre compte. Merci d'en ajouter un depuis votre espace."
 
 #
 msgid "Legal guardian"
@@ -533,8 +533,8 @@ msgid "Go to your children's section account"
 msgstr 'Rendez-vous dans votre compte partie "Enfants"'
 
 #
-msgid "Go to my account"
-msgstr "Se rendre sur mon compte"
+msgid "Parent space"
+msgstr "Espace parent"
 
 #
 msgid "Select a child"
@@ -639,3 +639,11 @@ msgstr "Ce produit n'autorise pas l'ajout de la class"
 #
 msgid "Emergency contact person"
 msgstr "Personne à contacter en cas d’urgence"
+
+#
+msgid "To identify"
+msgstr "S'identifier"
+
+#
+msgid "To register your child for this course, please log in or create an account."
+msgstr "Pour inscrire votre enfant à ce stage, merci de vous connecter ou de créer un compte."

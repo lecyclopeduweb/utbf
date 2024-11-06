@@ -21,6 +21,7 @@ class Notice
     public function __construct()
     {
 
+        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_user_not_logged_in'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_account_empty'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_selected'], 10, 3);
@@ -28,6 +29,36 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_cart'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_orders'], 10, 3);
+
+    }
+
+    /**
+     * If User Not Logged in
+     *
+     * @param bool $passed Whether the validation has passed.
+     * @param int $product_id The ID of the product being added to the cart.
+     * @param int $quantity The quantity of the product being added.
+     *
+     * @return bool
+     */
+    public function notice_user_not_logged_in($passed, $product_id, $quantity):bool
+    {
+
+        if (!is_user_logged_in()) :
+
+            $my_account_url = wc_get_page_permalink('myaccount');
+
+            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+            $notice .=  __( 'To register your child for this course, please log in or create an account.' , UTBF_TEXT_DOMAIN );
+            $notice .=  '<br>';
+            $notice .=  __( "Go to your children's section account" , UTBF_TEXT_DOMAIN ).'. ';
+            $notice .=  '<a style="color:white" href="'.$my_account_url.'edit-childs/">'. __( 'Parent space' , UTBF_TEXT_DOMAIN ) . '</a>';
+            wc_add_notice($notice , 'error');
+            return false;
+
+        endif;
+
+        return $passed;
 
     }
 
@@ -43,21 +74,23 @@ class Notice
     public function notice_childs_account_empty($passed, $product_id, $quantity):bool
     {
 
-        $childs = new Childs;
-        $get_childs = $childs->get_childs();
+        if (is_user_logged_in()) :
+            $childs = new Childs;
+            $get_childs = $childs->get_childs();
 
-        if(empty($get_childs)):
+            if(empty($get_childs)):
 
-            $my_account_url = wc_get_page_permalink('myaccount');
+                $my_account_url = wc_get_page_permalink('myaccount');
 
-            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
-            $notice .=  __( 'You do not have any children attached to your account. Please add one.' , UTBF_TEXT_DOMAIN );
-            $notice .=  '<br>';
-            $notice .=  __( "Go to your children's section account" , UTBF_TEXT_DOMAIN ).'. ';
-            $notice .=  '<a style="color:white" href="'.$my_account_url.'edit-childs/">'. __( 'Go to my account' , UTBF_TEXT_DOMAIN ) . '</a>';
-            wc_add_notice($notice , 'error');
-            return false;
+                $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                $notice .=  __( 'You do not have any children attached to your account. Please add one from your space.' , UTBF_TEXT_DOMAIN );
+                $notice .=  '<br>';
+                $notice .=  __( "Go to your children's section account" , UTBF_TEXT_DOMAIN ).'. ';
+                $notice .=  '<a style="color:white" href="'.$my_account_url.'edit-childs/">'. __( 'Parent space' , UTBF_TEXT_DOMAIN ) . '</a>';
+                wc_add_notice($notice , 'error');
+                return false;
 
+            endif;
         endif;
 
         return $passed;
@@ -76,51 +109,53 @@ class Notice
     public function notice_childs_selected($passed, $product_id, $quantity):bool
     {
 
-        if (isset($_POST['childs'])) :
-            $childs = $_POST['childs'];
+        if (is_user_logged_in()) :
+            if (isset($_POST['childs'])) :
+                $childs = $_POST['childs'];
 
-            //Check all child select
-            foreach ($childs as $child) :
-                if (empty($child['name'])) :
+                //Check all child select
+                foreach ($childs as $child) :
+                    if (empty($child['name'])) :
 
-                    $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
-                    if(count($_POST['childs'])>1):
-                        $notice .=  __( 'You have not selected all children.' , UTBF_TEXT_DOMAIN );
-                    else:
-                        $notice .=  __( 'You have not selected your child.' , UTBF_TEXT_DOMAIN );
+                        $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                        if(count($_POST['childs'])>1):
+                            $notice .=  __( 'You have not selected all children.' , UTBF_TEXT_DOMAIN );
+                        else:
+                            $notice .=  __( 'You have not selected your child.' , UTBF_TEXT_DOMAIN );
+                        endif;
+                        wc_add_notice($notice, 'error');
+                        return false;
+
                     endif;
-                    wc_add_notice($notice, 'error');
-                    return false;
-
-                endif;
-            endforeach;
+                endforeach;
 
 
-            //Check name
-            $names = [];
-            foreach ($childs as $item):
-                $names[] = $item['name'];
-            endforeach;
+                //Check name
+                $names = [];
+                foreach ($childs as $item):
+                    $names[] = $item['name'];
+                endforeach;
 
-            $same_names = array_count_values($names);
-            foreach ($same_names as $name) :
-                if ($name > 1) :
+                $same_names = array_count_values($names);
+                foreach ($same_names as $name) :
+                    if ($name > 1) :
 
-                    $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
-                    $notice .=  __( 'You must select different children.' , UTBF_TEXT_DOMAIN );
-                    wc_add_notice($notice, 'error');
-                    return false;
+                        $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                        $notice .=  __( 'You must select different children.' , UTBF_TEXT_DOMAIN );
+                        wc_add_notice($notice, 'error');
+                        return false;
 
-                endif;
-            endforeach;
+                    endif;
+                endforeach;
 
-        else:
+            else:
 
-            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
-            $notice .=  __( 'No children selected.' , UTBF_TEXT_DOMAIN );
-            wc_add_notice($notice, 'error');
-            return false;
+                $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                $notice .=  __( 'No children selected.' , UTBF_TEXT_DOMAIN );
+                wc_add_notice($notice, 'error');
+                return false;
 
+            endif;
         endif;
 
         return $passed;
@@ -295,35 +330,36 @@ class Notice
     public function notice_child_already_in_orders($passed, $product_id, $quantity):bool
     {
 
+        if (isset($_POST['childs'])) :
+            $childs =  $_POST['childs'];
 
-        $childs = $_POST['childs'];
+            $args = [
+                'customer_id' => get_current_user_id( ),
+                'status'      => array('wc-completed', 'wc-processing'),
+                'limit'       => -1
+            ];
 
-        $args = [
-            'customer_id' => get_current_user_id( ),
-            'status'      => array('wc-completed', 'wc-processing'),
-            'limit'       => -1
-        ];
+            $orders = wc_get_orders($args);
 
-        $orders = wc_get_orders($args);
+            foreach ($orders as $order) :
 
-        foreach ($orders as $order) :
+                $items = $order->get_items();
+                foreach ($items as $item_id => $item) :
 
-            $items = $order->get_items();
-            foreach ($items as $item_id => $item) :
+                    foreach($childs as $child):
 
-                foreach($childs as $child):
+                        $meta_value = $item->get_meta($child['name']);
+                        if($meta_value!=''):
 
-                    $meta_value = $item->get_meta($child['name']);
-                    if($meta_value!=''):
-
-                        $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
-                        $notice .=  __( 'A child is added in the same product in the orders.' , UTBF_TEXT_DOMAIN );
-                        wc_add_notice($notice, 'error');
-                        return false;
-                    endif;
+                            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                            $notice .=  __( 'A child is added in the same product in the orders.' , UTBF_TEXT_DOMAIN );
+                            wc_add_notice($notice, 'error');
+                            return false;
+                        endif;
+                    endforeach;
                 endforeach;
             endforeach;
-        endforeach;
+        endif;
 
         return $passed;
 

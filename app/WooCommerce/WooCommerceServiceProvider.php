@@ -6,6 +6,7 @@ namespace AppUtbf\WooCommerce;
 
 use AppUtbf\WooCommerce\Cart;
 use AppUtbf\WooCommerce\Notice;
+use AppUtbf\WooCommerce\Buttons;
 use AppUtbf\WooCommerce\Account;
 use AppUtbf\WooCommerce\Products;
 use AppUtbf\WooCommerce\Checkout;
@@ -28,6 +29,7 @@ class WooCommerceServiceProvider
 
         new Cart;
         new Notice;
+        new Buttons;
         new Account;
         new Products;
         new Checkout;
