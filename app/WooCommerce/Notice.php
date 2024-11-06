@@ -24,6 +24,7 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_account_empty'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_childs_selected'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_selected'], 10, 3);
+        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_authorized'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_cart'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_orders'], 10, 3);
@@ -150,6 +151,44 @@ class Notice
 
                 endif;
             endforeach;
+
+        endif;
+
+        return $passed;
+    }
+
+    /**
+     * Notice Classrooms Authorized
+     *
+     * @param bool $passed Whether the validation has passed.
+     * @param int $product_id The ID of the product being added to the cart.
+     * @param int $quantity The quantity of the product being added.
+     *
+     * @return bool
+     */
+    public function notice_classrooms_authorized($passed, $product_id, $quantity):bool
+    {
+
+        if (isset($_POST['childs'])) :
+
+            $childs = $_POST['childs'];
+            $classroom_authorized = get_post_meta($product_id, 'classroom_products_meta_box', true);
+
+            if(!empty($classroom_authorized)):
+                foreach ($childs as $child) :
+                    if (!empty($child['classroom'])) :
+
+                        if(empty($classroom_authorized[sanitize_title($child['classroom'])])):
+                            $notice =  __( 'Error', UTBF_TEXT_DOMAIN ).' : ';
+                            $notice .=  __( 'This product does not allow the addition of the class' , UTBF_TEXT_DOMAIN ). ' ';
+                            $notice .=  $child['classroom'];
+                            wc_add_notice($notice, 'error');
+                            return false;
+                        endif;
+
+                    endif;
+                endforeach;
+            endif;
 
         endif;
 

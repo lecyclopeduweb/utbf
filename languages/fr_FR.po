@@ -631,3 +631,7 @@ msgstr "Un enfant est ajouté dans le même produit dans le panier."
 #
 msgid "A child is added in the same product in the orders."
 msgstr "Un enfant est ajouté dans le même produit dans les commandes."
+
+#
+msgid "This product does not allow the addition of the class"
+msgstr "Ce produit n'autorise pas l'ajout de la class"
