@@ -4,6 +4,7 @@ declare (strict_types = 1);
 
 namespace AppUtbf\Forms;
 
+use AppUtbf\Validate\Recaptcha;
 use AppUtbf\Validate\ValidateRegister;
 /**
  * Register
@@ -34,7 +35,12 @@ class Register
     public function create_user():void
     {
 
+        $recaptcha = new Recaptcha;
         $validate = new ValidateRegister;
+        $recaptcha = $recaptcha->verify();
+
+        die;
+
         $error = $validate->check($_POST);
         $response = [];
 

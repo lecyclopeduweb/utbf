@@ -9,7 +9,7 @@
         /**
          * Limit Input type number
          *
-        * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
+         * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
          *
          * @return {void}
          */

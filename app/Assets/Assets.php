@@ -68,6 +68,7 @@ class Assets
 
 	    wp_localize_script('theme', 'VAR', [
 		    'confirm_delete_child'   => __('Are you sure you want to delete this child?',UTBF_TEXT_DOMAIN),
+		    'key_google_recaptcha'   => UTBF_KEY_GOOGLE_RECAPTCHA,
 	    ]);
 
 	    wp_localize_script('theme', 'CHILDS', [

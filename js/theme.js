@@ -8,7 +8,7 @@
     /**
      * Limit Input type number
      *
-    * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
+     * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
      *
      * @return {void}
      */
@@ -22,6 +22,27 @@
     $("body").on("input", "input[type=number]", function (event) {
       limit_inputs_number($(this));
     });
+  });
+})(jQuery);
+/**
+ * Debug
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     *Debug form Data
+     *
+     * @return {void}
+     */
+    window.results_form_data = function (form_data) {
+      var object = {};
+      form_data.forEach(function (value, key) {
+        object[key] = value;
+      });
+      return object;
+    };
   });
 })(jQuery);
 /**
@@ -268,6 +289,43 @@
   });
 })(jQuery);
 /**
+ * Forms Recaptcha
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * recaptcha
+     *
+     * @param string    form_id             Form ID
+     * @param string    submit_function     CallBack function
+     *
+     * @return {void}
+     */
+    window.forms_recaptcha = function (form_id, submit_function) {
+      grecaptcha.ready(function () {
+        grecaptcha.execute(VAR.key_google_recaptcha, {
+          action: 'submit'
+        }).then(function (token) {
+          if (!$('input[name="recaptcha_response"]').length) {
+            $('<input>').attr({
+              type: 'hidden',
+              name: 'recaptcha_response',
+              value: token
+            }).appendTo(form_id);
+          } else {
+            $('input[name="recaptcha_response"]').val(token);
+          }
+          if (typeof submit_function === 'function') {
+            submit_function();
+          }
+        });
+      });
+    };
+  });
+})(jQuery);
+/**
  * Ajax Legal Guardian account
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
@@ -408,7 +466,7 @@
      *
      * @return {void}
      */
-    function register__ajax() {
+    window.register__ajax = function () {
       if (window.xhr) {
         window.xhr.abort();
       }
@@ -465,35 +523,15 @@
         },
         error: function (data) {}
       });
-    }
+    };
 
     /**
      * Events
      */
     $("#utbf-register-form").on("click", "#utbf-register-form-send", function (event) {
-      register__ajax();
+      event.preventDefault();
+      forms_recaptcha('#utbf-register-form', register__ajax);
     });
-  });
-})(jQuery);
-/**
- * Debug
- *
- * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
- */
-(function ($) {
-  $(document).ready(function () {
-    /**
-     *Debug form Data
-     *
-     * @return {void}
-     */
-    window.results_form_data = function (form_data) {
-      var object = {};
-      form_data.forEach(function (value, key) {
-        object[key] = value;
-      });
-      return object;
-    };
   });
 })(jQuery);
 /**

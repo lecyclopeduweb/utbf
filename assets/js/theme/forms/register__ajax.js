@@ -13,7 +13,7 @@
          *
          * @return {void}
          */
-        function register__ajax(){
+        window.register__ajax = function(){
 
             if (window.xhr) {
                 window.xhr.abort();
@@ -80,7 +80,8 @@
          * Events
          */
         $("#utbf-register-form").on("click", "#utbf-register-form-send", function(event) {
-            register__ajax();
+            event.preventDefault();
+            forms_recaptcha('#utbf-register-form',register__ajax);
         });
 
 
