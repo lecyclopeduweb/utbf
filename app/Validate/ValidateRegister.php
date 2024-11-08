@@ -51,7 +51,14 @@ class ValidateRegister
         foreach($fields as $key => $field):
             if(
                 ($key=='phone_2' && empty($field))||
+                ($key=='user__legal_guardian__first_name' && empty($field))||
+                ($key=='user__legal_guardian__last_name' && empty($field))||
+                ($key=='user__legal_guardian__address' && empty($field))||
+                ($key=='user__legal_guardian__zip_code' && empty($field))||
+                ($key=='user__legal_guardian__city' && empty($field))||
+                ($key=='user__legal_guardian__phone' && empty($field))||
                 ($key=='user__legal_guardian__phone_2' && empty($field))||
+                ($key=='user__legal_guardian__email' && empty($field))||
                 ($key=='user__child__specific_aspects' && empty($field))||
                 ($key=='user__child__recommendations' && empty($field))
             ):
@@ -59,21 +66,18 @@ class ValidateRegister
             elseif($utilities->empty_field($field) ):
                 $response[$key] = __('The field is empty',UTBF_TEXT_DOMAIN);
             elseif(
-                ($key=='zip_code' && $zipcode->error($field))||
-                ($key=='user__legal_guardian__zip_code' && $zipcode->error($field))
+                ($key=='zip_code' && $zipcode->error($field))
             ):
                 $response[$key] = $zipcode->error($field);
             elseif(
                 ($key=='phone' && $phone->error($field)) ||
                 ($key=='phone_2' && $phone->error($field))||
                 ($key=='user__legal_guardian__phone' && $phone->error($field))||
-                ($key=='user__legal_guardian__phone_2' && $phone->error($field))||
-                ($key=='user__child__phone_emergency' && $phone->error($field))
+                ($key=='user__legal_guardian__phone_2' && $phone->error($field))
             ):
                 $response[$key] = $phone->error($field);
             elseif(
-                ($key=='user_email' && $email->register($field))||
-                ($key=='user__legal_guardian__email' && $email->register($field))
+                ($key=='user_email' && $email->register($field))
             ):
                 $response[$key] = $email->register($field);
             elseif($key=='password' && $password->error_pass($field)):

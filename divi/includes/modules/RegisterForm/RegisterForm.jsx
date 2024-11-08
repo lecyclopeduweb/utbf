@@ -63,6 +63,7 @@ class UtbfRegisterForm extends Component {
                         {password}*
                     </label>
                     <input type="password" name="password" value="" />
+                    <i>Le mot de passe doit avoir au moins 8 caractères, un nombre, une majuscule, un caractère spécial</i>
                 </div>
             </div>
             <div  className="utbf-form__row">
@@ -84,7 +85,7 @@ class UtbfRegisterForm extends Component {
                     <label>
                         {address}*
                     </label>
-                    <input type="text" name="address" value="" />
+                    <textarea name="address" rows="5" cols="33"></textarea>
                 </div>
             </div>
             <div className="utbf-form__row">
@@ -125,36 +126,36 @@ class UtbfRegisterForm extends Component {
             </div>
 
             {/* Section: Legal Guardian */}
-            <h2 className="space-mt-30">{title_legal_guardian}</h2>
+            <h2 className="space-mt-30">{title_legal_guardian} 2</h2>
             <div className="utbf-form__row">
                 <div className="utbf-form__half-col">
-                    <label>{legalGuardianFirstName}*</label>
+                    <label>{legalGuardianFirstName}</label>
                     <input type="text" name="user__legal_guardian__first_name" value="" />
                 </div>
                 <div className="utbf-form__half-col">
-                    <label>{legalGuardianLastName}*</label>
+                    <label>{legalGuardianLastName}</label>
                     <input type="text" name="user__legal_guardian__last_name" value="" />
                 </div>
             </div>
             <div className="utbf-form__row">
                 <div className="utbf-form__full-col">
-                    <label>{legalGuardianAddress}*</label>
-                    <input type="text" name="user__legal_guardian__address" value="" />
+                    <label>{legalGuardianAddress}</label>
+                    <textarea name="user__legal_guardian__address" rows="5" cols="33"></textarea>
                 </div>
             </div>
             <div className="utbf-form__row">
                 <div className="utbf-form__half-col">
-                    <label>{legalGuardianZipCode}*</label>
+                    <label>{legalGuardianZipCode}</label>
                     <input type="number" name="user__legal_guardian__zip_code" value="" />
                 </div>
                 <div className="utbf-form__half-col">
-                    <label>{legalGuardianCity}*</label>
+                    <label>{legalGuardianCity}</label>
                     <input type="text" name="user__legal_guardian__city" value="" />
                 </div>
             </div>
             <div className="utbf-form__row">
                 <div className="utbf-form__half-col">
-                    <label>{legalGuardianPhone}*</label>
+                    <label>{legalGuardianPhone}</label>
                     <input type="number" name="user__legal_guardian__phone" value="" />
                 </div>
                 <div className="utbf-form__half-col">
@@ -164,7 +165,7 @@ class UtbfRegisterForm extends Component {
             </div>
             <div className="utbf-form__row">
                 <div className="utbf-form__full-col">
-                    <label>{legalGuardianMail}*</label>
+                    <label>{legalGuardianMail}</label>
                     <input type="email" name="user__legal_guardian__email" value="" />
                 </div>
             </div>
@@ -228,11 +229,11 @@ class UtbfRegisterForm extends Component {
             <div className="utbf-form__row">
                 <div className="utbf-form__half-col">
                     <label>{childSpecificAspects}</label>
-                    <input type="text" name="user__child__specific_aspects" value="" />
+                    <textarea name="user__child__specific_aspects" rows="5" cols="33"></textarea>
                 </div>
                 <div className="utbf-form__half-col">
                     <label>{childRecommendations}</label>
-                    <input type="text" name="user__child__recommendations"  value="" />
+                    <textarea name="user__child__recommendations" rows="5" cols="33"></textarea>
                 </div>
             </div>
 

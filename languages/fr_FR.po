@@ -373,6 +373,14 @@ msgid "Password must include"
 msgstr "Le mot de passe doit inclure"
 
 #
+msgid "Password must"
+msgstr "Le mot de passe doit"
+
+#
+msgid "Password must have at least 8 characters, a number, a capital letter, a special character"
+msgstr "Le mot de passe doit avoir au moins 8 caractères, un nombre, une majuscule, un caractère spécial"
+
+#
 msgid "The phone must be composed of numbers only"
 msgstr "Le téléphone doit être composé uniquement de chiffres"
 
@@ -409,8 +417,12 @@ msgid "The login is already registered"
 msgstr "L'identifiant est déjà enregistré"
 
 #
-msgid "Account created successfully"
-msgstr "Compte créé avec succés"
+msgid "Account created successfully."
+msgstr "Compte créé avec succés."
+
+#
+msgid "Click here to login"
+msgstr "Cliquez ici pour vous connecter"
 
 #
 msgid "--Please choose an option--"

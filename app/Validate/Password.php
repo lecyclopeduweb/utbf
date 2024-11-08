@@ -67,7 +67,7 @@ class Password
             $response  .= __('a special character',UTBF_TEXT_DOMAIN);
         endif;
         if(!empty($response)):
-            $response  = __('Password must include',UTBF_TEXT_DOMAIN).' '.$response ;
+            $response  = __('Password must',UTBF_TEXT_DOMAIN).' '.$response ;
         endif;
 
         return $response;

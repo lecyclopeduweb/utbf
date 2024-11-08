@@ -35,6 +35,7 @@ if(empty($args))
                 <?= (!empty($args['props']['label_password']))? $args['props']['label_password'] : __('Password',UTBF_TEXT_DOMAIN); ?>*
             </label>
             <input type="password" name="password" value="">
+            <i class="indicate password"><?= __('Password must have at least 8 characters, a number, a capital letter, a special character',UTBF_TEXT_DOMAIN); ?></i>
             <div class="error password"></div>
         </div>
     </div>
@@ -59,7 +60,7 @@ if(empty($args))
             <label>
                 <?= (!empty($args['props']['label_address']))? $args['props']['label_address'] : __('Address',UTBF_TEXT_DOMAIN); ?>*
             </label>
-            <input type="text" name="address" value="">
+            <textarea name="address" rows="5" cols="33"></textarea>
             <div class="error address"></div>
         </div>
     </div>
@@ -103,19 +104,19 @@ if(empty($args))
      */
     ?>
     <h2 class="space-mt-30">
-        <?= (!empty($args['props']['title_legal_guardian']))? $args['props']['title_legal_guardian'] : __('Legal guardian',UTBF_TEXT_DOMAIN); ?>
+        <?= (!empty($args['props']['title_legal_guardian']))? $args['props']['title_legal_guardian'] : __('Legal guardian',UTBF_TEXT_DOMAIN); ?> 2
     </h2>
     <div class="utbf-form__row space-mt-20">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_first_name']))? $args['props']['label_legal_guardian_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_first_name']))? $args['props']['label_legal_guardian_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__first_name" value="">
             <div class="error user__legal_guardian__first_name"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_last_name']))? $args['props']['label_legal_guardian_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_last_name']))? $args['props']['label_legal_guardian_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__last_name" value="">
             <div class="error user__legal_guardian__last_name"></div>
@@ -124,23 +125,23 @@ if(empty($args))
     <div class="utbf-form__row">
         <div class="utbf-form__full-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_address']))? $args['props']['label_legal_guardian_address'] : __('Address',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_address']))? $args['props']['label_legal_guardian_address'] : __('Address',UTBF_TEXT_DOMAIN); ?>
             </label>
-            <input type="text" name="user__legal_guardian__address" value="">
+            <textarea name="user__legal_guardian__address" rows="5" cols="33"></textarea>
             <div class="error user__legal_guardian__address"></div>
         </div>
     </div>
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_zip_code']))? $args['props']['label_legal_guardian_zip_code'] : __('Zip code',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_zip_code']))? $args['props']['label_legal_guardian_zip_code'] : __('Zip code',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="number" name="user__legal_guardian__zip_code" value="">
             <div class="error user__legal_guardian__zip_code"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_city']))? $args['props']['label_legal_guardian_city'] : __('City',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_city']))? $args['props']['label_legal_guardian_city'] : __('City',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__city" value="">
             <div class="error user__legal_guardian__city"></div>
@@ -149,7 +150,7 @@ if(empty($args))
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_phone']))? $args['props']['label_legal_guardian_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_phone']))? $args['props']['label_legal_guardian_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="number" name="user__legal_guardian__phone" value="">
             <div class="error user__legal_guardian__phone"></div>
@@ -165,7 +166,7 @@ if(empty($args))
     <div class="utbf-form__row">
         <div class="utbf-form__full-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_email']))? $args['props']['label_legal_guardian_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_email']))? $args['props']['label_legal_guardian_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="email" name="user__legal_guardian__email" value="">
             <div class="error user__legal_guardian__email"></div>
@@ -271,14 +272,14 @@ if(empty($args))
                 <label>
                     <?= (!empty($args['props']['label_child_specific_aspects']))? $args['props']['label_child_specific_aspects'] : __('Special items to report (food allergies, asthma, etc.)',UTBF_TEXT_DOMAIN); ?>
                 </label>
-                <input type="text" name="user__child__specific_aspects" value="">
+                <textarea name="user__child__specific_aspects" rows="5" cols="33"></textarea>
                 <div class="error user__child__specific_aspects"></div>
             </div>
             <div class="utbf-form__half-col">
                 <label>
                     <?= (!empty($args['props']['label_child_recommendations']))? $args['props']['label_child_recommendations'] : __('Any useful recommendations/comments to know about the child?',UTBF_TEXT_DOMAIN); ?>
                 </label>
-                <input type="text" name="user__child__recommendations" value="">
+                <textarea name="user__child__recommendations" rows="5" cols="33"></textarea>
                 <div class="error user__child__recommendations"></div>
             </div>
         </div>
@@ -319,5 +320,15 @@ if(empty($args))
  */
 ?>
 <div id="utbf-register-form-success" class="align-items-center justify-content-center">
-    <?= __('Account created successfully',UTBF_TEXT_DOMAIN); ?>
-</div>
+    <p class="space-pb-0">
+        <?= __('Account created successfully.',UTBF_TEXT_DOMAIN); ?>
+    </p>
+    <p>
+        <?= __('Click here to login',UTBF_TEXT_DOMAIN); ?>
+    </p>
+    <p>
+        <a class="button" href="<?=wc_get_page_permalink('myaccount'); ?>">
+            <?=  __( 'Parent space' , UTBF_TEXT_DOMAIN ); ?>
+        </a>
+    </p>
+</p>
