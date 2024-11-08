@@ -1,22 +1,27 @@
 /**
- * Debug
+ * Inputs Components
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
  */
 (function ($) {
   $(document).ready(function () {
     /**
-     *Debug form Data
+     * Limit Input type number
+     *
+    * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
      *
      * @return {void}
      */
-    window.results_form_data = function (form_data) {
-      var object = {};
-      form_data.forEach(function (value, key) {
-        object[key] = value;
-      });
-      return object;
-    };
+    function limit_inputs_number(that) {
+      that.val(that.val().replace(/[^0-9]/g, ""));
+    }
+
+    /**
+     * Events
+     */
+    $("body").on("input", "input[type=number]", function (event) {
+      limit_inputs_number($(this));
+    });
   });
 })(jQuery);
 /**
@@ -468,6 +473,27 @@
     $("#utbf-register-form").on("click", "#utbf-register-form-send", function (event) {
       register__ajax();
     });
+  });
+})(jQuery);
+/**
+ * Debug
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     *Debug form Data
+     *
+     * @return {void}
+     */
+    window.results_form_data = function (form_data) {
+      var object = {};
+      form_data.forEach(function (value, key) {
+        object[key] = value;
+      });
+      return object;
+    };
   });
 })(jQuery);
 /**
