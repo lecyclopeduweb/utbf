@@ -335,7 +335,7 @@ class Notice
 
             $args = [
                 'customer_id' => get_current_user_id( ),
-                'status'      => array('wc-completed', 'wc-processing'),
+                'status'      => array('wc-pending','wc-completed', 'wc-processing','wc-on-hold'),
                 'limit'       => -1
             ];
 

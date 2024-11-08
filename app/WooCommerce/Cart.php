@@ -98,10 +98,6 @@ class Cart
 
                 $item_data[] = array(
                     'name'  => $child['name'],
-                    'display' =>'',
-                );
-                $item_data[] = array(
-                    'name'  => __('Classroom', UTBF_TEXT_DOMAIN),
                     'display' =>$child['classroom'],
                 );
                 if(!empty($child['canteen'])):
@@ -148,16 +144,27 @@ class Cart
 
                 if (is_array($child)):
 
-                    ob_start();
+                    $item->update_meta_data( $child['name'],  $child['classroom'] );
 
-                        get_template_part( 'template-parts/woocommerce/checkout/display-data-in-checkout',null, [
-                            'child'             =>  $child,
-                        ]);
-                        $template_part = ob_get_contents();
+                    if(!empty($child['canteen'])):
+                        $implode_canteen = '<ul>';
+                        foreach ($child['canteen'] as $canteen):
+                             $implode_canteen .= '<li>' . $canteen . '</li>';
+                        endforeach;
+                        $implode_canteen .= '</ul>';
+                        $item->update_meta_data(__('Canteen', UTBF_TEXT_DOMAIN),  $implode_canteen);
+                    endif;
 
-                    ob_end_clean();
+                    if(!empty($child['daycare'])):
+                        $implode_daycare = '<ul>';
+                        foreach ($child['daycare'] as $daycare):
+                             $implode_daycare.= '<li>' . $daycare . '</li>';
+                        endforeach;
+                        $implode_daycare .= '</ul>';
+                        $item->update_meta_data(__('Daycare', UTBF_TEXT_DOMAIN),  $implode_daycare);
+                    endif;
 
-                    $item->update_meta_data( $child['name'],  $template_part );
+                    $item->update_meta_data( __('Emergency contact person', UTBF_TEXT_DOMAIN),  $child['first_name_emergency'] . ' ' . $child['last_name_emergency'] . ' / ' . $child['phone_emergency'] );
 
                 endif;
 
