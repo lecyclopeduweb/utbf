@@ -198,6 +198,66 @@
             "step": 1,
             "prepend": "",
             "append": "€"
+        },
+        {
+            "key": "field_672e2c5c52f5c",
+            "label": "Recaptcha",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_672e2c6b52f5d",
+            "label": "Clef public",
+            "name": "theme_settings_google_recaptcha_public_key",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_672e2c9252f5e",
+            "label": "Clef Privée",
+            "name": "theme_settings_google_recaptcha_private_key",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -218,5 +278,5 @@
     "active": true,
     "description": "Menu additionnel dans le menu Réglages",
     "show_in_rest": 0,
-    "modified": 1730826430
+    "modified": 1731079507
 }

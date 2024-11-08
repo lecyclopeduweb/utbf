@@ -83,6 +83,9 @@
             event.preventDefault();
             forms_recaptcha('#utbf-register-form',register__ajax);
         });
+        if($("#utbf-register-form").length){
+           $('body').addClass('et_pb_recaptcha_enabled ');
+        };
 
 
     });

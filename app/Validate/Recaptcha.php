@@ -29,15 +29,15 @@ class Recaptcha
     public function verify()
     {
 
+        $recaptcha_private_key = get_field('theme_settings_google_recaptcha_private_key','option');
+
         $response = $_POST['recaptcha_response'];
         $remote_ip = $_SERVER['REMOTE_ADDR'];
-        $secret_key = UTBF_KEY_GOOGLE_RECAPTCHA;
+        $secret_key = (!empty($recaptcha_private_key))? $recaptcha_private_key : '';
 
         $verify_response = wp_remote_get("https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=$response&remoteip=$remote_ip");
         $verify_body = wp_remote_retrieve_body($verify_response);
         $verification_result = json_decode($verify_body);
-
-        var_dump($verification_result);
 
         if ($verification_result->success && $verification_result->score >= 0.5) {
             var_dump('Traitement du formulaire en cas de succès');

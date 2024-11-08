@@ -58,17 +58,17 @@ class Assets
 
         // Divi
         wp_enqueue_script('builder-bundle.min', UTBF_DIVI_URI . '/scripts/builder-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
-        //wp_enqueue_script('frontend-bundle.min', UTBF_DIVI_URI . '/scripts/frontend-bundle.min.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
-        //wp_enqueue_script('frontend', UTBF_DIVI_URI . '/scripts/frontend.js', ['react', 'react-dom'], UTBF_SCRIPTS_VERSION, true);
 
 	    wp_localize_script('theme', 'AJAX_URL', [
 		    'url'   => admin_url('admin-ajax.php'),
 		    'nonce' => wp_create_nonce('ajax_url_nonce')
 	    ]);
 
+        $recaptcha_public_key = get_field('theme_settings_google_recaptcha_public_key','option');
+
 	    wp_localize_script('theme', 'VAR', [
 		    'confirm_delete_child'   => __('Are you sure you want to delete this child?',UTBF_TEXT_DOMAIN),
-		    'key_google_recaptcha'   => UTBF_KEY_GOOGLE_RECAPTCHA,
+		    'key_google_recaptcha'   => (!empty($recaptcha_public_key))? $recaptcha_public_key : '',
 	    ]);
 
 	    wp_localize_script('theme', 'CHILDS', [

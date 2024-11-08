@@ -25,27 +25,6 @@
   });
 })(jQuery);
 /**
- * Debug
- *
- * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
- */
-(function ($) {
-  $(document).ready(function () {
-    /**
-     *Debug form Data
-     *
-     * @return {void}
-     */
-    window.results_form_data = function (form_data) {
-      var object = {};
-      form_data.forEach(function (value, key) {
-        object[key] = value;
-      });
-      return object;
-    };
-  });
-})(jQuery);
-/**
  * Add Childs WooCommerce account
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
@@ -532,6 +511,10 @@
       event.preventDefault();
       forms_recaptcha('#utbf-register-form', register__ajax);
     });
+    if ($("#utbf-register-form").length) {
+      $('body').addClass('et_pb_recaptcha_enabled ');
+    }
+    ;
   });
 })(jQuery);
 /**
@@ -609,5 +592,26 @@
     $("body.single-product").on("change", "input.qty", function (event) {
       childs_single_product__addRemove_select();
     });
+  });
+})(jQuery);
+/**
+ * Debug
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     *Debug form Data
+     *
+     * @return {void}
+     */
+    window.results_form_data = function (form_data) {
+      var object = {};
+      form_data.forEach(function (value, key) {
+        object[key] = value;
+      });
+      return object;
+    };
   });
 })(jQuery);
