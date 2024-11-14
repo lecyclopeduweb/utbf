@@ -20,6 +20,9 @@
 
 /** Styles header **/
 .nav-principale .main-menu {display:flex !important;justify-content:end !important;align-items:center !important;}
+#menu-main ul.sub-menu li {padding:0;}
+#menu-main ul.sub-menu li a {width:auto;}
+.et_mobile_menu li a:hover, .nav ul li a:hover {background:none;}
 
 /** Fiche produit **/
 .utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before, .utbf-product .product-stock .out-of-stock:before {
