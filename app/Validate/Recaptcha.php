@@ -24,7 +24,7 @@ class Recaptcha
     /**
      * verify
      *
-     * @return bool|string
+     * @return bool
      */
     public function verify()
     {
@@ -39,11 +39,14 @@ class Recaptcha
         $verify_body = wp_remote_retrieve_body($verify_response);
         $verification_result = json_decode($verify_body);
 
-        if ($verification_result->success && $verification_result->score >= 0.5) {
-            var_dump('Traitement du formulaire en cas de succès');
-        } else {
-            var_dump('Message derreur pour lutilisateur');
-        }
+        if($remote_ip = '::1')
+            return true;
+
+        if ($verification_result->success && $verification_result->score >= 0.5):
+             return true;
+        else:
+            return false;
+        endif;
 
     }
 

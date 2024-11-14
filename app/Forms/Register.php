@@ -37,12 +37,14 @@ class Register
 
         $recaptcha = new Recaptcha;
         $validate = new ValidateRegister;
+
         $recaptcha = $recaptcha->verify();
-
-        die;
-
         $error = $validate->check($_POST);
         $response = [];
+
+        if(!$recaptcha):
+            die;
+        endif;
 
         if(!empty($error)):
             $response['error'] = $error;
