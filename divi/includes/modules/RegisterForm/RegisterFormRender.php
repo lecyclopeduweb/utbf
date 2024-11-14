@@ -292,9 +292,9 @@ if(empty($args))
      */
     ?>
     <div class="utbf-form__row justify-content-center align-items-center space-mt-30">
-        <div id="utbf-register-form-send" class="button button-primary button-large">
+        <button id="utbf-register-form-send" class="button button-primary button-large">
             <?= (!empty($args['props']['text_button']))? $args['props']['text_button'] : __('Register',UTBF_TEXT_DOMAIN); ?>
-        </div>
+        </button>
     </div>
     <div id="utbf-register-form-error" class="error align-items-center justify-content-center">
         <?= __('The form contains errors',UTBF_TEXT_DOMAIN); ?>

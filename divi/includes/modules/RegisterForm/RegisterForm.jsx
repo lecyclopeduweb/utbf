@@ -239,9 +239,9 @@ class UtbfRegisterForm extends Component {
 
             {/* Submit Button */}
             <div className="utbf-form__row justify-content-center align-items-center space-mt-30">
-                <div className="button button-primary button-large">
+                <button className="button button-primary button-large">
                     {button}
-                </div>
+                </button>
             </div>
         </form>
     );
