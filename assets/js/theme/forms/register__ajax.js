@@ -21,7 +21,7 @@
 
             //init
             $('.error').hide();
-            $('#utbf-register-form').find('.wrapper-loader').css('display','flex');
+           // $('#utbf-register-form').find('.wrapper-loader').css('display','flex');
 
             const form_values = $('#utbf-register-form').serializeArray();
 
@@ -32,7 +32,7 @@
             });
 
             //ArayData : Other School
-            if($('#user__child__school').val()!='Autre'){
+            if($('.user__child__school').val()!='Autre'){
                 form_data.delete('user__child__other_school');
             }
 
