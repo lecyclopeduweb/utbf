@@ -78,20 +78,20 @@
                 "id": ""
             },
             "choices": {
-                "lundi-08h-08h45": "Lundi \/ 08h - 08h45",
-                "lundi-17h-18h": "Lundi \/ 17h - 18h",
-                "mardi-08h-08h45": "Mardi \/ 08h - 08h45",
-                "mardi-17h-18h": "Mardi \/ 17h - 18h",
-                "mercredi-08h-08h45": "Mercredi \/ 08h - 08h45",
-                "mercredi-17h-18h": "Mercredi \/ 17h - 18h",
-                "jeudi-08h-08h45": "Jeudi \/ 08h - 08h45",
-                "jeudi-17h-18h": "Jeudi \/ 17h - 18h",
-                "vendredi-08h-08h45": "Vendredi \/ 08h - 08h45",
-                "vendredi-17h-18h": "Vendredi \/ 17h - 18h",
-                "samedi-08h-08h45": "Samedi \/ 08h - 08h45",
-                "samedi-17h-18h": "Samedi \/ 17h - 18h",
-                "dimanche-08h-08h45": "Dimanche \/ 08h - 08h45",
-                "dimanche-17h-18h": "Dimanche \/ 17h - 18h"
+                "lundi-08h-08h45": "Lundi (08h - 08h45)",
+                "lundi-17h-18h": "Lundi (17h - 18h)",
+                "mardi-08h-08h45": "Mardi (08h - 08h45)",
+                "mardi-17h-18h": "Mardi (17h - 18h)",
+                "mercredi-08h-08h45": "Mercredi (08h - 08h45)",
+                "mercredi-17h-18h": "Mercredi (17h - 18h)",
+                "jeudi-08h-08h45": "Jeudi (08h - 08h45)",
+                "jeudi-17h-18h": "Jeudi (17h - 18h)",
+                "vendredi-08h-08h45": "Vendredi (08h - 08h45)",
+                "vendredi-17h-18h": "Vendredi (17h - 18h)",
+                "samedi-08h-08h45": "Samedi (08h - 08h45)",
+                "samedi-17h-18h": "Samedi (17h - 18h)",
+                "dimanche-08h-08h45": "Dimanche (08h - 08h45)",
+                "dimanche-17h-18h": "Dimanche (17h - 18h)"
             },
             "default_value": [
                 "lundi-08h-08h45",
@@ -178,5 +178,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730826454
+    "modified": 1732015999
 }
