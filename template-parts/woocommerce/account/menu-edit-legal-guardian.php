@@ -23,14 +23,14 @@
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_first_name']))? $args['props']['label_legal_guardian_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_first_name']))? $args['props']['label_legal_guardian_first_name'] : __('First name',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__first_name" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__first_name',true); ?>">
             <div class="error user__legal_guardian__first_name"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_last_name']))? $args['props']['label_legal_guardian_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_last_name']))? $args['props']['label_legal_guardian_last_name'] : __('Last name',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__last_name" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__last_name',true); ?>">
             <div class="error user__legal_guardian__last_name"></div>
@@ -39,7 +39,7 @@
     <div class="utbf-form__row">
         <div class="utbf-form__full-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_address']))? $args['props']['label_legal_guardian_address'] : __('Address',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_address']))? $args['props']['label_legal_guardian_address'] : __('Address',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__address" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__address',true); ?>">
             <div class="error user__legal_guardian__address"></div>
@@ -48,14 +48,14 @@
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_zip_code']))? $args['props']['label_legal_guardian_zip_code'] : __('Zip code',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_zip_code']))? $args['props']['label_legal_guardian_zip_code'] : __('Zip code',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="number" name="user__legal_guardian__zip_code" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__zip_code',true); ?>">
             <div class="error user__legal_guardian__zip_code"></div>
         </div>
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_city']))? $args['props']['label_legal_guardian_city'] : __('City',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_city']))? $args['props']['label_legal_guardian_city'] : __('City',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="text" name="user__legal_guardian__city" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__city',true); ?>">
             <div class="error user__legal_guardian__city"></div>
@@ -64,7 +64,7 @@
     <div class="utbf-form__row">
         <div class="utbf-form__half-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_phone']))? $args['props']['label_legal_guardian_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_phone']))? $args['props']['label_legal_guardian_phone'] : __('Phone',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="number" name="user__legal_guardian__phone" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__phone',true); ?>">
             <div class="error user__legal_guardian__phone"></div>
@@ -80,7 +80,7 @@
     <div class="utbf-form__row">
         <div class="utbf-form__full-col">
             <label>
-                <?= (!empty($args['props']['label_legal_guardian_email']))? $args['props']['label_legal_guardian_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>*
+                <?= (!empty($args['props']['label_legal_guardian_email']))? $args['props']['label_legal_guardian_email'] : __('Email',UTBF_TEXT_DOMAIN); ?>
             </label>
             <input type="email" name="user__legal_guardian__email" value="<?= get_user_meta($args['user_id'], 'user__legal_guardian__email',true); ?>">
             <div class="error user__legal_guardian__email"></div>

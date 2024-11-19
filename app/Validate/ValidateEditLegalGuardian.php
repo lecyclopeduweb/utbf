@@ -45,15 +45,11 @@ class ValidateEditLegalGuardian
         $response = [];
 
         foreach($fields as $key => $field):
-            if(preg_match('/phone_2/', $key) && empty($field)):
-                continue;
-            elseif ($utilities->empty_field($field)) :
-               $response[$key] = __('The field is empty',UTBF_TEXT_DOMAIN);
-            elseif(preg_match('/zip_code/', $key)  && $zipcode->error($field)):
+            if(preg_match('/zip_code/', $key) && $zipcode->error($field) && !empty($field)):
                 $response[$key] = $zipcode->error($field);
-            elseif(preg_match('/phone/', $key)  && $phone->error($field)):
+            elseif(preg_match('/phone/', $key) && $phone->error($field) && !empty($field)):
                 $response[$key] = $phone->error($field);
-            elseif(preg_match('/email/', $key) && $email->register($field)):
+            elseif(preg_match('/email/', $key) && $email->register($field) && !empty($field)):
                 $response[$key] = $email->register($field);
             endif;
         endforeach;
