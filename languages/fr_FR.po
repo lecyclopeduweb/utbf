@@ -249,6 +249,10 @@ msgid "Child"
 msgstr "Enfant"
 
 #
+msgid "child"
+msgstr "enfant"
+
+#
 msgid "Title child"
 msgstr "Titre enfant"
 

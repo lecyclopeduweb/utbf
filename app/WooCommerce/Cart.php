@@ -152,7 +152,7 @@ class Cart
                              $implode_canteen .= '<li>' . $canteen . '</li>';
                         endforeach;
                         $implode_canteen .= '</ul>';
-                        $item->update_meta_data(__('Canteen', UTBF_TEXT_DOMAIN),  $implode_canteen);
+                        $item->update_meta_data(__('Canteen', UTBF_TEXT_DOMAIN) . ' ' . __('child', UTBF_TEXT_DOMAIN) . ' ' . ($key+1),  $implode_canteen);
                     endif;
 
                     if(!empty($child['daycare'])):
@@ -161,10 +161,10 @@ class Cart
                              $implode_daycare.= '<li>' . $daycare . '</li>';
                         endforeach;
                         $implode_daycare .= '</ul>';
-                        $item->update_meta_data(__('Daycare', UTBF_TEXT_DOMAIN),  $implode_daycare);
+                        $item->update_meta_data(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child', UTBF_TEXT_DOMAIN) . ' ' . ($key+1),  $implode_daycare);
                     endif;
 
-                    $item->update_meta_data( __('Emergency contact person', UTBF_TEXT_DOMAIN),  $child['first_name_emergency'] . ' ' . $child['last_name_emergency'] . ' / ' . $child['phone_emergency'] );
+                    $item->update_meta_data( __('Emergency contact person', UTBF_TEXT_DOMAIN) . ' ' . __('child', UTBF_TEXT_DOMAIN) . ' ' . ($key+1),  $child['first_name_emergency'] . ' ' . $child['last_name_emergency'] . ' / ' . $child['phone_emergency'] );
 
                 endif;
 
