@@ -21,17 +21,17 @@ class SingleProduct
     public function __construct()
     {
 
-       add_action('woocommerce_before_add_to_cart_button', [$this, 'user_form']);
+       add_action('woocommerce_after_add_to_cart_quantity', [$this, 'childs_form']);
 
     }
 
 
     /**
-     * User Form
+     * Childs Form
      *
      * @return void
      */
-    public function user_form():void
+    public function childs_form():void
     {
 
         $post_id = get_the_ID();
