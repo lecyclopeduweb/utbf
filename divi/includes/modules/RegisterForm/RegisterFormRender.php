@@ -318,15 +318,15 @@ if(empty($args))
  */
 ?>
 <div id="utbf-register-form-success" class="align-items-center justify-content-center">
-    <p class="space-pb-0">
+    <div>
         <?= __('Account created successfully.',UTBF_TEXT_DOMAIN); ?>
-    </p>
-    <p>
+    </div>
+    <div>
         <?= __('Click here to login',UTBF_TEXT_DOMAIN); ?>
-    </p>
-    <p>
+    </div>
+    <div>
         <a class="button" href="<?=wc_get_page_permalink('myaccount'); ?>">
             <?=  __( 'Parent space' , UTBF_TEXT_DOMAIN ); ?>
         </a>
-    </p>
+    </div>
 </p>
