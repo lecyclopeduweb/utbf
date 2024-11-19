@@ -28,8 +28,8 @@ class SingleProduct
         add_action('woocommerce_is_purchasable', [$this, 'remove_add_to_cart'], 10, 2);
 
         ///Messages
-        add_action('woocommerce_single_product_summary', [$this, 'show_message_if_not_logged_in'], 25);
-        add_action('woocommerce_single_product_summary', [$this, 'show_message_if_not_child'], 25);
+        add_action('woocommerce_product_meta_start', [$this, 'show_message_if_not_logged_in'], 25);
+        add_action('woocommerce_product_meta_start', [$this, 'show_message_if_not_child'], 25);
 
     }
 
@@ -132,6 +132,12 @@ class SingleProduct
 
         if (!is_user_logged_in()):
 
+            // Define a constant to track whether the message has been displayed
+            if (defined('MESSAGE_NOT_LOGGED_IN'))
+                return; // Exit if the message is already displayed
+
+            define('MESSAGE_NOT_LOGGED_IN', true);
+
             ob_start();
 
                 load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/single-product/not-logged-in.php',null,[]);
@@ -151,6 +157,13 @@ class SingleProduct
      * @return void
      */
     public function show_message_if_not_child() {
+
+
+        // Define a constant to track whether the message has been displayed
+        if (defined('MESSAGE_NOT_CHILD_DISPLAYED'))
+            return; // Exit if the message is already displayed
+
+        define('MESSAGE_NOT_CHILD_DISPLAYED', true);
 
         $childs = new Childs;
 
