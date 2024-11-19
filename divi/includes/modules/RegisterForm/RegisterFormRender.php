@@ -205,7 +205,7 @@ if(empty($args))
             </div>
         </div>
         <div class="utbf-form__row">
-            <div class="utbf-form__full-col">
+            <div class="utbf-form__half-col">
                 <label>
                     <?= (!empty($args['props']['label_child_classroom']))? $args['props']['label_child_classroom'] : __('Classroom',UTBF_TEXT_DOMAIN); ?>*
                 </label>
@@ -217,9 +217,7 @@ if(empty($args))
                 </select>
                 <div class="error user__child__classroom"></div>
             </div>
-        </div>
-        <div class="utbf-form__row">
-            <div class="utbf-form__full-col">
+            <div class="utbf-form__half-col">
                 <label>
                     <?= (!empty($args['props']['label_child_school']))? $args['props']['label_child_school'] : __('School',UTBF_TEXT_DOMAIN); ?>*
                 </label>

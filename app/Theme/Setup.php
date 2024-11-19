@@ -19,7 +19,8 @@ class Setup
     public function __construct()
     {
 
-        add_action('after_setup_theme', [$this, 'after_setup_theme']);
+        //add_action('after_setup_theme', [$this, 'after_setup_theme']);
+        add_action('init', [$this, 'init_after_setup_theme']);
 
     }
 
@@ -32,6 +33,18 @@ class Setup
     {
 
         load_child_theme_textdomain(UTBF_TEXT_DOMAIN, UTBF_THEME_PATH . '/languages');
+
+    }
+
+    /**
+     * Theme initialization.
+     *
+     * @return void
+     */
+    public function init_after_setup_theme()
+    {
+
+        load_textdomain(UTBF_TEXT_DOMAIN, UTBF_THEME_PATH . '/languages/fr_FR.mo');
 
     }
 
