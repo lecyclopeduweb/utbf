@@ -20,8 +20,11 @@
 
 /** Styles header **/
 .nav-principale .main-menu {display:flex !important;justify-content:end !important;align-items:center !important;}
+#menu-main ul.sub-menu li {padding:0;}
+#menu-main ul.sub-menu li a {width:auto;}
+.et_mobile_menu li a:hover, .nav ul li a:hover {background:none;}
 
-/** Fiche produit **/
+/** Fiche produit - liste **/
 .utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before, .utbf-product .product-stock .out-of-stock:before {
 	content:"";
 	display:inline-block;
@@ -45,6 +48,27 @@
 .utbf-product .product-category span.categories, .utbf-product .product-price .amount, .utbf-product .product-stock .stock, .utbf-product .product-stock .out-of-stock {display:flex;}
 .utbf-product .product-category, .utbf-product .product-price, .utbf-product .product-stock {padding:0 20px;}
 
+/** Fiche produit - détail **/
+.woocommerce-page div.product .utbf-panier .quantity {
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+	width:100% !important;
+	float:none !important;
+}
+.woocommerce-page div.product .utbf-panier .quantity:before {
+	content:"Nombre d\'enfants à inscrire au stage";
+	display:block;
+}
+/*.woocommerce-page div.product .utbf-panier .single_add_to_cart_button {display:none !important;}*/
+
+/* Panier */
+td.product-name a, .woocommerce-checkout-review-order-table .product-name {font-weight:bold;font-size:16px;margin-bottom:15px;display:block;}
+dl.variation {font-size:14px; font-weight:500;}
+.woocommerce td.product-name dl.variation dt, .woocommerce td.product-name dl.variation dd {margin-bottom:5px;}
+.variation-Personnecontacterencasdurgence {padding-bottom:20px;}
+
+
 /** Images à la une blog */
 .et_pb_image_container {margin:-19px -19px 29px;}
 
@@ -63,7 +87,7 @@
 .bc-account-content #woocommerce-EditLegalGuardianAccountForm,.bc-account-content  #woocommerce-EditChildsAccountForm {padding:81px 0;}
 
 /** Validation commande **/
-/*.woocommerce .et_pb_row .woocommerce-cart-form {display:none;}*/
+.woocommerce-checkout .et_pb_row .woocommerce-cart-form {display:none;}
 .woocommerce .et_pb_row .cart-collaterals, .woocommerce .et_pb_row .checkout-area {
 	width:80%;
 	max-width:1080px; 
@@ -71,4 +95,14 @@
 	padding:0 !important;
 }
 .woocommerce .woocommerce-checkout #customer_details {margin-bottom:30px;}
+.woocommerce-checkout-review-order-table .variation {margin-top:20px;}
+#billing_company_field {display:none;}
 
+/** Commande terminée **/
+.order_details td.product-name a {display:inline-block;}
+.order_details ul.wc-item-meta ul {clear:both;}
+
+
+/** Formulaire Création Compte **/
+.utbf-form i.indicate.password {font-size:12px;}
+.utbf-form .utbf-form__row {margin-bottom:20px;}
