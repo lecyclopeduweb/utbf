@@ -20,12 +20,65 @@ class Checkout
     public function __construct()
     {
 
+
+        //Childs Item Datas
+        add_action('woocommerce_checkout_create_order_line_item', [$this,'save_data_in_order'], 10, 4);
+
         //Consent
         add_action('woocommerce_review_order_before_submit', [$this, 'add_consent']);
         add_action('woocommerce_checkout_process', [$this, 'validate_consent']);
         add_action('woocommerce_checkout_update_order_meta', [$this, 'save_consent']);
         add_action('woocommerce_thankyou', [$this, 'display_consent_order'], 10, 1);
         add_action('woocommerce_admin_order_data_after_order_details', [$this, 'display_consent_order'], 10, 1);
+
+    }
+
+    /**
+     * Childs Item Datas
+     *
+     * Save custom data to order item meta.
+     *
+     * @param WC_Order_Item_Product $item         The order item object.
+     * @param string                $cart_item_key The unique cart item key.
+     * @param array                 $values       The cart item data array.
+     * @param WC_Order              $order        The order object.
+     *
+     * @return void
+     */
+    function save_data_in_order($item, $cart_item_key, $values, $order): void
+    {
+
+        if (isset($values['childs']) && is_array($values['childs'])):
+            foreach ($values['childs'] as $key => $child):
+
+                if (is_array($child)):
+
+                    $item->update_meta_data( $child['name'],  $child['classroom'] );
+
+                    if(!empty($child['canteen'])):
+                        $implode_canteen = '<ul>';
+                        foreach ($child['canteen'] as $canteen):
+                             $implode_canteen .= '<li>' . $canteen . '</li>';
+                        endforeach;
+                        $implode_canteen .= '</ul>';
+                        $item->update_meta_data(__('Canteen', UTBF_TEXT_DOMAIN) . ' ' . __('child', UTBF_TEXT_DOMAIN) . ' ' . ($key+1),  $implode_canteen);
+                    endif;
+
+                    if(!empty($child['daycare'])):
+                        $implode_daycare = '<ul>';
+                        foreach ($child['daycare'] as $daycare):
+                             $implode_daycare.= '<li>' . $daycare . '</li>';
+                        endforeach;
+                        $implode_daycare .= '</ul>';
+                        $item->update_meta_data(__('Daycare', UTBF_TEXT_DOMAIN) . ' ' . __('child', UTBF_TEXT_DOMAIN) . ' ' . ($key+1),  $implode_daycare);
+                    endif;
+
+                    $item->update_meta_data( __('Emergency contact person', UTBF_TEXT_DOMAIN) . ' ' . __('child', UTBF_TEXT_DOMAIN) . ' ' . ($key+1),  $child['first_name_emergency'] . ' ' . $child['last_name_emergency'] . ' / ' . $child['phone_emergency'] );
+
+                endif;
+
+            endforeach;
+        endif;
 
     }
 
