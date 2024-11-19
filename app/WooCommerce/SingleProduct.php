@@ -132,6 +132,9 @@ class SingleProduct
 
         if (!is_user_logged_in()):
 
+            if (!is_product())
+                return;
+
             // Define a constant to track whether the message has been displayed
             if (defined('MESSAGE_NOT_LOGGED_IN'))
                 return; // Exit if the message is already displayed
@@ -158,6 +161,8 @@ class SingleProduct
      */
     public function show_message_if_not_child() {
 
+        if (!is_product())
+            return;
 
         // Define a constant to track whether the message has been displayed
         if (defined('MESSAGE_NOT_CHILD_DISPLAYED'))
