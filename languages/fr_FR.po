@@ -570,7 +570,7 @@ msgstr "Vous n'avez pas séléctionné tous les enfants."
 
 #
 msgid "You must select different children."
-msgstr "Vous devez séléctionner des enfants différents."
+msgstr "Vous devez sélectionner des enfants différents.."
 
 #
 msgid "You must complete the contact details of the person to be notified in the event of an emergency for each child."
