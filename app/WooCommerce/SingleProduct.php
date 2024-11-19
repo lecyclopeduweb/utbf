@@ -21,7 +21,15 @@ class SingleProduct
     public function __construct()
     {
 
-       add_action('woocommerce_after_add_to_cart_quantity', [$this, 'childs_form']);
+        ///childs Form
+        add_action('woocommerce_after_add_to_cart_quantity', [$this, 'childs_form']);
+
+        ///Button Add To Cart
+        add_action('woocommerce_is_purchasable', [$this, 'remove_add_to_cart'], 10, 2);
+
+        ///Messages
+        add_action('woocommerce_single_product_summary', [$this, 'show_message_if_not_logged_in'], 25);
+        add_action('woocommerce_single_product_summary', [$this, 'show_message_if_not_child'], 25);
 
     }
 
@@ -34,10 +42,16 @@ class SingleProduct
     public function childs_form():void
     {
 
-        $post_id = get_the_ID();
-
         $childs = new Childs;
+
+        if (!is_user_logged_in())
+            return;
+
+        $post_id = get_the_ID();
         $get_childs = $childs->get_childs();
+
+        if(empty($get_childs))
+            return;
 
         $count_childs = (isset($_POST['childs']))? count($_POST['childs']): 1;
 
@@ -65,7 +79,7 @@ class SingleProduct
 
         ob_start();
 
-            get_template_part( 'template-parts/woocommerce/single-product/user-form',null,[
+            get_template_part( 'template-parts/woocommerce/single-product/childs-form',null,[
                 'childs'            => $get_childs,
                 'count'             => $count_childs,
                 'classroom'         => $classroom,
@@ -81,5 +95,84 @@ class SingleProduct
         echo  $template_part;
 
     }
+
+    /**
+     * Disable the Add to Cart butto.
+     *
+     * @param bool $purchasable  Whether the product is purchasable.
+     * @param WC_Product $product The product object.
+     *
+     * @return bool False
+     */
+    public function remove_add_to_cart($purchasable, $product)
+    {
+
+        $childs = new Childs;
+
+        if (!is_user_logged_in()) :
+            return false;
+        endif;
+
+        $get_childs = $childs->get_childs();
+
+        if(empty($get_childs)):
+            return false;
+        endif;
+
+        return $purchasable;
+
+    }
+
+    /**
+     * Display a custom message if the user is not logged in.
+     *
+     * @return void
+     */
+    public function show_message_if_not_logged_in() {
+
+        if (!is_user_logged_in()):
+
+            ob_start();
+
+                load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/single-product/not-logged-in.php',null,[]);
+                $template_part = ob_get_contents();
+
+            ob_end_clean();
+            echo $template_part;
+
+
+        endif;
+
+    }
+
+    /**
+     * Display a custom message if the user has not child.
+     *
+     * @return void
+     */
+    public function show_message_if_not_child() {
+
+        $childs = new Childs;
+
+        if (!is_user_logged_in())
+            return;
+
+        $get_childs = $childs->get_childs();
+
+        if(empty($get_childs)):
+
+            ob_start();
+
+                load_template( UTBF_THEME_PATH . '/template-parts/woocommerce/single-product/not-childs.php',null,[]);
+                $template_part = ob_get_contents();
+
+            ob_end_clean();
+
+            echo $template_part;
+
+         endif;
+
+    }
+
 
 }
