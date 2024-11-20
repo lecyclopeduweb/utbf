@@ -106,3 +106,4 @@ dl.variation {font-size:14px; font-weight:500;}
 /** Formulaire Création Compte **/
 .utbf-form i.indicate.password {font-size:12px;}
 .utbf-form .utbf-form__row {margin-bottom:20px;}
+#utbf-register-form-success div {margin-right:10px;}
