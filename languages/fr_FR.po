@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: divi-child 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/seomag\n"
 "POT-Creation-Date: 2020-10-27T15:16:05+00:00\n"
-"PO-Revision-Date: 2024-11-25 16:13+0100\n"
+"PO-Revision-Date: 2024-11-25 16:23+0100\n"
 "Last-Translator: Jonathan Alcaras <lecyclopeduweb@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -358,11 +358,11 @@ msgstr "un caractère spécial"
 
 #
 msgid "Password must include"
-msgstr "Le mot de passe doit inclure"
+msgstr "Le mot de passe doit avoir"
 
 #
 msgid "Password must"
-msgstr "Le mot de passe doit"
+msgstr "Le mot de passe doit avoir"
 
 #
 msgid "Password must have at least 8 characters, a number, a capital letter, a special character"
@@ -652,4 +652,3 @@ msgstr "Préciser le nom de l'école"
 #
 msgid "Add a new child"
 msgstr "Ajouter un nouvel enfant"
-
