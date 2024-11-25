@@ -104,9 +104,9 @@ dl.variation {font-size:14px; font-weight:500;}
 .woocommerce td.product-name dl.variation dt, .woocommerce td.product-name dl.variation dd {margin-bottom:5px;}
 .variation-Personnecontacterencasdurgence {padding-bottom:20px;}
 
-
 /** Images à la une blog */
 .et_pb_image_container {margin:-19px -19px 29px;}
+.wp-block-file:not(.wp-element-button) {min-height:620px;}
 
 /** Breadcrumb **/
 .breadcrumb-item a {text-decoration:underline;}
