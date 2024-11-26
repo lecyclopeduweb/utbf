@@ -28,7 +28,7 @@ class Notice
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_classrooms_authorized'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_emergency'], 10, 3);
         add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_cart'], 10, 3);
-        add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_orders'], 10, 3);
+        //add_filter('woocommerce_add_to_cart_validation', [$this, 'notice_child_already_in_orders'], 10, 3);
 
     }
 

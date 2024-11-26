@@ -25,83 +25,6 @@
   });
 })(jQuery);
 /**
- * Add Select Childs WooCommerce Single Product
- *
- * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
- */
-(function ($) {
-  $(document).ready(function () {
-    /**
-     * Init max Qty
-     *
-     * @return {void}
-     */
-    function childs_single_product__init_max_qty() {
-      $('body.single-product input.qty').attr('max', CHILDS.count);
-    }
-
-    /**
-     * Controle QTY
-     *
-     * @return {int}
-     */
-    function childs_single_product__controle_qty() {
-      //init
-      let qty = parseInt($('body.single-product input.qty').val(), 10);
-      let childsCount = parseInt(CHILDS.count, 10);
-
-      //Limite Max Qty
-      if (qty > childsCount) {
-        $('body.single-product input.qty').val(childsCount);
-        qty = childsCount;
-      }
-      //Limite Qty Negative
-      if (Number(qty) < 0) {
-        $('body.single-product input.qty').val(1);
-        qty = 1;
-      }
-      return qty;
-    }
-
-    /**
-     * Add Select Child
-     *
-     * @return {void}
-     */
-    function childs_single_product__addRemove_select() {
-      //init
-      let selectChildHtml = $('.single-product-childs').find('.single-product-childs__item').first().prop('outerHTML');
-      let countSelectChild = $('.single-product-childs').children().length;
-      let qty = childs_single_product__controle_qty();
-
-      //Add || Remove select
-      if (qty > countSelectChild) {
-        let numberAddSelect = qty - countSelectChild;
-        let regex = new RegExp('childs\\[0\\]', 'g');
-        let regex2 = new RegExp('<span class="number">1<\\/span>', 'g');
-        for (let i = 0; i < numberAddSelect; i++) {
-          let updatedHtml = selectChildHtml.replace(regex, "childs[" + countSelectChild + "]").replace(regex2, '<span class="number">' + (countSelectChild + 1) + '</span>');
-          $('.single-product-childs').append(updatedHtml);
-          countSelectChild++;
-        }
-      } else {
-        let numberRemoveSelect = countSelectChild - qty;
-        if (numberRemoveSelect > 0) {
-          $('.single-product-childs').children().slice(-numberRemoveSelect).remove();
-        }
-      }
-    }
-
-    /**
-     * Events
-     */
-    childs_single_product__init_max_qty();
-    $("body.single-product").on("change", "input.qty", function (event) {
-      childs_single_product__addRemove_select();
-    });
-  });
-})(jQuery);
-/**
  * Debug
  *
  * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
@@ -614,5 +537,120 @@
       $('body').addClass('et_pb_recaptcha_enabled ');
     }
     ;
+  });
+})(jQuery);
+/**
+ * Add Select Childs WooCommerce Single Product
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Add Child name
+     *
+     * @param {JQuery<HTMLElement>} that - The jQuery object representing the clicked button. This is used for jQuery-specific operations.
+     *
+     * @return {void}
+     */
+    function childs_single_product__add_child_name(that) {
+      let parent = that.closest('.single-product-childs__name');
+      let first_name = that.find('option:selected').attr('first-name');
+      let last_name = that.find('option:selected').attr('last-name');
+      let birthday = that.find('option:selected').attr('birthday');
+      let medical_treatments = that.find('option:selected').attr('medical-treatments');
+      let specific_aspects = that.find('option:selected').attr('specific-aspects');
+      let recommendations = that.find('option:selected').attr('recommendations');
+      parent.find('.child-first-name').val(first_name);
+      parent.find('.child-last-name').val(last_name);
+      parent.find('.child-birthday').val(birthday);
+      parent.find('.child-medical-treatments').val(medical_treatments);
+      parent.find('.child-specific-aspects').val(specific_aspects);
+      parent.find('.child-recommendations').val(recommendations);
+    }
+
+    /**
+     * Events
+     */
+    $("body.single-product").on("change", "select.child-name", function (event) {
+      childs_single_product__add_child_name($(this));
+    });
+  });
+})(jQuery);
+/**
+ * Add Select Childs WooCommerce Single Product
+ *
+ * @author     "Jonathan ALCARAS" <lecyclopeduweb@gmail.com>
+ */
+(function ($) {
+  $(document).ready(function () {
+    /**
+     * Init max Qty
+     *
+     * @return {void}
+     */
+    function childs_single_product__init_max_qty() {
+      $('body.single-product input.qty').attr('max', CHILDS.count);
+    }
+
+    /**
+     * Controle QTY
+     *
+     * @return {int}
+     */
+    function childs_single_product__controle_qty() {
+      //init
+      let qty = parseInt($('body.single-product input.qty').val(), 10);
+      let childsCount = parseInt(CHILDS.count, 10);
+
+      //Limite Max Qty
+      if (qty > childsCount) {
+        $('body.single-product input.qty').val(childsCount);
+        qty = childsCount;
+      }
+      //Limite Qty Negative
+      if (Number(qty) < 0) {
+        $('body.single-product input.qty').val(1);
+        qty = 1;
+      }
+      return qty;
+    }
+
+    /**
+     * Add Select Child
+     *
+     * @return {void}
+     */
+    function childs_single_product__addRemove_select() {
+      //init
+      let selectChildHtml = $('.single-product-childs').find('.single-product-childs__item').first().prop('outerHTML');
+      let countSelectChild = $('.single-product-childs').children().length;
+      let qty = childs_single_product__controle_qty();
+
+      //Add || Remove select
+      if (qty > countSelectChild) {
+        let numberAddSelect = qty - countSelectChild;
+        let regex = new RegExp('childs\\[0\\]', 'g');
+        let regex2 = new RegExp('<span class="number">1<\\/span>', 'g');
+        for (let i = 0; i < numberAddSelect; i++) {
+          let updatedHtml = selectChildHtml.replace(regex, "childs[" + countSelectChild + "]").replace(regex2, '<span class="number">' + (countSelectChild + 1) + '</span>');
+          $('.single-product-childs').append(updatedHtml);
+          countSelectChild++;
+        }
+      } else {
+        let numberRemoveSelect = countSelectChild - qty;
+        if (numberRemoveSelect > 0) {
+          $('.single-product-childs').children().slice(-numberRemoveSelect).remove();
+        }
+      }
+    }
+
+    /**
+     * Events
+     */
+    childs_single_product__init_max_qty();
+    $("body.single-product").on("change", "input.qty", function (event) {
+      childs_single_product__addRemove_select();
+    });
   });
 })(jQuery);

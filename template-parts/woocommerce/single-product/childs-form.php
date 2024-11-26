@@ -27,16 +27,29 @@
                         <label>
                             <?= __('Name',UTBF_TEXT_DOMAIN); ?>&nbsp;<span class="required">*</span>
                         </label>
-                        <select name="childs[<?= $i; ?>][name]">
+                        <select class="child-name" name="childs[<?= $i; ?>][name]">
                             <?php $select = (isset($_POST['childs']))? $_POST['childs'][$i]['name']: '';?>
                             <option value="">--<?=  __( 'Select a child', UTBF_TEXT_DOMAIN ); ?>--</option>
                             <?php foreach($args['childs'] as $key => $child): ?>
-                                <option value="<?= $child['first_name'] . ' ' . $child['last_name']; ?>" <?php if( $select == $child['first_name'] . ' ' . $child['last_name']): echo 'selected'; endif; ?>>
+                                <option
+                                first-name="<?= $child['first_name']; ?>"
+                                last-name="<?= $child['last_name']; ?>"
+                                birthday="<?= $child['birthday']; ?>"
+                                medical-treatments="<?= $child['medical_treatments']; ?>"
+                                specific-aspects="<?= $child['specific_aspects']; ?>"
+                                recommendations="<?= $child['recommendations']; ?>"
+                                value="<?= $child['first_name'] . ' ' . $child['last_name']; ?>" <?php if( $select == $child['first_name'] . ' ' . $child['last_name']): echo 'selected'; endif; ?>>
                                     <?= $child['first_name'] . ' ' . $child['last_name']; ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
+                    <input class="child-first-name" type="hidden" name="childs[<?= $i; ?>][first_name]" value="">
+                    <input class="child-last-name" type="hidden" name="childs[<?= $i; ?>][last_name]" value="">
+                    <input class="child-birthday" type="hidden" name="childs[<?= $i; ?>][birthday]" value="">
+                    <input class="child-medical-treatments" type="hidden" name="childs[<?= $i; ?>][medical_treatments]" value="">
+                    <input class="child-specific-aspects" type="hidden" name="childs[<?= $i; ?>][specific_aspects]" value="">
+                    <input class="child-recommendations" type="hidden" name="childs[<?= $i; ?>][recommendations]" value="">
                 </div>
                 <?php
                 /**

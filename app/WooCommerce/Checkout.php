@@ -24,6 +24,10 @@ class Checkout
         //Childs Item Datas
         add_action('woocommerce_checkout_create_order_line_item', [$this,'save_data_in_order'], 10, 4);
 
+        //Childs Post meta
+        add_filter('woocommerce_checkout_fields', [$this,'add_custom_hidden_checkout_fields']);
+        add_action('woocommerce_checkout_update_order_meta', [$this,'save_data_in_post_meta']);
+
         //Consent
         add_action('woocommerce_review_order_before_submit', [$this, 'add_consent']);
         add_action('woocommerce_checkout_process', [$this, 'validate_consent']);
@@ -47,6 +51,7 @@ class Checkout
      */
     function save_data_in_order($item, $cart_item_key, $values, $order): void
     {
+
 
         if (isset($values['childs']) && is_array($values['childs'])):
             foreach ($values['childs'] as $key => $child):
@@ -78,6 +83,90 @@ class Checkout
                 endif;
 
             endforeach;
+        endif;
+
+    }
+
+    /**
+     * Childs Post meta
+     *
+     * Add hidden fields to WooCommerce checkout form.
+     *
+     * @param array $fields Existing checkout fields.
+     *
+     * @return array Modified checkout fields with custom hidden fields.
+     */
+    function add_custom_hidden_checkout_fields($fields)
+    {
+
+        //Childs
+        foreach (WC()->cart->get_cart() as $cart_item) :
+            if (isset($cart_item['childs'])) :
+
+                $child_item[$cart_item['product_id']] = $cart_item['childs'];
+
+                $fields['billing']['childs'] = [
+                    'type'     => 'hidden',
+                    'default'  => json_encode($child_item),
+                ];
+                break;
+
+            endif;
+        endforeach;
+
+        //Legal Gardian
+        $current_user_id = get_current_user_id();
+
+        $legal_guardian = [
+            'first_name' => get_user_meta($current_user_id, 'user__legal_guardian__first_name', true),
+            'last_name'  => get_user_meta($current_user_id, 'user__legal_guardian__last_name', true),
+            'address'    => get_user_meta($current_user_id, 'user__legal_guardian__address', true),
+            'zip_code'   => get_user_meta($current_user_id, 'user__legal_guardian__zip_code', true),
+            'city'       => get_user_meta($current_user_id, 'user__legal_guardian__city', true),
+            'email'      => get_user_meta($current_user_id, 'user__legal_guardian__email', true),
+            'phone'      => get_user_meta($current_user_id, 'user__legal_guardian__phone', true),
+            'phone_2'    => get_user_meta($current_user_id, 'user__legal_guardian__phone_2', true)
+        ];
+
+        $fields['billing']['legal_guardian_2'] = [
+            'type'     => 'hidden',
+            'default'  =>  json_encode($legal_guardian),
+        ];
+
+        return $fields;
+
+    }
+
+    /**
+     * Childs Post meta
+     *
+     * Save custom data to post meta.
+     *
+     * @param int $order_id The order ID.
+     *
+     * @return void
+     */
+    function save_data_in_post_meta($order_id): void
+    {
+
+        if (isset($_POST['childs'])):
+
+            $childs_data = json_decode(stripslashes($_POST['childs']), true);
+
+            if (is_array($childs_data)) :
+                update_post_meta($order_id, 'childs', $childs_data);
+            endif;
+
+        endif;
+
+        if (isset($_POST['legal_guardian_2'])):
+
+            $legal_guardian_2 = json_decode(stripslashes($_POST['legal_guardian_2']), true);
+
+            if (is_array($legal_guardian_2)) :
+                update_post_meta($order_id, 'legal_guardian_2', $legal_guardian_2);
+            endif;
+
         endif;
 
     }
