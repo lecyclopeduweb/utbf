@@ -42,17 +42,14 @@ class Analytics
         $query = "CREATE TABLE $table_name (
             id int NOT NULL AUTO_INCREMENT,
             product_id bigint NOT NULL,
-            user_first_name text,
-            user_last_name text,
-            year int NOT NULL,
-            month int NOT NULL,
-            customer text,
-            calendar text,
-            overtimes text,
-            attachment text,
-            signing text,
-            date_signing int DEFAULT NULL,
-            state varchar(20) DEFAULT '0' NOT NULL,
+            order_id bigint NOT NULL,
+            tax_product_school text,
+            child text,
+            canteen text,
+            daycare text,
+            authorisation text,
+            legal_guardian text,
+            emergency text,
             PRIMARY KEY (id)
         ) $charset_collate ENGINE = InnoDB;";
 
