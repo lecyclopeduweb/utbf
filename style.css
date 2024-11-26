@@ -24,6 +24,21 @@
 #menu-main ul.sub-menu li a {width:auto;}
 .et_mobile_menu li a:hover, .nav ul li a:hover {background:none;}
 
+/** RWD header **/
+@media screen and (max-width: 1140px) {
+	.et_pb_menu .et-menu>li {padding:0 8px;}
+	.nav-principale .et_pb_column_1_4  {width:15%;margin-right:2%;}
+	.nav-principale .et_pb_column_3_4  {width:83%;}
+}
+@media screen and (max-width: 981px) {
+	.nav-secondaire .et_pb_column, .nav-principale .et_pb_column{width:50% !important;margin:0 !important;}
+	.nav-secondaire .et_pb_row, .nav-principale .et_pb_row {display:flex;justify-content:space-between;align-items:center;}
+	.nav-principale .et_mobile_menu {min-width:250px;left:-150px;top:50px;}
+	
+}
+
+
+
 /** Fiche produit - liste **/
 .utbf-product .product-category span.categories:before, .utbf-product .product-price .amount:before, .utbf-product .product-stock .stock:before, .utbf-product .product-stock .out-of-stock:before {
 	content:"";
@@ -48,17 +63,38 @@
 .utbf-product .product-category span.categories, .utbf-product .product-price .amount, .utbf-product .product-stock .stock, .utbf-product .product-stock .out-of-stock {display:flex;}
 .utbf-product .product-category, .utbf-product .product-price, .utbf-product .product-stock {padding:0 20px;}
 
+/* masquage du btn inscription si pas de stock */
+.outofstock .utbf-product .et_pb_db_shop_button {display:none;}
+
 /** Fiche produit - détail **/
-.woocommerce-page div.product .utbf-panier .quantity {
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-	width:100% !important;
-	float:none !important;
+.utbf-produit-meta .category_wrapper, .utbf-produit-meta .tag_wrapper {
+	background:#38C8BE;
+	border-radius:15px;
+	padding:5px 10px;
+	margin-right:8px;
+	color:#fff;
+	display:inline-block;
+	margin-bottom:5px;
+}
+.woocommerce-page div.product .utbf-panier form.cart div.quantity {
+	width:100%;
+	margin-bottom:2em !important;
 }
 .woocommerce-page div.product .utbf-panier .quantity:before {
 	content:"Nombre d\'enfants à inscrire au stage";
+	display:inline-block;
+}
+.woocommerce-page div.product .utbf-panier .quantity:after {
+	content:"Pour inscrire plus d\'enfants au stage, vous devez d\'abord les ajouter dans votre espace parent.";
 	display:block;
+	font-size:12px;
+	font-style:italic;
+}
+.woocommerce-page div.product .utbf-panier .quantity input.qty {
+	margin-left: 10px;
+    width: 50px;
+    height: auto;
+    padding: 7px;
 }
 /*.woocommerce-page div.product .utbf-panier .single_add_to_cart_button {display:none !important;}*/
 
@@ -68,9 +104,9 @@ dl.variation {font-size:14px; font-weight:500;}
 .woocommerce td.product-name dl.variation dt, .woocommerce td.product-name dl.variation dd {margin-bottom:5px;}
 .variation-Personnecontacterencasdurgence {padding-bottom:20px;}
 
-
 /** Images à la une blog */
 .et_pb_image_container {margin:-19px -19px 29px;}
+.wp-block-file:not(.wp-element-button) {min-height:620px;}
 
 /** Breadcrumb **/
 .breadcrumb-item a {text-decoration:underline;}
@@ -106,3 +142,18 @@ dl.variation {font-size:14px; font-weight:500;}
 /** Formulaire Création Compte **/
 .utbf-form i.indicate.password {font-size:12px;}
 .utbf-form .utbf-form__row {margin-bottom:20px;}
+#utbf-register-form-success div {margin-right:10px;}
+
+@media screen and (max-width: 780px) {
+	#utbf-register-form-success {flex-direction:column;;text-align:center;}
+	#utbf-register-form-success div {margin-bottom:1em;}
+
+}
+
+/** Inverser les colonnes en mobile **/
+@media screen and ( max-width: 980px ) {
+    .inverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
