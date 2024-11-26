@@ -1,6 +1,6 @@
 {
     "key": "group_67112013ed9b0",
-    "title": "Stages",
+    "title": "Options des stages",
     "fields": [
         {
             "key": "field_671120140189c",
@@ -178,5 +178,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1732015999
+    "modified": 1732616907
 }
