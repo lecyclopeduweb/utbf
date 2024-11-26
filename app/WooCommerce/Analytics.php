@@ -41,7 +41,7 @@ class Analytics
 
         $query = "CREATE TABLE $table_name (
             id int NOT NULL AUTO_INCREMENT,
-            user_id bigint NOT NULL,
+            product_id bigint NOT NULL,
             user_first_name text,
             user_last_name text,
             year int NOT NULL,
