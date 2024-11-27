@@ -177,6 +177,15 @@ class Analytics
 
         global $wpdb;
 
+
+        $table_name = $wpdb->prefix . $this->table_name;
+        if(!$wpdb->get_var("SHOW TABLES LIKE '{$table_name}'")):
+              wp_send_json_error(
+                ['message' =>  __('The table in the database does not exist.', UTBF_TEXT_DOMAIN)]
+            );
+            die;
+        endif;
+
         $products = [];
         $product_id = $_POST['product_id'];
         $product_title = get_the_title($product_id);

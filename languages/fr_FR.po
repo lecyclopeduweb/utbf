@@ -843,3 +843,7 @@ msgstr "Stage invalide."
 #
 msgid "Global analytics"
 msgstr "Statistiques globales"
+
+#
+msgid "The table in the database does not exist."
+msgstr "La table dans la base de données n'existe pas."
