@@ -13,6 +13,8 @@ use AppUtbf\Logs\Logs;
 class Analytics
 {
 
+    private $table_name;
+
     /**
      * __construct
      *
@@ -20,6 +22,8 @@ class Analytics
      */
     public function __construct()
     {
+
+        $this->table_name = 'woocommerce_utbf_products_analytics';
 
         add_action('after_switch_theme', [$this,'create_product_analytics_database_table']);
         add_action('woocommerce_checkout_update_order_meta', [$this,'insert_product_analytics_entry'], 10, 2);
@@ -38,7 +42,7 @@ class Analytics
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-        $table_name = $wpdb->prefix . 'woocommerce_utbf_products_analytics';
+        $table_name = $wpdb->prefix . $this->table_name;
         $charset_collate = $wpdb->get_charset_collate();
 
         $query = "CREATE TABLE $table_name (
@@ -70,6 +74,10 @@ class Analytics
     public function insert_product_analytics_entry($order_id, $data) {
 
         global $wpdb;
+
+        $table_name = $wpdb->prefix . $this->table_name;
+        if(!$wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"))
+            return;
 
         $order = wc_get_order($order_id);
 
@@ -141,7 +149,7 @@ class Analytics
                     ];
 
                     $wpdb->insert(
-                        $wpdb->prefix .'woocommerce_utbf_products_analytics',
+                        $wpdb->prefix . $this->table_name,
                         $insert
                     );
 
