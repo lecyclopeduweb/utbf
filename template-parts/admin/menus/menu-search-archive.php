@@ -55,7 +55,7 @@
                 <?php if(!empty($args['users'])):?>
                     <?php foreach($args['users'] as $user): ?>
                         <?php
-                        load_template( UTBF_THEME_PATH . '/template-parts/admin/users/menu-search-item.php',null,$user);
+                        load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-search-item.php',null,$user);
                         ?>
                     <?php endforeach; ?>
                 <?php else:?>

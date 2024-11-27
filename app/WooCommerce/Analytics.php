@@ -4,7 +4,8 @@ declare (strict_types = 1);
 
 namespace AppUtbf\WooCommerce;
 
-use AppUtbf\Logs\Logs;
+use AppUtbf\CSV\CSV;
+use AppUtbf\CSV\Products;
 /**
  * Analytics
  *
@@ -27,6 +28,9 @@ class Analytics
 
         add_action('after_switch_theme', [$this,'create_product_analytics_database_table']);
         add_action('woocommerce_checkout_update_order_meta', [$this,'insert_product_analytics_entry'], 10, 2);
+
+        add_action('wp_ajax_nopriv_utfb_export_product_analytics', [$this,'export_product_analytics']);
+        add_action('wp_ajax_utfb_export_product_analytics', [$this,'export_product_analytics']);
 
     }
 
@@ -104,9 +108,11 @@ class Analytics
                 'state'        => $order->get_billing_state(),
                 'email'        => $order->get_billing_email(),
                 'phone'        => $order->get_billing_phone(),
+                'phone_2'      => $order->get_meta('_billing_phone_2'),
             ],
             '$legal_guardian_2' => get_post_meta($order_id, 'legal_guardian_2', true),
         ];
+
 
         // Retrieve order items
         foreach ($order->get_items() as $item_id => $item) :
@@ -133,6 +139,7 @@ class Analytics
                                 'birthday' => $child['birthday'],
                                 'medical_treatments' => $child['medical_treatments'],
                                 'specific_aspects' => $child['specific_aspects'],
+                                'recommendations' => $child['recommendations'],
                             ]),
                             'canteen' => (!empty($child['canteen'])) ? serialize($child['canteen']): '',
                             'daycare' => (!empty($child['daycare']))? serialize($child['daycare']): '',
@@ -157,6 +164,103 @@ class Analytics
             endif;
 
         endforeach;
+
+    }
+
+    /**
+     * Export Data
+     *
+     *
+     * @return void
+     */
+    public function export_product_analytics() {
+
+        global $wpdb;
+
+        $products = [];
+        $product_id = $_POST['product_id'];
+        $product_title = get_the_title($product_id);
+        $table_name = $wpdb->prefix . $this->table_name;
+
+        if(empty($product_id)):
+             wp_send_json_error(
+                ['message' =>  __('Product invalid.', UTBF_TEXT_DOMAIN)]
+            );
+            die;
+        endif;
+
+        $query = $wpdb->prepare(
+            "SELECT * FROM $table_name WHERE product_id = %d",
+            $product_id
+        );
+
+        $results = $wpdb->get_results($query);
+
+        if(empty($results)):
+            wp_send_json_error(
+                ['message' =>  __('No children added to this product.', UTBF_TEXT_DOMAIN)]
+            );
+            die;
+        endif;
+
+        foreach($results as $product):
+            $order_id = $product->order_id;
+            $order = wc_get_order( $order_id );
+
+            if ( !$order )
+                continue;
+
+            $status = $order->get_status();
+
+            if($status != 'completed')
+                continue;
+
+            $deserialized_product = [];
+            foreach ($product as $key => $value) :
+                if(
+                    $key == 'id' ||
+                    $key == 'product_id' ||
+                    $key == 'order_id'
+                ):
+                    $deserialized_product[$key] = $value;
+                else:
+                    $deserialized_product[$key] = unserialize($value);
+                endif;
+            endforeach;
+
+            $products[] = $deserialized_product;
+
+        endforeach;
+
+        $title_csv = 'Statistiques du stage '.$product_title;
+        $this->create_csv_analytics($products,$title_csv);
+        die;
+
+    }
+
+    /**
+     * create CVS
+     *
+     * @param array $products   list of product
+     * @param string $csv_title  title of CSV
+     *
+     * @return void
+     */
+    public function create_csv_analytics($products,$csv_title) {
+
+
+        $csv = new CSV;
+        $csv_products = new Products;
+
+        $header = $csv_products->header_analytics();
+        $items = $csv_products->items_analytics($products);
+        $create = $csv->create($header, $items, $csv_title);
+
+        if(isset($create['file_url'])):
+            wp_send_json_success($create);
+        else:
+            wp_send_json_error($create);
+        endif;
 
     }
 

@@ -20,7 +20,7 @@ class OptionsPage
     public function __construct()
     {
 
-       add_action( 'init', [ $this, 'add_options_page' ] );
+       add_action( 'admin_menu', [ $this, 'add_options_page' ] );
 
     }
 
@@ -38,7 +38,7 @@ class OptionsPage
                 'page_title'            => __( 'Theme settings',UTBF_TEXT_DOMAIN),
                 'menu_title'            => __( 'Theme settings',UTBF_TEXT_DOMAIN),
                 'menu_slug'             => 'theme-general-settings',
-                'parent'                => 'options-general.php',
+                'parent'                => 'menu_utbf',
                 'capability'            => 'edit_posts',
                 'update_button'         => __( 'Update',UTBF_TEXT_DOMAIN),
                 'updated_message'       => __( 'Settings updated',UTBF_TEXT_DOMAIN),

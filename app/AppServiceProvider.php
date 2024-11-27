@@ -7,6 +7,7 @@ namespace AppUtbf;
 use AppUtbf\Divi\Divi;
 use AppUtbf\Users\Users;
 use AppUtbf\Assets\Assets;
+use AppUtbf\CSV\CsvServiceProvider;
 use AppUtbf\ACF\ACFServiceProvider;
 use AppUtbf\Forms\FormsServiceProvider;
 use AppUtbf\Theme\ThemeServiceProvider;
@@ -31,6 +32,9 @@ class AppServiceProvider
         new Divi;
         new Users;
         new Assets;
+
+        $csv_service_provider = new CsvServiceProvider;
+        $csv_service_provider->boot();
 
         $acf_service_provider = new ACFServiceProvider;
         $acf_service_provider->boot();

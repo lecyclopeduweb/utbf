@@ -22,7 +22,11 @@ class Admin
     {
 
         add_filter('admin_body_class',[$this,'add_user_role_body_class']);
+
+        add_action('admin_menu', [$this,'add_menu_utbf']);
         add_action('admin_menu', [$this,'add_menu_users_search']);
+        add_action('admin_menu', [$this,'add_menu_analytics']);
+        add_action('admin_menu', [$this,'add_menu_global_analytics']);
 
     }
 
@@ -59,20 +63,97 @@ class Admin
     }
 
     /**
-     * Add menu users search
+     * Add menu UTBF
+     *
+     * @return void
+     */
+    public function add_menu_utbf():void
+    {
+
+       add_menu_page(
+            __('UTBF', UTBF_TEXT_DOMAIN),       // Title of the page
+            __('UTBF', UTBF_TEXT_DOMAIN),       // Title in the menu
+            'manage_options',                   // Required capability
+            'menu_utbf',                        // Slug of the page
+            [$this,'render_menu_utbf'],         // Function to display the content
+            'dashicons-welcome-learn-more',     // Menu icon
+            5                                   // Position in the menu
+        );
+    }
+
+    /**
+     * Add menu Users Search
      *
      * @return void
      */
     public function add_menu_users_search():void
     {
 
-        add_users_page(
-            __('Search account',UTBF_TEXT_DOMAIN),     // Title of the page displayed at the top
-            __('Search account',UTBF_TEXT_DOMAIN),  // Text of the submenu link
-            'manage_options',                       // Required capability to access the submenu
-            'users_search',                         // Unique identifier for the submenu
-             [$this,'render_menu_users_search'],    // Function to display the content of the page
+        add_submenu_page(
+            'menu_utbf',                            // Parent page slug
+            __('Search account',UTBF_TEXT_DOMAIN),  // Page title
+            __('Search account',UTBF_TEXT_DOMAIN),  // Title in the menu
+            'manage_options',                       // Required capability
+            'utbf_users_search',                    // Submenu slug
+            [$this,'render_menu_users_search']      // Function to display content
         );
+
+    }
+
+    /**
+     * Add menu Analytics
+     *
+     * @return void
+     */
+    public function add_menu_analytics():void
+    {
+
+        add_submenu_page(
+            'menu_utbf',                            // Parent page slug
+            __('Analytics',UTBF_TEXT_DOMAIN),       // Page title
+            __('Analytics',UTBF_TEXT_DOMAIN),       // Title in the menu
+            'manage_options',                       // Required capability
+            'utbf_analytics',                       // Submenu slug
+            [$this,'render_menu_analytics']         // Function to display content
+        );
+
+    }
+
+    /**
+     * Add menu Global Analytics
+     *
+     * @return void
+     */
+    public function add_menu_global_analytics():void
+    {
+
+        add_submenu_page(
+            'menu_utbf',                                    // Parent page slug
+            __('Global analytics',UTBF_TEXT_DOMAIN),        // Page title
+            __('Global analytics',UTBF_TEXT_DOMAIN),        // Title in the menu
+            'manage_options',                               // Required capability
+            'utbf_global_analytics',                        // Submenu slug
+            [$this,'render_menu_global_analytics']          // Function to display content
+        );
+
+    }
+
+
+    /**
+     * Render menu UTB
+     *
+     * @return void
+     */
+    public function render_menu_utbf():void
+    {
+
+        ob_start();
+
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-utbf.php',null,[]);
+            $template_part = ob_get_contents();
+
+        ob_end_clean();
+        echo $template_part;
 
     }
 
@@ -106,7 +187,7 @@ class Admin
 
         ob_start();
 
-            load_template( UTBF_THEME_PATH . '/template-parts/admin/users/menu-search-archive.php',null,[
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-search-archive.php',null,[
                 's'             => $s,
                 'users'         => $users,
                 'paged'         => $paged,
@@ -120,6 +201,52 @@ class Admin
                 'slug_paged'    => 'p',
                 'base_url'      => site_url().'/wp-admin/users.php?page=users_search',
             ]);
+            $template_part = ob_get_contents();
+
+        ob_end_clean();
+        echo $template_part;
+
+    }
+
+    /**
+     * Render menu Analytics
+     *
+     * @return void
+     */
+    public function render_menu_analytics():void
+    {
+
+        $args = [
+            'post_type'      => 'product',
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+        ];
+
+        $products = get_posts( $args );
+
+        ob_start();
+
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-analytics.php',null,[
+                'products' => $products,
+            ]);
+            $template_part = ob_get_contents();
+
+        ob_end_clean();
+        echo $template_part;
+
+    }
+
+    /**
+     * Render menu Global Analytics
+     *
+     * @return void
+     */
+    public function render_menu_global_analytics():void
+    {
+
+        ob_start();
+
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-global-analytics.php',null,[]);
             $template_part = ob_get_contents();
 
         ob_end_clean();

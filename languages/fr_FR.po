@@ -433,6 +433,18 @@ msgid "Theme settings"
 msgstr "Réglages du thème"
 
 #
+msgid "Analytics"
+msgstr "Statistiques"
+
+#
+msgid "--Choose a product--"
+msgstr "--Choisir un stage--"
+
+#
+msgid "Choosing a product to export"
+msgstr "Choisir un stage à exporter"
+
+#
 msgid "Childs"
 msgstr "Enfants"
 
@@ -652,3 +664,182 @@ msgstr "Préciser le nom de l'école"
 #
 msgid "Add a new child"
 msgstr "Ajouter un nouvel enfant"
+
+#
+msgid "Product title"
+msgstr "Intitulé du stage"
+
+#
+msgid "Product school"
+msgstr "Ecole du stage"
+
+#
+msgid "Child first name"
+msgstr "Prénom enfant"
+
+#
+msgid "Child last name"
+msgstr "Nom enfant"
+
+#
+msgid "Child classroom"
+msgstr "Classe enfant"
+
+#
+msgid "Child birthday"
+msgstr "Date de naissance enfant"
+
+#
+msgid "Canteen monday"
+msgstr "Cantine lundi"
+
+#
+msgid "Canteen tuesday"
+msgstr "Cantine mardi"
+
+#
+msgid "Canteen wednesday"
+msgstr "Cantine mercredi"
+
+#
+msgid "Canteen thursday"
+msgstr "Cantine jeudi"
+
+#
+msgid "Canteen friday"
+msgstr "Cantine vendredi"
+
+#
+msgid "Canteen saturday"
+msgstr "Cantine samedi"
+
+#
+msgid "Canteen sunday"
+msgstr "Cantine dimanche"
+#
+msgid "Daycare Monday / 08:00 - 08:45"
+msgstr "Garderie Lundi / 08h - 08h45"
+
+#
+msgid "Daycare Monday / 17:00 - 18:00"
+msgstr "Garderie Lundi / 17h - 18h"
+
+#
+msgid "Daycare Tuesday / 08:00 - 08:45"
+msgstr "Garderie Mardi / 08h - 08h45"
+
+#
+msgid "Daycare Tuesday / 17:00 - 18:00"
+msgstr "Garderie Mardi / 17h - 18h"
+
+#
+msgid "Daycare Wednesday / 08:00 - 08:45"
+msgstr "Garderie Mercredi / 08h - 08h45"
+
+#
+msgid "Daycare Wednesday / 17:00 - 18:00"
+msgstr "Garderie Mercredi / 17h - 18h"
+
+#
+msgid "Daycare Thursday / 08:00 - 08:45"
+msgstr "Garderie Jeudi / 08h - 08h45"
+
+#
+msgid "Daycare Thursday / 17:00 - 18:00"
+msgstr "Garderie Jeudi / 17h - 18h"
+
+#
+msgid "Daycare Friday / 08:00 - 08:45"
+msgstr "Garderie Vendredi / 08h - 08h45"
+
+#
+msgid "Daycare Friday / 17:00 - 18:00"
+msgstr "Garderie Vendredi / 17h - 18h"
+
+#
+msgid "Daycare Saturday / 08:00 - 08:45"
+msgstr "Garderie Samedi / 08h - 08h45"
+
+#
+msgid "Daycare Saturday / 17:00 - 18:00"
+msgstr "Garderie Samedi / 17h - 18h"
+
+#
+msgid "Daycare Sunday / 08:00 - 08:45"
+msgstr "Garderie Dimanche / 08h - 08h45"
+
+#
+msgid "Daycare Sunday / 17:00 - 18:00"
+msgstr "Garderie Dimanche / 17h - 18h"
+
+#
+msgid "Processing in progress"
+msgstr "Traitement en cours"
+
+#
+msgid "Legal guardian 1 last name (parent)"
+msgstr "Nom du responsable légal 1 (parent)"
+
+#
+msgid "Legal guardian 1 first name (parent)"
+msgstr "Prénom du responsable légal 1 (parent)"
+
+#
+msgid "Legal guardian 1 phone 1 (parent)"
+msgstr "Téléphone 1 du responsable légal 1 (parent)"
+
+#
+msgid "Legal guardian 1 phone 2 (parent)"
+msgstr "Téléphone 2 du responsable légal 1 (parent)"
+
+#
+msgid "Legal guardian 1 email (parent)"
+msgstr "Email du responsable légal 1 (parent)"
+
+#
+msgid "Legal guardian 2 last name"
+msgstr "Nom du responsable légal 2"
+
+#
+msgid "Legal guardian 2 first name"
+msgstr "Prénom du responsable légal 2"
+
+#
+msgid "Legal guardian 2 phone 1"
+msgstr "Téléphone 1 du responsable légal 2"
+
+#
+msgid "Legal guardian 2 phone 2"
+msgstr "Téléphone 2 du responsable légal 2"
+
+#
+msgid "Legal guardian 2 email"
+msgstr "Email du responsable légal 2"
+
+#
+msgid "Emergency contact last name"
+msgstr "Nom de la personne à prévenir en cas d’urgence"
+
+#
+msgid "Emergency contact first name"
+msgstr "Prénom de la personne à prévenir en cas d’urgence"
+
+#
+msgid "Emergency contact phone"
+msgstr "Téléphone de la personne à prévenir en cas d’urgence"
+
+#
+msgid "Error creating CSV."
+msgstr "Erreur lors de la création du CSV."
+
+#
+msgid "No children added to this product."
+msgstr "Aucun enfant ajouté dans ce stage."
+
+#
+msgid "Product invalid."
+msgstr "Stage invalide."
+
+#
+msgid "Global analytics"
+msgstr "Statistiques globales"
