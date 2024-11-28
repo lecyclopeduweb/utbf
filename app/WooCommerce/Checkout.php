@@ -35,6 +35,9 @@ class Checkout
         add_action('woocommerce_thankyou', [$this, 'display_consent_order'], 10, 1);
         add_action('woocommerce_admin_order_data_after_order_details', [$this, 'display_consent_order'], 10, 1);
 
+        // Remove WooCommerce terms and conditions content
+        add_action('wp', [$this, 'remove_terms_and_conditions']);
+
     }
 
     /**
@@ -268,6 +271,19 @@ class Checkout
         ob_end_clean();
 
         echo $template_part;
+
+    }
+
+    /**
+     * Remove WooCommerce terms and conditions content.
+     *
+     * @return void
+     */
+    public function remove_terms_and_conditions():void
+    {
+
+        remove_action('woocommerce_checkout_terms_and_conditions', 'wc_checkout_privacy_policy_text', 20);
+        remove_action('woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30);
 
     }
 
