@@ -241,6 +241,13 @@ class Analytics
 
         endforeach;
 
+         if(empty($deserialized_product)):
+            wp_send_json_error(
+                ['message' =>  __('No order has status completed.', UTBF_TEXT_DOMAIN)]
+            );
+            die;
+        endif;
+
         $title_csv = 'Statistiques du stage '.$product_title;
         $this->create_csv_analytics($products,$title_csv);
         die;

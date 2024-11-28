@@ -847,3 +847,7 @@ msgstr "Statistiques globales"
 #
 msgid "The table in the database does not exist."
 msgstr "La table dans la base de données n'existe pas."
+
+#
+msgid "No order has status completed."
+msgstr "Aucune commande n'a le statut terminé."
