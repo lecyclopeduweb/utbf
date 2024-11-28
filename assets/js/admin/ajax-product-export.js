@@ -41,9 +41,8 @@
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
-                    } else {
-                        $('#analytics-error').html(response.data.message);
                     }
+                    $('#analytics-error').html(response.data.message);
                 },
                 error: function (data) {
                 }

@@ -851,3 +851,7 @@ msgstr "La table dans la base de données n'existe pas."
 #
 msgid "No order has status completed."
 msgstr "Aucune commande n'a le statut terminé."
+
+#
+msgid "Export completed."
+msgstr "Export terminé."

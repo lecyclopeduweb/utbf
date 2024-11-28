@@ -273,7 +273,12 @@ class Analytics
         $create = $csv->create($header, $items, $csv_title);
 
         if(isset($create['file_url'])):
-            wp_send_json_success($create);
+            wp_send_json_success(
+                array_merge(
+                    $create,
+                    ['message' =>  __('Export completed.', UTBF_TEXT_DOMAIN)]
+                )
+            );
         else:
             wp_send_json_error($create);
         endif;
