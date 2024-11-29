@@ -93,7 +93,7 @@ class Register
          * Informations
          *
          */
-        $infos_single_fields = [
+        /* $infos_single_fields = [
             'first_name' => 'shipping_first_name',
             'last_name'  => 'shipping_last_name'
         ];
@@ -101,8 +101,10 @@ class Register
             if (isset($_POST[$post_key])):
                 update_user_meta($user_id, $meta_key, $_POST[$post_key]);
             endif;
-        endforeach;
+        endforeach; */
         $infos_double_fields = [
+            'first_name' => ['billing_first_name', 'shipping_first_name'],
+            'last_name'  => ['billing_last_name', 'shipping_last_name'],
             'address'    => ['billing_address_1', 'shipping_address_1'],
             'city'       => ['billing_city', 'shipping_city'],
             'zip_code'   => ['billing_postcode', 'shipping_postcode'],
