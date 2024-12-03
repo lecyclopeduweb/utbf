@@ -16,7 +16,7 @@
 
         <p class="search-box">
             <label class="screen-reader-text" for="user-search-input"><?= __('Search account',UTBF_TEXT_DOMAIN); ?>:</label>
-            <input type="hidden" name="page" value="users_search">
+            <input type="hidden" name="page" value="utbf_users_search">
             <input type="search" id="user-search-input" name="s" value="<?php if(isset($_GET['s'])): echo $_GET['s']; endif;?>">
             <input type="submit" id="search-submit" class="button" value="<?= __('Search account',UTBF_TEXT_DOMAIN); ?>">
         </p>
