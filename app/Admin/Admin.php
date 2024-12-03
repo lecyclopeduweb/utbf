@@ -187,7 +187,7 @@ class Admin
 
         ob_start();
 
-            load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-search-archive.php',null,[
+            load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-search-account-archive.php',null,[
                 's'             => $s,
                 'users'         => $users,
                 'paged'         => $paged,

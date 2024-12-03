@@ -27,7 +27,27 @@
             <?= __('No Childs',UTBF_TEXT_DOMAIN); ?>
         <?php endif; ?>
     </td>
-    <td class="email column-email" data-colname="<?= __('Email',UTBF_TEXT_DOMAIN); ?><">
+    <td class="phone column-phone" data-colname="<?= __('Phone',UTBF_TEXT_DOMAIN); ?>">
+        <?php
+        $phones = [
+            get_user_meta($args['data']->ID, 'billing_phone', true),
+            get_user_meta($args['data']->ID, 'billing_phone_2', true),
+            get_user_meta($args['data']->ID, 'shipping_phone', true),
+            get_the_author_meta('shipping_phone_2', $args['data']->ID)
+        ];
+        $user_phone = '';
+        foreach ($phones as $phone):
+            if (!empty($phone)):
+                $user_phone = $phone;
+                break;
+            endif;
+        endforeach;
+        ?>
+        <a <?php if(!empty($user_phone)) : ?>href="tel:<?= $user_phone; ?>" <?php endif; ?>>
+            <?= (!empty($user_phone)) ? $user_phone :__('No Phone',UTBF_TEXT_DOMAIN); ?>
+        </a>
+    </td>
+    <td class="email column-email" data-colname="<?= __('Email',UTBF_TEXT_DOMAIN); ?>">
         <a href="mailto:<?= $args['data']->user_email; ?>">
             <?= $args['data']->user_email; ?>
         </a>

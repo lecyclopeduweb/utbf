@@ -48,6 +48,7 @@
                 <tr>
                     <th scope="col" id="parent" class="manage-column column-parent"><?= __('Parent',UTBF_TEXT_DOMAIN); ?></th>
                     <th scope="col" id="Childs" class="manage-column column-childs"><?= __('Childs',UTBF_TEXT_DOMAIN); ?></th>
+                    <th scope="col" id="phone" class="manage-column column-phone"><?= __('Phone',UTBF_TEXT_DOMAIN); ?></th>
                     <th scope="col" id="email" class="manage-column column-email"><?= __('Email',UTBF_TEXT_DOMAIN); ?></th>
                 </tr>
             </thead>
@@ -55,12 +56,12 @@
                 <?php if(!empty($args['users'])):?>
                     <?php foreach($args['users'] as $user): ?>
                         <?php
-                        load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-search-item.php',null,$user);
+                        load_template( UTBF_THEME_PATH . '/template-parts/admin/menus/menu-search-account-item.php',null,$user);
                         ?>
                     <?php endforeach; ?>
                 <?php else:?>
                     <tr >
-                        <td class="colspanchange" colspan="3">
+                        <td class="colspanchange" colspan="4">
                             <?= __('No result', UTBF_TEXT_DOMAIN);?>
                         </td>
                     </tr>
@@ -71,6 +72,7 @@
                 <tr>
                     <th scope="col" class="manage-column column-parent"><?= __('Parent',UTBF_TEXT_DOMAIN); ?></th>
                     <th scope="col" class="manage-column column-childs"><?= __('Childs',UTBF_TEXT_DOMAIN); ?></th>
+                    <th scope="col" class="manage-column column-phone"><?= __('Phone',UTBF_TEXT_DOMAIN); ?></th>
                     <th scope="col" class="manage-column column-email"><?= __('Email',UTBF_TEXT_DOMAIN); ?></th>
                 </tr>
             </tfoot>

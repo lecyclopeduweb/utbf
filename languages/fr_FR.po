@@ -149,6 +149,10 @@ msgid "Phone"
 msgstr "Téléphone"
 
 #
+msgid "No Phone"
+msgstr "Aucun téléphone"
+
+#
 msgid "Label phone"
 msgstr "Label téléphone"
 
