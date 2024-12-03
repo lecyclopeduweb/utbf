@@ -67,6 +67,16 @@
 .outofstock .utbf-product .et_pb_db_shop_button {display:none;}
 
 /** Fiche produit - détail **/
+/** Message connexion + ajout enfant **/
+.single-product-childs__not-logged-in, .single-product-childs__no-childs {
+	margin: 20px 0;
+    background: #EEE;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 20px;
+    font-weight: bold;
+}
+
 .utbf-produit-meta .category_wrapper, .utbf-produit-meta .tag_wrapper {
 	background:#38C8BE;
 	border-radius:15px;
@@ -115,7 +125,7 @@ dl.variation {font-size:14px; font-weight:500;}
 .utbf-filtres .button_container  {text-align:center;}
 
 /** Notices **/
-.wc-block-components-notice-banner, .woocommerce-info {width:80%; max-width:1080px; margin:16px auto !important;}
+.wc-block-components-notice-banner, .woocommerce-info, .woocommerce-order-pay #order_review {width:80%; max-width:1080px; margin:16px auto !important;}
 
 /** Mon compte **/
 .bc-account-content-container {width:80%; max-width:1080px; margin:0 auto;}

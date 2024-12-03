@@ -28,8 +28,8 @@ class SingleProduct
         add_action('woocommerce_is_purchasable', [$this, 'remove_add_to_cart'], 10, 2);
 
         ///Messages
-        add_action('woocommerce_product_meta_start', [$this, 'show_message_if_not_logged_in'], 25);
-        add_action('woocommerce_product_meta_start', [$this, 'show_message_if_not_child'], 25);
+        add_action('woocommerce_product_meta_end', [$this, 'show_message_if_not_logged_in'], 25);
+        add_action('woocommerce_product_meta_end', [$this, 'show_message_if_not_child'], 25);
 
     }
 
