@@ -64,7 +64,7 @@ class Users
 
         $args_count = [
             'customer_id' => $user->ID,
-            'status'      => array('wc-completed', 'wc-processing'),
+            //'status'      => array('wc-completed', 'wc-processing'),
             'limit'       => -1
         ];
 
@@ -72,7 +72,7 @@ class Users
 
         $args = [
             'customer_id' => $user->ID,
-            'status'      => array('wc-completed', 'wc-processing'),
+            //'status'      => array('wc-completed', 'wc-processing'),
             'limit'       => $ppp,
             'offset'      => $offset
         ];
