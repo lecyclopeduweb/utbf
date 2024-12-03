@@ -199,7 +199,7 @@ class Admin
                 'ppp_array'     => UTBF_PPP_ARRAY_USERS_SEARCH,
                 'slug_ppp'      => 'ppp',
                 'slug_paged'    => 'p',
-                'base_url'      => site_url().'/wp-admin/users.php?page=users_search',
+                'base_url'      => site_url().'/wp-admin/admin.php?page=utbf_users_search',
             ]);
             $template_part = ob_get_contents();
 
