@@ -109,12 +109,12 @@ class Admin
     {
 
         add_submenu_page(
-            'menu_utbf',                            // Parent page slug
-            __('Analytics',UTBF_TEXT_DOMAIN),       // Page title
-            __('Analytics',UTBF_TEXT_DOMAIN),       // Title in the menu
-            'manage_options',                       // Required capability
-            'utbf_analytics',                       // Submenu slug
-            [$this,'render_menu_analytics']         // Function to display content
+            'menu_utbf',                                            // Parent page slug
+            __('Exporting childs by product',UTBF_TEXT_DOMAIN),     // Page title
+            __('Exporting childs by product',UTBF_TEXT_DOMAIN),     // Title in the menu
+            'manage_options',                                       // Required capability
+            'utbf_analytics',                                       // Submenu slug
+            [$this,'render_menu_analytics']                         // Function to display content
         );
 
     }
@@ -128,12 +128,12 @@ class Admin
     {
 
         add_submenu_page(
-            'menu_utbf',                                    // Parent page slug
-            __('Global analytics',UTBF_TEXT_DOMAIN),        // Page title
-            __('Global analytics',UTBF_TEXT_DOMAIN),        // Title in the menu
-            'manage_options',                               // Required capability
-            'utbf_global_analytics',                        // Submenu slug
-            [$this,'render_menu_global_analytics']          // Function to display content
+            'menu_utbf',                                            // Parent page slug
+            __('Export parents and childs',UTBF_TEXT_DOMAIN),       // Page title
+            __('Export parents and childs',UTBF_TEXT_DOMAIN),       // Title in the menu
+            'manage_options',                                       // Required capability
+            'utbf_global_analytics',                                // Submenu slug
+            [$this,'render_menu_global_analytics']                  // Function to display content
         );
 
     }

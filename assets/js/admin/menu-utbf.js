@@ -23,7 +23,7 @@
          */
         function redirect_menu_global_analytics(){
             let baseUrl = window.location.origin;
-            window.location.href = baseUrl+'/wp-admin/';
+            window.location.href = baseUrl+'/wp-admin/admin.php?page=com.smackcoders.csvimporternewpro.menu';
         }
 
         /**

@@ -859,3 +859,11 @@ msgstr "Aucune commande n'a le statut terminé."
 #
 msgid "Export completed."
 msgstr "Export terminé."
+
+#
+msgid "Exporting childs by product"
+msgstr "Exporter les enfants par stage"
+
+#
+msgid "Export parents and childs"
+msgstr "Exporter les parents et les enfants"
