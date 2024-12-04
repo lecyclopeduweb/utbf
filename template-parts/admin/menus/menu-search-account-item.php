@@ -17,11 +17,15 @@
         </strong>
     </td>
     <td class="role column-childs" data-colname="<?= __('Childs',UTBF_TEXT_DOMAIN); ?>">
-        <?php if( have_rows('user__childs_repeater', 'user_'.$args['ID']) ): ?>
+        <?php $user__childs_repeater__count = get_user_meta($args['data']->ID, 'user__childs_repeater', true); ?>
+        <?php if( !empty($user__childs_repeater__count) ): ?>
             <ul>
-                <?php while( have_rows('user__childs_repeater', 'user_'.$args['ID']) ): the_row(); ?>
-                    <li><?= get_sub_field('user__child__first_name'); ?> <?= get_sub_field('user__child__last_name'); ?></li>
-                <?php endwhile; ?>
+                <?php for ($i = 1; $i <= $user__childs_repeater__count; $i++):
+                $nb = $i-1;
+                $repeater = 'user__childs_repeater_'.$nb.'_';
+                ?>
+                    <li><?= get_user_meta($args['data']->ID, $repeater.'user__child__first_name',true); ?> <?= get_user_meta($args['data']->ID, $repeater.'user__child__last_name',true); ?></li>
+                <?php endfor; ?>
             </ul>
         <?php else: ?>
             <?= __('No Childs',UTBF_TEXT_DOMAIN); ?>
