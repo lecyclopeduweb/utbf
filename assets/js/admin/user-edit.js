@@ -24,7 +24,7 @@
                 that.addClass('nav-tab-active');
 
                 // Update URL with the 'link' parameter
-                 let url = new URL(window.location.href);
+                let url = new URL(window.location.href);
                 url.searchParams.set('tab', link);
                 window.history.replaceState({}, '', url);
 
@@ -76,7 +76,7 @@
                 });
 
                 //For ACF
-                if(first_id.indexOf('acf-field') !== -1){
+                if (first_id && first_id.indexOf('acf-field') !== -1) {
                     $(this).find('tbody tr').each(function() {
                         var current_id = $(this).attr('data-name');
                         if (current_id) {
@@ -100,6 +100,7 @@
          * Events
          */
         if ($("#your-profile").length) {
+            console.log('test');
             change_tabs();
             add_ids_your_profile();
             $("body").off("click", ".nav-tab").on("click", ".nav-tab", function(event) {
