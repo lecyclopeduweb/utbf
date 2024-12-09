@@ -184,7 +184,7 @@ class Register
      *
      * @return void
      */
-    public function user_notification(int $user_id):void
+    public function user_notification($user_id):void
     {
 
         wp_new_user_notification($user_id);//Admin
