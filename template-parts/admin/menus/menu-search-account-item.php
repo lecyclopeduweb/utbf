@@ -24,7 +24,13 @@
                 $nb = $i-1;
                 $repeater = 'user__childs_repeater_'.$nb.'_';
                 ?>
-                    <li><?= get_user_meta($args['data']->ID, $repeater.'user__child__first_name',true); ?> <?= get_user_meta($args['data']->ID, $repeater.'user__child__last_name',true); ?></li>
+                    <?php
+                    $first_name = get_user_meta($args['data']->ID, $repeater.'user__child__first_name', true);
+                    $last_name = get_user_meta($args['data']->ID, $repeater.'user__child__last_name', true);
+                    if (!empty($first_name) || !empty($last_name)):
+                    ?>
+                        <li><?= $first_name; ?> <?= $last_name; ?></li>
+                    <?php endif; ?>
                 <?php endfor; ?>
             </ul>
         <?php else: ?>

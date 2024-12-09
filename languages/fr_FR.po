@@ -867,3 +867,7 @@ msgstr "Exporter les enfants par stage"
 #
 msgid "Export parents and childs"
 msgstr "Exporter les parents et les enfants"
+
+#
+msgid "Unknown"
+msgstr "Sans nom"
