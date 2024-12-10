@@ -21,6 +21,10 @@ class Cart
     public function __construct()
     {
 
+        //Childs by products in SESSION
+        add_action('woocommerce_add_to_cart', [$this,'add_childs_by_product'], 10, 6);
+        add_action('woocommerce_cart_item_removed', [$this,'remove_childs_by_product'], 10, 2);
+
         //Childs Item Datas
         add_filter('woocommerce_add_cart_item_data', [$this, 'add_cart_item_data'], 10, 2);
         add_filter('woocommerce_get_cart_item_from_session', [$this, 'get_cart_item_from_session'], 10, 2);
@@ -32,6 +36,64 @@ class Cart
 
         //Quantity
         add_filter('woocommerce_cart_item_quantity', [$this,'change_quantity_input'], 10, 3);
+
+    }
+
+    /**
+     * Childs by products in SESSION
+     *
+     * Add childs to session
+     *
+     * @param string $cart_item_key The unique cart item key.
+     * @param int    $product_id The ID of the product being added.
+     * @param int    $quantity The quantity of the product.
+     * @param int    $variation_id The ID of the product variation, if applicable.
+     * @param array  $variation An array of variation attributes, if applicable.
+     * @param array  $cart_item_data Additional data for the cart item.
+     *
+     * @return void
+     */
+    public function add_childs_by_product($cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data) {
+
+        if (isset($_POST['childs']) && is_array($_POST['childs'])) :
+            $childs_by_products = [];
+
+            if (class_exists('WooCommerce') && WC()->session) :
+                $current_childs[$product_id] = $_POST['childs'];
+                if (!empty(WC()->session->get_session_data()['childs_by_products'])) :
+                    $existing_childs_data = WC()->session->get('childs_by_products', []);
+                    $childs_by_products = $existing_childs_data + $current_childs; // array merge keep key
+                else :
+                    $childs_by_products = $current_childs;
+                endif;
+            endif;
+
+            WC()->session->set('childs_by_products', $childs_by_products);
+
+        endif;
+
+    }
+
+    /**
+     * Childs by products in SESSION
+     *
+     * Remove childs to session
+     *
+     * @param string $cart_item_key The unique cart item key.
+     * @param WC_Cart $cart         The WC_Cart object containing all cart items.
+     *
+     * @return void
+     */
+    public function remove_childs_by_product($cart_item_key, $cart) {
+
+        $line_item = $cart->removed_cart_contents[ $cart_item_key ];
+        $product_id = $line_item[ 'product_id' ];
+
+        if (!empty(WC()->session->get_session_data()['childs_by_products'])) :
+            $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
+            unset($childs_by_products[ $product_id]);
+            WC()->session->set('childs_by_products', $childs_by_products);
+        endif;
 
     }
 

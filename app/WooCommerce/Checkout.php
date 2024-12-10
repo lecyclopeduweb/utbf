@@ -152,13 +152,11 @@ class Checkout
     function save_data_in_post_meta($order_id): void
     {
 
-        if (isset($_POST['childs'])):
+        if (!empty(WC()->session->get_session_data()['childs_by_products'])) :
 
-            $childs_data = json_decode(stripslashes($_POST['childs']), true);
-
-            if (is_array($childs_data)) :
-                update_post_meta($order_id, 'childs', $childs_data);
-            endif;
+            $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
+            update_post_meta($order_id, 'childs', $childs_by_products);
+            WC()->session->__unset('childs_by_products');
 
         endif;
 
