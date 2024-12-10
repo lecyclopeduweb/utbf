@@ -27,7 +27,7 @@ class Analytics
         $this->table_name = 'woocommerce_utbf_products_analytics';
 
         add_action('after_switch_theme', [$this,'create_product_analytics_database_table']);
-        add_action('woocommerce_checkout_update_order_meta', [$this,'insert_product_analytics_entry'], 99, 2);
+        add_action('woocommerce_checkout_update_order_meta', [$this,'insert_product_analytics_entry'], 10, 2);
 
         add_action('wp_ajax_nopriv_utfb_export_product_analytics', [$this,'export_product_analytics']);
         add_action('wp_ajax_utfb_export_product_analytics', [$this,'export_product_analytics']);
@@ -79,6 +79,9 @@ class Analytics
 
         global $wpdb;
 
+        if(empty(WC()->session->get_session_data()['childs_by_products']))
+            return;
+
         $table_name = $wpdb->prefix . $this->table_name;
         if(!$wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"))
             return;
@@ -87,6 +90,9 @@ class Analytics
 
         if (!$order)
             return;
+
+        //Childs
+        $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
 
         //Consent
         $consent_communication = get_post_meta($order_id, 'consent_communication', true);
@@ -119,7 +125,7 @@ class Analytics
             $product_id = $product ? $product->get_id() : null;
 
             //Childs
-            $childs_product = get_post_meta($order_id, 'childs_of_product_'.(int)$product_id, true);
+            $childs_product = $childs_by_products[$product_id];
 
             if(!empty($childs_product)):
 
@@ -161,6 +167,8 @@ class Analytics
             endif;
 
         endforeach;
+
+        WC()->session->__unset('childs_by_products');
 
     }
 

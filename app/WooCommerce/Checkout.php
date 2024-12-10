@@ -152,18 +152,6 @@ class Checkout
     function save_data_in_post_meta($order_id): void
     {
 
-        if (!empty(WC()->session->get_session_data()['childs_by_products'])) :
-
-            $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
-            if(!empty($childs_by_products)):
-                foreach( $childs_by_products as $key =>  $childs_by_product):
-                    update_post_meta($order_id, 'childs_of_product_'.$key, $childs_by_product);
-                endforeach;
-            endif;
-            WC()->session->__unset('childs_by_products');
-
-        endif;
-
         if (isset($_POST['legal_guardian_2'])):
 
             $legal_guardian_2 = json_decode(stripslashes($_POST['legal_guardian_2']), true);
