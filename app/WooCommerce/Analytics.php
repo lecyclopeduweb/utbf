@@ -27,7 +27,7 @@ class Analytics
         $this->table_name = 'woocommerce_utbf_products_analytics';
 
         add_action('after_switch_theme', [$this,'create_product_analytics_database_table']);
-        add_action('woocommerce_checkout_update_order_meta', [$this,'insert_product_analytics_entry'], 10, 2);
+        add_action('woocommerce_checkout_update_order_meta', [$this,'insert_product_analytics_entry'], 99, 2);
 
         add_action('wp_ajax_nopriv_utfb_export_product_analytics', [$this,'export_product_analytics']);
         add_action('wp_ajax_utfb_export_product_analytics', [$this,'export_product_analytics']);
@@ -88,9 +88,6 @@ class Analytics
         if (!$order)
             return;
 
-        //childs
-        $childs = get_post_meta($order_id, 'childs', true);
-
         //Consent
         $consent_communication = get_post_meta($order_id, 'consent_communication', true);
         $consent_blog = get_post_meta($order_id, 'consent_blog', true);
@@ -122,9 +119,9 @@ class Analytics
             $product_id = $product ? $product->get_id() : null;
 
             //Childs
-            $childs_product = (!empty($childs[(int)$product_id])) ? $childs[(int)$product_id] : false;
+            $childs_product = get_post_meta($order_id, 'childs_of_product_'.(int)$product_id, true);
 
-            if($childs_product):
+            if(!empty($childs_product)):
 
                 foreach ($childs_product as $child):
 

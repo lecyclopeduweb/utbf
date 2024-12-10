@@ -155,7 +155,11 @@ class Checkout
         if (!empty(WC()->session->get_session_data()['childs_by_products'])) :
 
             $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
-            update_post_meta($order_id, 'childs', $childs_by_products);
+            if(!empty($childs_by_products)):
+                foreach( $childs_by_products as $key =>  $childs_by_product):
+                    update_post_meta($order_id, 'childs_of_product_'.$key, $childs_by_product);
+                endforeach;
+            endif;
             WC()->session->__unset('childs_by_products');
 
         endif;
