@@ -44,12 +44,12 @@
                             <?php endforeach; ?>
                         </select>
                     </div>
-                    <input class="child-first-name" type="hidden" name="childs[<?= $i; ?>][first_name]" value="">
-                    <input class="child-last-name" type="hidden" name="childs[<?= $i; ?>][last_name]" value="">
-                    <input class="child-birthday" type="hidden" name="childs[<?= $i; ?>][birthday]" value="">
-                    <input class="child-medical-treatments" type="hidden" name="childs[<?= $i; ?>][medical_treatments]" value="">
-                    <input class="child-specific-aspects" type="hidden" name="childs[<?= $i; ?>][specific_aspects]" value="">
-                    <input class="child-recommendations" type="hidden" name="childs[<?= $i; ?>][recommendations]" value="">
+                    <input class="child-first-name" type="hidden" name="childs[<?= $i; ?>][first_name]" value="<?= (isset($_POST['childs']))? $_POST['childs'][$i]['first_name']: '';?>">
+                    <input class="child-last-name" type="hidden" name="childs[<?= $i; ?>][last_name]" value="<?= (isset($_POST['childs']))? $_POST['childs'][$i]['last_name']: '';?>">
+                    <input class="child-birthday" type="hidden" name="childs[<?= $i; ?>][birthday]" value="<?= (isset($_POST['childs']))? $_POST['childs'][$i]['birthday']: '';?>">
+                    <input class="child-medical-treatments" type="hidden" name="childs[<?= $i; ?>][medical_treatments]" value="<?= (isset($_POST['childs']))? $_POST['childs'][$i]['medical_treatments']: '';?>">
+                    <input class="child-specific-aspects" type="hidden" name="childs[<?= $i; ?>][specific_aspects]" value="<?= (isset($_POST['childs']))? $_POST['childs'][$i]['specific_aspects']: '';?>">
+                    <input class="child-recommendations" type="hidden" name="childs[<?= $i; ?>][recommendations]" value="<?= (isset($_POST['childs']))? $_POST['childs'][$i]['recommendations']: '';?>">
                 </div>
                 <?php
                 /**
