@@ -37,6 +37,9 @@ class Checkout
 
         // Remove WooCommerce terms and conditions content
         add_action('wp', [$this, 'remove_terms_and_conditions']);
+		
+		// Personnalisation de la note de commande
+		add_filter('woocommerce_checkout_fields', [$this, 'customize_order_comments_field']);
 
     }
 
@@ -276,5 +279,23 @@ class Checkout
         remove_action('woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30);
 
     }
+	
+	/**
+     * Rewrite Order comments.
+     *
+     * @return void
+     */
+	public function customize_order_comments_field($fields)
+{
+    if (isset($fields['order']['order_comments'])) {
+        // Personnaliser l'étiquette
+        $fields['order']['order_comments']['label'] = 'Vous voulez ajouter quelque chose ?';
+
+        // Personnaliser le texte d'invite (placeholder)
+        $fields['order']['order_comments']['placeholder'] = 'Une remarque particulière, une information à nous communiquer ?';
+    }
+
+    return $fields;
+}
 
 }
