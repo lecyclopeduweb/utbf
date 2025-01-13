@@ -68,31 +68,15 @@ class Analytics
     }
 
     /**
-     * Hook to retrieve and handle order data upon creation.
+     * Get extra order Datas
      *
      * @param int $order_id The ID of the order.
      * @param WC_Order $order The order object.
      *
-     * @return void
+     * @return array
      */
-    public function insert_product_analytics_entry($order_id, $data) {
+    public function get_extra_order_Datas($order_id, $order) {
 
-        global $wpdb;
-
-        if(empty(WC()->session->get_session_data()['childs_by_products']))
-            return;
-
-        $table_name = $wpdb->prefix . $this->table_name;
-        if(!$wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"))
-            return;
-
-        $order = wc_get_order($order_id);
-
-        if (!$order)
-            return;
-
-        //Childs
-        $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
 
         //Consent
         $consent_communication = get_post_meta($order_id, 'consent_communication', true);
@@ -116,6 +100,29 @@ class Analytics
             '$legal_guardian_2' => get_post_meta($order_id, 'legal_guardian_2', true),
         ];
 
+        return [
+            'consent_communication' => $consent_communication,
+            'consent_blog' => $consent_blog,
+            'legal_guardian' => $legal_guardian,
+        ];
+
+    }
+
+    /**
+     * fetch Childs Datas by products
+     *
+     * @param int $order_id The ID of the order.
+     * @param WC_Order $order The order object.
+     *
+     * @return array
+     */
+    public function fetch_childs_by_products($order_id,$order) {
+
+        $fetch = [];
+
+        //Datas
+        $childs_by_products = unserialize(WC()->session->get_session_data()['childs_by_products']);
+        $order_datas = $this->get_extra_order_Datas($order_id,$order);
 
         // Retrieve order items
         foreach ($order->get_items() as $item_id => $item) :
@@ -124,48 +131,82 @@ class Analytics
             $product = $item->get_product();
             $product_id = $product ? $product->get_id() : null;
 
-            //Childs
-            $childs_product = $childs_by_products[$product_id];
+            foreach($childs_by_products as $key => $childs_by_product):
 
-            if(!empty($childs_product)):
+                if(!empty($childs_by_product)):
 
-                foreach ($childs_product as $child):
+                    foreach ($childs_by_product as $child):
 
-                    $insert =  [
-                            'product_id' => $product_id,
-                            'order_id' => $order_id,
-                            'tax_product_school' => serialize(get_the_terms($product_id, 'product_cat')),
-                            'child' => serialize([
-                                'first_name' => $child['first_name'],
-                                'last_name' => $child['last_name'],
-                                'classroom' => $child['classroom'],
-                                'birthday' => $child['birthday'],
-                                'medical_treatments' => $child['medical_treatments'],
-                                'specific_aspects' => $child['specific_aspects'],
-                                'recommendations' => $child['recommendations'],
-                            ]),
-                            'canteen' => (!empty($child['canteen'])) ? serialize($child['canteen']): '',
-                            'daycare' => (!empty($child['daycare']))? serialize($child['daycare']): '',
-                            'consents' => serialize([
-                                'communication' => $consent_communication,
-                                'blog' => $consent_blog,
-                            ]),
-                            'legal_guardian' => serialize($legal_guardian),
-                            'emergency' =>serialize([
-                                'last_name' =>  $child['last_name_emergency'],
-                                'first_name' =>  $child['first_name_emergency'],
-                                'phone' =>  $child['phone_emergency'],
-                            ]),
-                    ];
+                        $fetch[sanitize_title($order_id.'-'.$product_id.'-'.$child['first_name']).'-'.sanitize_title($child['last_name'])] =  [
+                                'product_id' => $product_id,
+                                'order_id' => $order_id,
+                                'tax_product_school' => serialize(get_the_terms($product_id, 'product_cat')),
+                                'child' => serialize([
+                                    'first_name' => $child['first_name'],
+                                    'last_name' => $child['last_name'],
+                                    'classroom' => $child['classroom'],
+                                    'birthday' => $child['birthday'],
+                                    'medical_treatments' => $child['medical_treatments'],
+                                    'specific_aspects' => $child['specific_aspects'],
+                                    'recommendations' => $child['recommendations'],
+                                ]),
+                                'canteen' => (!empty($child['canteen'])) ? serialize($child['canteen']): '',
+                                'daycare' => (!empty($child['daycare']))? serialize($child['daycare']): '',
+                                'consents' => serialize([
+                                    'communication' => $order_datas['consent_communication'],
+                                    'blog' => $order_datas['consent_blog'],
+                                ]),
+                                'legal_guardian' => serialize($order_datas['legal_guardian']),
+                                'emergency' =>serialize([
+                                    'last_name' =>  $child['last_name_emergency'],
+                                    'first_name' =>  $child['first_name_emergency'],
+                                    'phone' =>  $child['phone_emergency'],
+                                ]),
+                        ];
 
-                    $wpdb->insert(
-                        $wpdb->prefix . $this->table_name,
-                        $insert
-                    );
+                    endforeach;
+                endif;
+            endforeach;
 
-                endforeach;
+        endforeach;
+
+        return $fetch;
+    }
+
+    /**
+     * Hook to retrieve and handle order data upon creation.
+     *
+     * @param int $order_id The ID of the order.
+     * @param WC_Order $order The order object.
+     *
+     * @return void
+     */
+    public function insert_product_analytics_entry($order_id, $data) {
+
+        global $wpdb;
+
+        if(empty(WC()->session->get_session_data()['childs_by_products']))
+            return;
+
+        $table_name = $wpdb->prefix . $this->table_name;
+        if(!$wpdb->get_var("SHOW TABLES LIKE '{$table_name}'"))
+            return;
+
+        $order = wc_get_order($order_id);
+
+        if (!$order)
+            return;
+
+        $childs = $this->fetch_childs_by_products($order_id,$order);
+
+        // insert
+        foreach($childs as $child):
+            if(!empty($child)):
+                $wpdb->insert(
+                    $wpdb->prefix . $this->table_name,
+                    $child
+                );
             endif;
-
         endforeach;
 
         WC()->session->__unset('childs_by_products');
